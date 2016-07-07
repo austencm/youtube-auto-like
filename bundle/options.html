@@ -1,0 +1,123 @@
+<!doctype html>
+
+<html>
+  <head>
+
+    <title>Auto Like Options</title>
+    <style>
+      html {
+
+      }
+
+      body {
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      #options-container {
+        width: 320px;
+        padding: 30px;
+        overflow: hidden;
+      }
+
+      #options::after {
+        content: ' ';
+        display: table;
+        clear: both;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="radio"] {
+        float: left;
+        margin-right: 8px;
+        position: relative;
+        top: 2px;
+      }
+
+      textarea {
+        width: 100%;
+        margin-top: 8px;
+        padding: 6px 10px;
+      }
+
+      textarea:focus {
+        border: 1px solid #e62117;
+      }
+
+      #save {
+        display: block;
+        width: 200px;
+        max-width: 100%;
+        margin: 30px auto -15px;
+      }
+
+      strong {
+        color: #e62117;
+      }
+
+      #contact {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        opacity: 0.5;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="options-container">
+
+      <form id="options" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>
+            <input type="radio" name="likeWhat" value="all">
+            Like <strong>all</strong> videos
+          </label>
+          <label>
+            <input type="radio" name="likeWhat" value="subscribed">
+            Like videos from <strong>subscribed channels</strong>
+          </label>
+          <label>
+            <input type="radio" name="likeWhat" value="none">
+            Like <strong>no</strong> videos (disable)
+          </label>
+        </div>
+
+        <!-- <div class="form-group">
+          <label>
+            <strong>Always</strong> like videos from these channels:
+            <textarea id="likeWhitelist" name="likeWhitelist" placeholder="one per line" rows="3"></textarea>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <strong>Never</strong> like videos from these channels:
+            <textarea id="likeBlacklist" name="likeBlacklist" placeholder="one per line" rows="3"></textarea>
+          </label>
+        </div> -->
+
+        <div class="form-group">
+          <button id="save">Save</button>
+        </div>
+      </form>
+
+      <div id="contact">
+        Question? Holler at me on <a href="http://twitter.com/austencm">Twitter</a>.
+      </div>
+
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
+

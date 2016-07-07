@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>YouTube Auto Like</title>
+    <style>
+      body {
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      #popup-container {
+        width: 150px;
+      }
+
+      button {
+        width: 100%;
+        background-image: linear-gradient(rgb(231, 231, 231), rgb(231, 231, 231) 38%, rgb(215, 215, 215));
+        min-height: 2em;
+        min-width: 4em;
+        color: black;
+        border: 1px solid rgba(0, 0, 0, 0.247059);
+        border-radius: 2px;
+        outline: none;
+        box-shadow: rgba(0, 0, 0, 0.0784314) 0px 1px 0px, rgba(255, 255, 255, 0.74902) 0px 1px 2px inset;
+        color: rgb(68, 68, 68);
+        text-shadow: rgb(240, 240, 240) 0px 1px 0px;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-size: 14px;
+      }
+
+      button:hover {
+        background-image: linear-gradient(rgb(240, 240, 240), rgb(240, 240, 240) 38%, rgb(224, 224, 224));
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 0px, rgba(255, 255, 255, 0.952941) 0px 1px 2px inset;
+        color: #000;
+        border-color: rgba(0, 0, 0, 0.298039);
+      }
+
+      button:active {
+        background-image: linear-gradient(rgb(231, 231, 231), rgb(231, 231, 231) 38%, rgb(215, 215, 215));
+        box-shadow: none;
+        text-shadow: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="popup-container">
+
+      <!-- <button id="whitelist">Always like this channel</button>
+      <button id="blacklist">Never like this channel</button>
+      <hr> -->
+      <button id="openOptions">Open Options</button>
+
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
+
