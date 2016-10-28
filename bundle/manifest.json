@@ -1,37 +1,32 @@
 {
-  "manifest_version": 2,
-
   "name": "YouTube Auto Like",
+  "version": "1.1",
+  "manifest_version": 2,
   "description": "Magically like videos from channels you subscribe to, so you never forget to support your favorite content creators.",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon-128.png",
-    "default_popup": "popup.html"
-  },
-
+  "homepage_url": "https://github.com/austencm/youtube-auto-like",
   "icons": {
-    "16": "icon-16.png",
-    "19": "icon-19.png",
-    "32": "icon-32.png",
-    "48": "icon-48.png",
-    "128": "icon-128.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
-
+  "default_locale": "en",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Open Web Store",
+    "default_popup": "views/popup/popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
+    "js": ["js/like.js"],
+    "run_at": "document_start",
+    "all_frames": true
+  }],
   "permissions": [
     "tabs",
     "storage"
   ],
-
   "options_ui": {
-    "page": "options.html",
+    "page": "views/options/options.html",
     "chrome_style": true
-  },
-
-  "content_scripts": [{
-    "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
-    "js": ["like.js"],
-    "run_at": "document_start",
-    "all_frames": true
-  }]
+  }
 }

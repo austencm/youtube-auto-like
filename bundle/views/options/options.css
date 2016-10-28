@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+}
+
+strong {
+  color: #e62117;
+}
+
+.form-group {
+  padding: 10px 0;
+}
+
+.form-group:not(:last-child) {
+  border-bottom: 1px solid #efefef;
+}
+
+#options {
+  display: block;
+  padding: 15px 20px 25px;
+  border-top: 2px solid #e62117;
+}
+
+#options label {
+  display: block;
+  padding: 5px 0;
+  font-size: 13px;
+}
+
+#options input[type='radio'] {
+  position: relative;
+  top: -1px;
+  margin-right: 6px;
+}
+
+#links {
+  padding: 15px 20px 13px;
+  margin-left: -6px;
+  background: #444;
+}
+
+#hover-label {
+  display: block;
+  height: 20px;
+  float: right;
+  position: relative;
+  top: 2px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 30px;
+  color: #efefef;
+}
+
+#links a, #links a:visited {
+  display: inline-block;
+  padding: 0 6px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #bbb;
+  opacity: 0.5;
+}
+
+#links a:hover {
+  opacity: 1;
+}
+
+#links i[class*='coffee'] {
+  font-size: 30px;
+}
+
+#links a label {
+  display: none;
+}

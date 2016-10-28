@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Auto Like Options</title>
+
+    <link href="/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="options.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div id="options-container">
+
+      <form id="options" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>
+            <input type="radio" name="likeWhat" value="all">
+            Like <strong>all</strong> videos
+          </label>
+          <label>
+            <input type="radio" name="likeWhat" value="subscribed">
+            Like videos from <strong>subscribed channels</strong>
+          </label>
+          <label>
+            <input type="radio" name="likeWhat" value="none">
+            Like <strong>no</strong> videos (disable)
+          </label>
+        </div>
+      </form>
+
+      <footer id="links">
+        <a href="http://twitter.com/austencm">
+          <i class="icon-twitter"></i>
+          <label>Say hello</label>
+        </a>
+        <a href="https://github.com/austencm/youtube-auto-like">
+          <i class="icon-github"></i>
+          <label>Contribute</label>
+        </a>
+        <a href="https://www.paypal.me/austencm/3">
+          <i class="icon-coffee"></i>
+          <label>Buy me coffee 😊</label>
+        </a>
+
+        <label id="hover-label"></label>
+      </footer>
+
+    </div>
+
+    <script src="/vendor/jquery.min.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
+
