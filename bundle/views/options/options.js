@@ -27,6 +27,9 @@ function restoreOptions() {
   chrome.storage.sync.get({ likeWhat: 'subscribed' }, function(items) {
     $('input[name="likeWhat"][value="' + items.likeWhat + '"]').click();
   });
+  chrome.storage.sync.get({ dislikeWhat: 'subscribed' }, function(items) {
+    $('input[name="dislikeWhat"][value="' + items.dislikeWhat + '"]').click();
+  });
 }
 
 $(document).on('click', 'input[type="radio"]', saveOptions);

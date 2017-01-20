@@ -17,7 +17,7 @@
   },
   "content_scripts": [{
     "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
-    "js": ["vendor/underscore.min.js", "js/like.js"],
+    "js": ["vendor/underscore.min.js", "js/like.js", "js/dislike.js"],
     "run_at": "document_start",
     "all_frames": true
   }],
