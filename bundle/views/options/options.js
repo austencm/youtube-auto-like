@@ -24,10 +24,10 @@ function saveOptions() {
 }
 
 function restoreOptions() {
-  chrome.storage.sync.get({ likeWhat: 'subscribed' }, function(items) {
+  chrome.storage.sync.get({ likeWhat: 'none' }, function(items) {
     $('input[name="likeWhat"][value="' + items.likeWhat + '"]').click();
   });
-  chrome.storage.sync.get({ dislikeWhat: 'subscribed' }, function(items) {
+  chrome.storage.sync.get({ dislikeWhat: 'none' }, function(items) {
     $('input[name="dislikeWhat"][value="' + items.dislikeWhat + '"]').click();
   });
 }
