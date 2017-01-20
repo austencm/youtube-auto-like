@@ -1,6 +1,6 @@
 {
   "name": "YouTube Auto Like",
-  "version": "1.2",
+  "version": "1.3",
   "manifest_version": 2,
   "description": "Magically like videos from channels you subscribe to, so you never forget to support your favorite content creators.",
   "homepage_url": "https://github.com/austencm/youtube-auto-like",
@@ -17,7 +17,7 @@
   },
   "content_scripts": [{
     "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
-    "js": ["vendor/underscore.min.js", "js/like.js"],
+    "js": ["vendor/underscore.min.js", "js/like.js", "js/dislike.js"],
     "run_at": "document_start",
     "all_frames": true
   }],
