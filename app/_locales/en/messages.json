@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Automagically like YouTube videos from your favorite content creators.",
+    "description": "The description of the application"
+  }
+}

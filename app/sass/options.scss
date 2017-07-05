@@ -1,0 +1,106 @@
+$color-primary: #e62117;
+$body-padding: 30px;
+
+body {
+  width: 305px;
+  margin: 0;
+  padding: $body-padding;
+  font-family: 'Titillium Web';
+  font-weight: 300;
+}
+
+a {
+  display: inline-block;
+  color: $color-primary !important;
+  text-decoration: none !important;
+  opacity: 0.5;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    transform: translateY(-0.1em);
+    opacity: 1;
+  }
+}
+
+svg {
+  fill: currentColor;
+}
+
+#title {
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0 0 1em;
+  color: $color-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.2em;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  position: relative;
+  top: -0.1em;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &, &:focus, &:hover, &:active {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 1em;
+    border: 2px solid $color-primary !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    outline: 0;
+  }
+
+  &:hover, &:checked  {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.2);
+  }
+
+  &:checked::before {
+    display: block;
+    background-color: $color-primary;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+  }
+}
+
+#links {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0.6em;
+  font-size: 12px;
+  text-align: right;
+
+  a {
+    padding: 0.6em 0.4em;
+  }
+}
+
+#donate-link {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
+#github-link {
+  svg {
+    width: 1.15em;
+    height: 1.15em;
+    position: relative;
+    top: 0.2em;
+  }
+}
