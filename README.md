@@ -3,7 +3,7 @@
 ## Presentation
 A plugin that likes videos from channels you subscribe to, so you never forget to support your favorite content creators. No login required.
 
-Available in the [Firefox Add-ons store](https://addons.mozilla.org/fr/firefox/) and in the [Chrome Web Store](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim).
+Available in the [Firefox Add-ons store](https://addons.mozilla.org/en/firefox/addon/youtube_auto_like/) and in the [Chrome Web Store](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim).
 
 ## Issues
 You can report a issue [here](https://github.com/Taknok/youtube-auto-like/issues/new) and check the current [issues](https://github.com/Taknok/youtube-auto-like/issues).
