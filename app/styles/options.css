@@ -72,6 +72,11 @@ input[type='radio'] {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: bold; }
+  
+ #report-link {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: bold; }
 
 #github-link svg {
   width: 1.15em;
