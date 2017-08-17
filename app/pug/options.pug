@@ -15,13 +15,13 @@ html
         .form-group
           label
             input(type='radio', name='like_what', value='subscribed')
-            | Like only videos from subscribed channels
+            span#i18n-like_subscribe
           label
             input(type='radio', name='like_what', value='all')
-            | Like all videos
+            span#i18n-like_all
           label
             input(type='radio', name='like_what', value='none')
-            | Disable
+            span#i18n-like_none
     #links
       a#donate-link(href='https://www.paypal.me/austencm/', title='Donate', target='_blank') Donate
       a#github-link(href='https://github.com/austencm/youtube-auto-like', title='GitHub', target='_blank')
