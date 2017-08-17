@@ -8,15 +8,15 @@
 		"description": "The description of the application"
 	},
 	"like_subscribe": {
-		"message": "Like only videos from subscribed channels",
-		"description": "1st option in menu"
+		"message": "Like les vidéos des chaines abonnées",
+		"description": "1ere option du menu"
 	},
 	"like_all": {
-		"message": "Like all videos",
-		"description": "2nd option in menu"
+		"message": "Like toutes les vidéos",
+		"description": "2eme option du menu"
 	},
 	"like_none": {
-		"message": "Disable",
-		"description": "3rd option in menu"
+		"message": "Désactiver",
+		"description": "3eme option du menu"
 	}
 }
