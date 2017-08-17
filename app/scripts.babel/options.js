@@ -29,5 +29,5 @@ document
 
 //translate spans with i18n-*
 document.querySelectorAll('span[id^=i18n-]').forEach((el) => {
-	el.innerHTML = browser.i18n.getMessage( el.id.split("i18n-")[1] );
+	el.innerHTML = chrome.i18n.getMessage( el.id.split("i18n-")[1] );
 });
