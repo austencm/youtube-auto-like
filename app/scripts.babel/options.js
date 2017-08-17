@@ -1,11 +1,13 @@
-////////////////////////////////////////////
-// OptionManager loaded here via manifest //
-////////////////////////////////////////////
+/////////////////////////////////////////
+// Loaded modules: I18n, OptionManager //
+/////////////////////////////////////////
 
-// Create an OptionManager to help us out
-let optionManager = new OptionManager({
-  like_what: 'subscribed'
-})
+let i18n = new I18n(),
+    optionManager = new OptionManager({
+      like_what: 'subscribed'
+    })
+
+i18n.populateText()
 
 function onFieldChange() {
   // Save the new state
