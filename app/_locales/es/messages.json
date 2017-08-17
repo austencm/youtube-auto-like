@@ -1,0 +1,22 @@
+{
+	"appName": {
+		"message": "YouTube Auto Like",
+		"description": "El appelido de la applicacion"
+	},
+	"appDescription": {
+		"message": "Este plugin like automaticamente las videos de YouTube.",
+		"description": "La descripcion de la application"
+	},
+	"like_subscribe": {
+		"message": "Like las videos de los canales suscritos",
+		"description": "1era option del menu"
+	},
+	"like_all": {
+		"message": "Like todas las videos",
+		"description": "2nda option del menu"
+	},
+	"like_none": {
+		"message": "Desactivar",
+		"description": "3era option del menu"
+	}
+}
