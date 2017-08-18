@@ -30,4 +30,3 @@ document
   .forEach((field) => {
     field.addEventListener( 'click', onFieldChange.bind(field) )
   })
-
