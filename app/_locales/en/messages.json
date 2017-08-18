@@ -1,22 +1,33 @@
 {
-	"appName": {
-		"message": "YouTube Auto Like",
-		"description": "The name of the application"
-	},
-	"appDescription": {
-		"message": "Automagically like YouTube videos from your favorite content creators.",
-		"description": "The description of the application"
-	},
-	"like_subscribe": {
-		"message": "Like only videos from subscribed channels",
-		"description": "1st option in menu"
-	},
-	"like_all": {
-		"message": "Like all videos",
-		"description": "2nd option in menu"
-	},
-	"like_none": {
-		"message": "Disable",
-		"description": "3rd option in menu"
-	}
+  "appName": {
+    "message": "YouTube Auto Like",
+    "description": "Name of the application"
+  },
+  "appNamePart2": {
+    "message": "Auto Like",
+    "description": "Name of the application after 'YouTube'"
+  },
+  "appDesc": {
+    "message": "Automagically like YouTube videos from your favorite content creators.",
+    "description": "Description of the application"
+  },
+  "appDescDetail": {
+    "message": "All this extension does is hammer the like button whenever you watch a video from a subscribed channel. No effort required. No need to authenticate. Alternatively, you can automatically like EVERY video. Why? I dunno. Go nuts. Feel free to suggest new features or contribute:",
+    "description": "Detail description for the web store page"
+  },
+  "optLikeSub": {
+    "message": "Like only videos from subscribed channels"
+  },
+  "optLikeAll": {
+    "message": "Like all videos"
+  },
+  "optLikeNone": {
+    "message": "Disable"
+  },
+  "linkDonate": {
+    "message": "Donate"
+  },
+  "linkContribute": {
+    "message": "Contribute"
+  }
 }

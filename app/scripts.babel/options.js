@@ -1,13 +1,16 @@
-// > option-manager.js
+/////////////////////////////////////////
+// Loaded modules: I18n, OptionManager //
+/////////////////////////////////////////
 
-'use strict'
+let i18n = new I18n(),
+    optionManager = new OptionManager({
+      like_what: 'subscribed'
+    })
 
-
-let optionManager = new OptionManager({
-  like_what: 'subscribed'
-})
+i18n.populateText()
 
 function onFieldChange() {
+  // Save the new state
   optionManager.set({
     [this.name]: this.value
   })
@@ -15,19 +18,16 @@ function onFieldChange() {
 
 // Restore options
 optionManager.get().then((options) => {
+  // Populate current option data
   document
-      .querySelector(`input[name="like_what"][value="${options.like_what}"]`)
-      .click()
+    .querySelector(`input[name="like_what"][value="${options.like_what}"]`)
+    .click()
 })
 
-// Trigger a function when the user changes an option
+// Catch when the user changes an input so we can save it
 document
   .querySelectorAll('input')
   .forEach((field) => {
     field.addEventListener( 'click', onFieldChange.bind(field) )
   })
 
-//translate spans with i18n-*
-document.querySelectorAll('span[id^=i18n-]').forEach((el) => {
-	el.innerHTML = chrome.i18n.getMessage( el.id.split("i18n-")[1] );
-});
