@@ -1,77 +1,96 @@
-
-function closest(node, tagName) {
-	var parent = node.parentNode;
-	if (parent) {
-		if (parent.tagName && parent.tagName.toUpperCase() === tagName.toUpperCase()) {
-			return parent;
-		}
-		return closest(parent, tagName);
-	}
-}
-
+/*
+ * Likes YouTube videos.
+ * For the newer material design layout
+ */
 class MaterialLiker {
-    constructor(options) {
-        this.options = options
-    }
+	/*
+	 * @param {Object} options Must have the option 'like_what', indicating
+	 *                         whether to like all videos or just subscribed
+	 */
+	constructor(options) {
+		this.options = options
+	}
 
-    reset() {
+	reset() {
 		this.icon = {}
-        this.btns = {}
-    }
+		this.btns = {}
+	}
 
-    waitForButtons(callback) {
+	/*
+	 * Detects when like/dislike buttons have loaded (so we can press them)
+	 * @param  {Function} callback [description]
+	 * @return {[type]}            [description]
+	 */
+	waitForButtons(callback) {
 		if (this.icon.like == null) {
-			// get the icon
+			// get the SVG pattern
 			this.icon.like = document.querySelector('g#like path').getAttribute('d')
 			this.icon.dislike = document.querySelector('g#dislike path').getAttribute('d')
 		}
 		
 		if (this.icon.like != null) {
-			// select the node in the info bloc that contain a like logo
+			// Select the like/dislike icons using their SVG data
 			let likeElement = document.querySelectorAll('#menu.ytd-video-primary-info-renderer g path[d="' + this.icon.like +'"]')[0]
 			let dislikeElement = document.querySelectorAll('#menu.ytd-video-primary-info-renderer g path[d="' + this.icon.dislike +'"]')[0]
 			
+			// Make sure both icons exist
 			if (likeElement && dislikeElement) {
-				// get the button witch contain the like to click on it
-				this.btns.like = closest(likeElement, "button")
-				this.btns.dislike = closest(dislikeElement, "button")
+				// Find and store closest buttons
+				this.btns.like = likeElement.closest("button");
+				this.btns.dislike = dislikeElement.closest("button");
 				callback()
 			} else {
-				setTimeout(() => this.waitForButtons(callback), 1000 )
+				setTimeout(() => this.waitForButtons(callback), 1000 );
 			}
-        } else {
-			setTimeout(() => this.waitForButtons(callback), 1000 )
+		} else {
+			setTimeout(() => this.waitForButtons(callback), 1000 );
 		}
-    }
+	}
 
-    isVideoRated() {
-        return this.btns.like.classList.contains('style-default-active') ||
-               this.btns.dislike.classList.contains('style-default-active')
-    }
+	/*
+	 * Take a wild guess
+	 * @return {Boolean} True if the like or dislike button is active
+	 */
+	isVideoRated() {
+		return this.btns.like.classList.contains('style-default-active') ||
+				 this.btns.dislike.classList.contains('style-default-active')
+	}
 
-    isUserSubscribed() {
-        let subscribeButton = document.querySelector('#subscribe-button paper-button')
-        return subscribeButton && subscribeButton.hasAttribute('subscribed')
-    }
+	/*
+	 * Another tough one
+	 * @return {Boolean} True if the user is subscribed to
+	 *                   the current video's channel
+	 */
+	isUserSubscribed() {
+		let subscribeButton = document.querySelector('#subscribe-button paper-button')
+		return subscribeButton && subscribeButton.hasAttribute('subscribed')
+	}
 
-    attemptLike() {
-        // console.log('attempting like...')
+	/*
+	 * Clickity click the button
+	 */
+	attemptLike() {
+		this.btns.like.click()
+	}
 
-        this.btns.like.click()
-    }
-
-    init() {
-        // console.log('initializing...')
-
-        this.reset()
+	/*
+	 * Starts the liking.
+	 * The liker won't do anything unless this method is called.
+	 */
+	init() {
+		this.reset()
 		console.log('plop')
-        this.waitForButtons(() => {
-			console.log('ok')
-            if ( this.isVideoRated() || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) ) {
-                return
-            }
+		this.waitForButtons(() => {
+			/*
+			If the video is already liked/disliked
+			or the user isn't subscribed to this channel,
+			then we don't need to do anything.
+			 */
+			if ( this.isVideoRated() || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) ) {
+				return
+			}
 			console.log('e')
-            this.attemptLike()
-        })
-    }
+			this.attemptLike()
+		})
+	}
 }

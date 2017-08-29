@@ -1,22 +1,38 @@
 {
 	"appName": {
 		"message": "YouTube Auto Like",
-		"description": "El appelido de la applicacion"
+		"description": "El nombre de la applicacion"
 	},
-	"appDescription": {
-		"message": "Este plugin like automaticamente las videos de YouTube.",
+	"appNamePart2": {
+	"message": "Auto Like",
+	"description": "Nombre de la applicacion despues de 'YouTube'"
+	},
+	"appDesc": {
+		"message": "Este plugin like automaticamente los videos de YouTube.",
 		"description": "La descripcion de la application"
 	},
-	"like_subscribe": {
-		"message": "Like las videos de los canales suscritos",
+	"appDescDetail": {
+	"message": "Este plugin like automáticamente los vídeos de YouTube. Puedes elegir de utilizar el plugin en todos los vídeos o unicamente en los vídeos suscribidos,  tambien puedes desactivar el plugin. Puedes poner un dislike en un vídeo, despues el plugin no pondra like automáticamente. Ninguna conexión necesitada. Puedes señalar problemas, proponer ideos y contribuir.",
+	"description": "Completa descripcion para la pagina web"
+	},
+	"optLikeSub": {
+		"message": "Like los videos de los canales suscritos",
 		"description": "1era option del menu"
 	},
-	"like_all": {
-		"message": "Like todas las videos",
+	"optLikeAll": {
+		"message": "Like todos los videos",
 		"description": "2nda option del menu"
 	},
-	"like_none": {
+	"optLikeNone": {
 		"message": "Desactivar",
 		"description": "3era option del menu"
+	},
+	"linkDonate": {
+	"message": "Dar",
+	"description": "Vinculo para ayudar el creador del plugin"
+	},
+	"linkContribute": {
+	"message": "Contribuir",
+	"description" : "Vinculo para proponer cambios"
 	}
 }
