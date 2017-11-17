@@ -18,7 +18,7 @@ class OptionManager {
 	get() {
 		return new Promise((resolve, reject) => {
 			let defaults = this.defaults
-			browser.storage.sync.get( { options: defaults }, (items) => resolve(items.options) )
+			browser.storage.local.get( { options: defaults }, (items) => resolve(items.options) )
 		})
 	}
 
@@ -29,7 +29,7 @@ class OptionManager {
 	 */
 	set(options) {
 		return new Promise((resolve, reject) => {
-			browser.storage.sync.set({ options }, resolve)
+			browser.storage.local.set({ options }, resolve)
 		})
 	}
  }

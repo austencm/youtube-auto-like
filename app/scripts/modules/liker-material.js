@@ -52,8 +52,8 @@ class MaterialLiker {
 	 * @return {Boolean} True if the like or dislike button is active
 	 */
 	isVideoRated() {
-		return this.btns.like.classList.contains('style-default-active') ||
-				 this.btns.dislike.classList.contains('style-default-active')
+		return this.btns.like.parentNode.getAttribute("aria-pressed") ||
+				 this.btns.dislike.parentNode.getAttribute("aria-pressed")
 	}
 
 	/*
@@ -79,18 +79,20 @@ class MaterialLiker {
 	 */
 	init() {
 		this.reset()
-		console.log('plop')
+		console.log('yt-autolike start')
 		this.waitForButtons(() => {
 			/*
 			If the video is already liked/disliked
 			or the user isn't subscribed to this channel,
 			then we don't need to do anything.
 			 */
-			if ( this.isVideoRated() || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) ) {
+			var isTrueSet = ( (this.isVideoRated() == 'true') || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
+			if ( isTrueSet ) {
+				console.log("not liked")
 				return
 			}
-			console.log('e')
 			this.attemptLike()
+			console.log('liked')
 		})
 	}
 }
