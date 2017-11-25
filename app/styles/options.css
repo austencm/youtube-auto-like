@@ -89,7 +89,7 @@ input[type="radio"].toggle-on-button:checked ~ .toggle-content {
 #links {
 	width: 100%;
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	right: 0.6em;
 	font-size: 12px;
 	text-align: right;
