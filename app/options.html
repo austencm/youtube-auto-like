@@ -12,18 +12,18 @@
 	<div id="options-wrap">
 	<form id="options-form-target" enctype="multipart/form-data">
 		<div class="form-group">
-			<label><input type="radio" name="like_what" value="subscribed">__MSG_optLikeSub__</label>
-			<label><input type="radio" name="like_what" value="all">__MSG_optLikeAll__</label>
-			<label><input type="radio" name="like_what" value="none">__MSG_optLikeNone__</label>
+			<input id="subscribed_like" type="radio" name="like_what" value="subscribed"><label for="subscribed_like">__MSG_optLikeSub__</label><br>
+			<input id="all_like" type="radio" name="like_what" value="all"><label for="all_like">__MSG_optLikeAll__</label><br>
+			<input id="none_like" type="radio" name="like_what" value="none"><label for="none_like">__MSG_optLikeNone__</label><br>
 		</div>
 	</form>
 	<form id="options-form-timer" enctype="multipart/form-data">
 		<div class="form-group">
-			<label><input id="instant_like" type="radio" name="like_timer" value="instant">Instant Like</label>
-			<label><input id="custom_like" type="radio" name="like_timer" value="custom_timer">Custom Timer</label>
-			<div id="options_timer">
-				<label><input type="radio" name="type_timer" value="percentage">Percentage</label>
-				<label><input type="radio" name="type_timer" value="minutes">Minutes</label>
+			<input id="instant_like" type="radio" name="like_timer" value="instant" class="toggle-off-button"><label for="instant_like">Instant Like</label><br>
+			<input id="custom_like" type="radio" name="like_timer" value="custom_timer" class="toggle-on-button"><label for="custom_like">Custom Timer</label><br>
+			<div id="options-timer" class="toggle-content">
+				<input id="percentage_like" type="radio" name="type_timer" value="percentage"><label for="percentage_like">Percentage</label><br>
+				<input id="minute_like" type="radio" name="type_timer" value="minutes"><label for="minute_like">Minutes</label><br>
 			</div>
 		</div>
 	</form>

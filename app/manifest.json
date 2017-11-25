@@ -1,35 +1,35 @@
 {
-  "name": "__MSG_appName__",
-  "version": "2.0.3",
-  "manifest_version": 2,
-  "description": "__MSG_appDesc__",
-  "icons": {
-    "16": "images/icon-16.png",
-    "32": "images/icon-32.png",
-    "48": "images/icon-48.png",
-    "128": "images/icon-128.png"
-  },
-  "default_locale": "en",
-  "permissions": [
-    "tabs",
-    "storage"
-  ],
-  "browser_action": {
-    "default_icon": {
-      "19": "images/icon-19.png",
-      "38": "images/icon-38.png"
-    },
-    "default_title": "YouTube Auto Like",
-    "default_popup": "options.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
-      "js": ["scripts/constants.js", "scripts/modules/option-manager.js", "scripts/modules/liker-material.js", "scripts/content.js"],
-      "run_at": "document_end"
-    }
-  ],
-  "options_ui": {
-    "page": "options.html"
-  }
+	"name": "__MSG_appName__",
+	"version": "2.0.3",
+	"manifest_version": 2,
+	"description": "__MSG_appDesc__",
+	"icons": {
+		"16": "images/icon-16.png",
+		"32": "images/icon-32.png",
+		"48": "images/icon-48.png",
+		"128": "images/icon-128.png"
+	},
+	"default_locale": "en",
+	"permissions": [
+		"tabs",
+		"storage"
+	],
+	"browser_action": {
+		"default_icon": {
+		"19": "images/icon-19.png",
+			"38": "images/icon-38.png"
+		},
+		"default_title": "YouTube Auto Like",
+		"default_popup": "options.html"
+	},
+	"content_scripts": [
+		{
+		"matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
+		"js": ["scripts/constants.js", "scripts/modules/option-manager.js", "scripts/modules/liker-material.js", "scripts/content.js"],
+		"run_at": "document_end"
+		}
+	],
+	"options_ui": {
+		"page": "options.html"
+	}
 }

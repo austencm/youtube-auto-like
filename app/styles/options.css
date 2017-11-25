@@ -1,85 +1,121 @@
 body {
-  width: 305px;
-  margin: 0;
-  padding: 30px;
-  font-family: 'Titillium Web';
-  font-weight: 300; }
+	width: 305px;
+	margin: 0;
+	padding: 30px;
+	font-family: 'Titillium Web';
+	font-weight: 300;
+}
 
 a {
-  display: inline-block;
-  color: #e62117 !important;
-  text-decoration: none !important;
-  opacity: 0.5;
-  transition: all 0.1s ease-in-out; }
-  a:hover {
-    transform: translateY(-0.1em);
-    opacity: 1; }
+	display: inline-block;
+	color: #e62117 !important;
+	text-decoration: none !important;
+	opacity: 0.5;
+	transition: all 0.1s ease-in-out;
+}
+
+a:hover {
+	transform: translateY(-0.1em);
+	opacity: 1;
+}
 
 svg {
-  fill: currentColor; }
+	fill: currentColor;
+}
 
 #title {
-  font-size: 17px;
-  font-weight: 300;
-  margin: 0 0 1em;
-  color: #e62117;
-  text-transform: uppercase;
-  letter-spacing: 0.1em; }
+	font-size: 17px;
+	font-weight: 300;
+	margin: 0 0 1em;
+	color: #e62117;
+	text-transform: uppercase;
+	letter-spacing: 0.1em; 
+}
 
 label {
-  display: block;
-  margin-bottom: 0.2em;
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  cursor: pointer; }
+	margin-bottom: 0.2em;
+	font-size: 15px;
+	letter-spacing: 0.01em;
+	cursor: pointer;
+}
 
 input[type='radio'] {
-  position: relative;
-  top: -0.1em;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out; }
-  input[type='radio'], input[type='radio']:focus, input[type='radio']:hover, input[type='radio']:active {
+	position: relative;
+	top: -0.1em;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out; 
+}
+
+input[type='radio'], input[type='radio']:focus, input[type='radio']:hover, input[type='radio']:active {
     width: 1.2em;
     height: 1.2em;
     margin-right: 1em;
     border: 2px solid #e62117 !important;
     background: #fff !important;
     box-shadow: none !important;
-    outline: 0; }
-  input[type='radio']:hover, input[type='radio']:checked {
-    transform: scale(1.1); }
-  input[type='radio']:active {
-    transform: scale(1.2); }
-  input[type='radio']:checked::before {
-    display: block;
-    background-color: #e62117;
-    bottom: 2px;
-    left: 2px;
-    right: 2px;
-    top: 2px; }
+    outline: 0;
+}
+
+input[type='radio']:hover, input[type='radio']:checked {
+	transform: scale(1.1);
+}
+
+input[type='radio']:active {
+	transform: scale(1.2);
+}
+
+input[type='radio']:checked::before {
+	background-color: #e62117;
+	bottom: 2px;
+	left: 2px;
+	right: 2px;
+	top: 2px;
+}
+
+input[type="radio"].toggle-on-button ~ .toggle-content {
+	max-height: 0;
+	overflow: hidden;
+}
+
+input[type="radio"].toggle-on-button:checked ~ .toggle-content {
+	max-height:100%;
+}
+
+.toggle-content{
+	max-width: 100%;
+	padding-left: 20px
+}
 
 #links {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  right: 0.6em;
-  font-size: 12px;
-  text-align: right; }
-  #links a {
-    padding: 0.6em 0.4em; }
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	right: 0.6em;
+	font-size: 12px;
+	text-align: right;
+}
+
+#links a {
+	padding: 0.6em 0.4em;
+}
 
 #donate-link {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: bold; }
-  
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+}
+
  #report-link {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: bold; }
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+}
 
 #github-link svg {
-  width: 1.15em;
-  height: 1.15em;
-  position: relative;
-  top: 0.2em; }
+	width: 1.15em;
+	height: 1.15em;
+	position: relative;
+	top: 0.2em;
+}
+
+

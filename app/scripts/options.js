@@ -28,9 +28,10 @@ document.querySelectorAll('input').forEach((field) => {
 });
 
 document.getElementById("instant_like").addEventListener( 'click', () => {
-	document.getElementById("options_timer").style.visibility = "hidden";
+	document.getElementById("options-timer").style.visibility = "hidden";
 });
 
+
 document.getElementById("custom_like").addEventListener( 'click', () => {
-	document.getElementById("options_timer").style.visibility = "visible";
+	document.getElementById("options-timer").style.visibility = "visible";
 });

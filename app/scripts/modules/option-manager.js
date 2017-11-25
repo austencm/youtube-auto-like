@@ -29,7 +29,7 @@ class OptionManager {
 	 */
 	set(options) {
 		return new Promise((resolve, reject) => {
-			browser.storage.local.set( options , resolve)
+			browser.storage.local.set( options, resolve)
 		})
 	}
  }
