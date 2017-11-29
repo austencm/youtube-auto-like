@@ -18,3 +18,4 @@ Do you know another language? _I sure don't._ Feel free to contribute with a [pu
 
 ## Credits
 - [Austencm](https://github.com/austencm/youtube-auto-like)
+- [DeadSix27](https://github.com/DeadSix27/youtube-auto-like)
