@@ -19,22 +19,28 @@
 	</form>
 	<form id="options-form-timer" enctype="multipart/form-data">
 		<div class="form-group">
-			<input id="instant_like" type="radio" name="like_timer" value="instant" class="toggle-off-button"><label for="instant_like">Instant Like</label><br>
+			<input id="instant_like" type="radio" name="like_timer" value="instant"><label for="instant_like">Instant Like</label><br>
 			<input id="custom_like" type="radio" name="like_timer" value="custom_timer" class="toggle-on-button"><label for="custom_like">Custom Timer</label><br>
 			<div id="options-timer" class="toggle-content">
-				<input id="percentage_like" type="radio" name="type_timer" value="percentage"><label for="percentage_like">Percentage</label><br>
-				<input id="minute_like" type="radio" name="type_timer" value="minutes"><label for="minute_like">Minutes</label><br>
+				<span>
+					<input id="percentage-like" type="radio" name="type_timer" value="percentage" class="toggle-on-button"><label for="percentage-like">Percentage</label>
+					<input id="percentage-value" type="number" name="timer_value" min="0" max="99" size="1" maxlength="2" class="toggle-content">
+				</span><br>
+				<span>
+					<input id="minute-like" type="radio" name="type_timer" value="minute" class="toggle-on-button"><label for="minute-like">Minutes</label>
+					<input id="minute-value" type="number" name="timer_value" min="0" size="1" class="toggle-content">
+				</span><br>
 			</div>
 		</div>
 	</form>
 	</div>
 	<div id="links">
-	 <a id="donate-link" href="https://www.paypal.me/austencm/" title="Donate" target="_blank">__MSG_linkDonate__</a>
-	 <a id="github-link" href="https://github.com/Taknok/youtube-auto-like" title="GitHub" target="_blank">
+		<a id="donate-link" href="https://www.paypal.me/austencm/" title="Donate" target="_blank">__MSG_linkDonate__</a>
+		<a id="github-link" href="https://github.com/Taknok/youtube-auto-like" title="GitHub" target="_blank">
 		<svg>
 			<use xlink:href="#icon-git"></use>
 		</svg>
-	</a>
+		</a>
 	</div>
 	<script src="scripts/modules/i18n.js"></script><script src="scripts/constants.js"></script><script src="scripts/modules/option-manager.js"></script><script src="scripts/options.js"></script>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

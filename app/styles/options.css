@@ -86,6 +86,18 @@ input[type="radio"].toggle-on-button:checked ~ .toggle-content {
 	padding-left: 20px
 }
 
+input[type="radio"].toggle-on-button ~ input[type="number"].toggle-content {
+	visibility: hidden;
+}
+
+input[type="radio"].toggle-on-button:checked ~ input[type="number"].toggle-content {
+	visibility: visible;
+}
+
+input[type="number"] {
+	width: 15%;
+}
+
 #links {
 	width: 100%;
 	position: absolute;
