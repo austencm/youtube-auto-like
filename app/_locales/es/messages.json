@@ -16,16 +16,25 @@
 	"description": "Completa descripcion para la pagina web"
 	},
 	"optLikeSub": {
-		"message": "Like los videos de los canales suscritos",
-		"description": "1era option del menu"
+		"message": "Like los videos de los canales suscritos"
 	},
 	"optLikeAll": {
-		"message": "Like todos los videos",
-		"description": "2nda option del menu"
+		"message": "Like todos los videos"
 	},
 	"optLikeNone": {
-		"message": "Desactivar",
-		"description": "3era option del menu"
+		"message": "Desactivar"
+	},
+	"optLikeInstant" : {
+		"message": "Inmediato Like"
+	},
+	"optLikeCustom": {
+		"message": "Customizado timer"
+	},
+	"optLikePercentage": {
+		"message": "Porcentaje"
+	},
+	"optLikeMinutes" :{
+		"message": "Minutos"
 	},
 	"linkDonate": {
 	"message": "Dar",

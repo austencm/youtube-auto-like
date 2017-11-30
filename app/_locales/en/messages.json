@@ -24,6 +24,18 @@
 	"optLikeNone": {
 		"message": "Disable"
 	},
+	"optLikeInstant" : {
+		"message": "Instant Like"
+	},
+	"optLikeCustom": {
+		"message": "Custom timer"
+	},
+	"optLikePercentage": {
+		"message": "Percentage"
+	},
+	"optLikeMinutes" :{
+		"message": "Minutes"
+	},
 	"linkDonate": {
 		"message": "Donate"
 	},
