@@ -98,6 +98,10 @@ input[type="number"] {
 	width: 15%;
 }
 
+hr {
+	border-top: 1px solid #8c8b8b;
+}
+
 #links {
 	width: 100%;
 	position: absolute;
@@ -129,5 +133,3 @@ input[type="number"] {
 	position: relative;
 	top: 0.2em;
 }
-
-

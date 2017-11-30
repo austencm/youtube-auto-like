@@ -70,7 +70,19 @@ class MaterialLiker {
 				setTimeout(() => this.waitTimer(callback), 1000 );
 			}
 		} else if (this.options.type_timer == "minute") {
-			// TO DO
+			let timeAtLike = this.options.timer_value;
+			// change timeAtLike if vid shorter than time set by user
+			if (video.duration < timeAtLike) {
+				timeAtLike = video.duration;
+			} else {
+				// convert in second
+				timeAtLike *= 60;
+			}
+			if (video.currentTime >= timeAtLike) {
+				callback();
+			} else {
+				setTimeout(() => this.waitTimer(callback), 1000 );
+			}
 		}
 	}
 

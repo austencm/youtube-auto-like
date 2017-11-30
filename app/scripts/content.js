@@ -2,6 +2,7 @@
 // We need to know which version of YouTube we're dealing with
 // The material version has no ID on the body, hence this dumb check
 const IS_MATERIAL = !document.body.id
+const IS_MATERIAL = !document.body.id;
 
 // Create an OptionManager
 let optionManager = new OptionManager(OPTIONS);
