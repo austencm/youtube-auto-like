@@ -1,0 +1,33 @@
+{
+	"appName": {
+		"message": "YouTube Auto Like",
+		"description": "Name der Anwendung"
+	},
+	"appNamePart2": {
+		"message": "Auto Like",
+		"description": "Name der Anwendung nach 'YouTube'"
+	},
+	"appDesc": {
+		"message": "Like automagisch die Videos deiner Lieblings YouTuber.",
+		"description": "Beschreibung der Anwendung"
+	},
+	"appDescDetail": {
+		"message": "Alles was dieses AddOn tut ist den Like-Knopf auf abonnierten Videos drücken. Du brauchst nichts tun und brauchst dich nirgendwo mit dem AddOn anmelden. Es ist auch möglich jedes Video ob abonniert oder nicht zu Liken. Warum sollte man das tun? Wieso nicht! Hab keine Angst Vorschläge für das AddOn abzugeben oder mir zu helfen:",
+		"description": "Detaillierte Beschreibung für den AddOn store"
+	},
+	"optLikeSub": {
+		"message": "Like nur Videos von abonnierten YouTubern"
+	},
+	"optLikeAll": {
+		"message": "Like alle Videos"
+	},
+	"optLikeNone": {
+		"message": "Deaktivieren"
+	},
+	"linkDonate": {
+		"message": "Spenden"
+	},
+	"linkContribute": {
+		"message": "Beitragen"
+	}
+}
