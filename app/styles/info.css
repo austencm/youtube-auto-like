@@ -1,0 +1,57 @@
+body {
+	margin: 0;
+	padding: 30px;
+	font-family: 'Titillium Web';
+	font-weight: 300;
+}
+
+a {
+	display: inline-block;
+	color: #e62117 !important;
+	text-decoration: none !important;
+	opacity: 0.5;
+	transition: all 0.1s ease-in-out;
+}
+
+a:hover {
+	transform: translateY(-0.1em);
+	opacity: 1;
+}
+
+#title {
+	font-size: 17px;
+	font-weight: 300;
+	margin: 0 0 1em;
+	color: #e62117;
+	text-transform: uppercase;
+	letter-spacing: 0.1em; 
+}
+
+#links {
+	position: absolute;
+	font-size: 12px;
+	text-align: center;
+}
+
+#links a {
+	padding: 0.6em 0.4em;
+}
+
+#donate-link {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+}
+
+#report-link {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+}
+
+#github-link svg {
+	width: 1.15em;
+	height: 1.15em;
+	position: relative;
+	top: 0.2em;
+}
