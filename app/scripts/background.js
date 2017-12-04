@@ -4,7 +4,7 @@
  */
 function handleInstalled(details) {
 	// reset the storage for tansition from 2.0.3
-	browser.storage.local.clear();
+	//browser.storage.local.clear();
 	// open update info
 	browser.tabs.create({
 		url: "update_info.html"
