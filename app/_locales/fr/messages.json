@@ -3,36 +3,45 @@
 		"message": "YouTube Auto Like",
 		"description": "The name of the application"
 	},
-  "appNamePart2": {
-    "message": "Auto Like",
-    "description": "Nom de l'application après 'YouTube'"
-  },
+	"appNamePart2": {
+		"message": "Auto Like",
+		"description": "Nom de l'application après 'YouTube'"
+	},
 	"appDesc": {
 		"message": "Like automatiquement les vidéos YouTube videos des vos créateurs préférés.",
 		"description": "La description de l'application"
 	},
-  "appDescDetail": {
-    "message": "Ce plugin like automatiquement les vidéos YouTube, comme cela vous n'oubliez plus de supporter vos créateurs préférés. Vous pouvez choisir d'aimer toutes les vidéos, seulement des chaines souscrites ou aucune. Si vous dislikez une vidéo, celle-ci ne sera pas reliker par la suite. Aucune connexion nécessaire. Vous pouvez proposer de nouvelles fonctionnalités ou contribuer au plugin.",
-    "description": "Description detaillée pour la page web du plugin"
-  },
+	"appDescDetail": {
+		"message": "Ce plugin like automatiquement les vidéos YouTube, comme cela vous n'oubliez plus de supporter vos créateurs préférés. Vous pouvez choisir d'aimer toutes les vidéos, seulement des chaines souscrites ou aucune. Si vous dislikez une vidéo, celle-ci ne sera pas reliker par la suite. Aucune connexion nécessaire. Vous pouvez proposer de nouvelles fonctionnalités ou contribuer au plugin.",
+		"description": "Description detaillée pour la page web du plugin"
+	},
 	"optLikeSub": {
-		"message": "Like les vidéos des chaines abonnées",
-		"description": "1ere option du menu"
+		"message": "Like les vidéos des chaines abonnées"
 	},
 	"optLikeAll": {
-		"message": "Like toutes les vidéos",
-		"description": "2eme option du menu"
+		"message": "Like toutes les vidéos"
 	},
 	"optLikeNone": {
-		"message": "Désactiver",
-		"description": "3eme option du menu"
-  },
-  "linkDonate": {
-    "message": "Soutenir",
-    "description" : "Donner de l'argent pour aider le createur du plugin"
-  },
-  "linkContribute": {
-    "message": "Contribuer",
-    "description" : "Lien pour contribuer au plugin"
-  }
+		"message": "Désactiver"
+	},
+	"optLikeInstant" : {
+		"message": "Like instantanément"
+	},
+	"optLikeCustom": {
+		"message": "Personnaliser"
+	},
+	"optLikePercentage": {
+		"message": "Pourcentage"
+	},
+	"optLikeMinutes" :{
+		"message": "Minutes"
+	},
+	"linkDonate": {
+		"message": "Soutenir",
+		"description" : "Donner de l'argent pour aider le createur du plugin"
+	},
+	"linkContribute": {
+		"message": "Contribuer",
+		"description" : "Lien pour contribuer au plugin"
+	}
 }
