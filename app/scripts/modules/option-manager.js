@@ -18,7 +18,7 @@ class OptionManager {
 	get() {
 		return new Promise((resolve, reject) => {
 			let defaults = this.defaults
-			browser.storage.local.get().then( (items) => resolve(items) )
+			browser.storage.local.get(defaults).then( (items) => resolve(items) )
 		})
 	}
 
