@@ -1,33 +1,39 @@
 {
   "appName": {
-    "message": "YouTube Auto Like",
-    "description": "Name of the application"
-  },
-  "appNamePart2": {
-    "message": "Auto Like",
-    "description": "Name of the application after 'YouTube'"
+    "message": "YouTube Auto Like"
   },
   "appDesc": {
-    "message": "Automagically like YouTube videos from your favorite content creators.",
-    "description": "Description of the application"
+    "message": "Automatically like YouTube videos from your favorite content creators."
   },
-  "appDescDetail": {
-    "message": "All this extension does is hammer the like button whenever you watch a video from a subscribed channel. No effort required. No need to authenticate. Alternatively, you can automatically like EVERY video. Why? I dunno. Go nuts. Feel free to suggest new features or contribute:",
-    "description": "Detail description for the web store page"
+  "appStoreDesc": {
+    "message": "Hammers the like button whenever you watch a video from a subscribed channel! No effort required. No need to authenticate. If you've already disliked a video, this extension won't override your choice. Additionally, you can: - Be more selective with your likes: Only like videos after you've watched for 2 minutes! - Automatically like EVERY video. You insane person, you! Suggest new features or contribute:",
+    "description": "Full description for the web store"
+  },
+  "optLikeWhatTitle": {
+    "message": "Which videos?"
+  },
+  "optLikeWhenTitle": {
+    "message": "How quickly?"
   },
   "optLikeSub": {
-    "message": "Like only videos from subscribed channels"
+    "message": "Only videos from subscribed channels"
   },
   "optLikeAll": {
-    "message": "Like all videos"
+    "message": "All videos"
   },
   "optLikeNone": {
     "message": "Disable"
   },
-  "linkDonate": {
-    "message": "Donate"
+  "optDisable": {
+    "message": "Disable"
   },
-  "linkContribute": {
-    "message": "Contribute"
+  "optLikeInstant": {
+    "message": "Instantly"
+  },
+  "optLikeTimed": {
+    "message": "After 2 minutes"
+  },
+  "linkDonate": {
+    "message": "Donate!"
   }
 }

@@ -35,6 +35,23 @@ svg {
   letter-spacing: 0.1em;
 }
 
+.form-group {
+  margin-bottom: 1rem;
+
+  &.form-group__no-title {
+    margin-top: 1.3rem;
+  }
+}
+
+.form-group-title {
+  margin-bottom: 0.3em;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
 label {
   display: block;
   margin-bottom: 0.2em;
@@ -43,7 +60,7 @@ label {
   cursor: pointer;
 }
 
-input[type='radio'] {
+input[type='radio'], input[type='checkbox'] {
   position: relative;
   top: -0.1em;
   cursor: pointer;
@@ -75,6 +92,13 @@ input[type='radio'] {
     right: 2px;
     top: 2px;
   }
+}
+
+input[type='checkbox']:checked::before {
+  position: absolute;
+  width: auto;
+  height: auto;
+  background-image: none;
 }
 
 #links {

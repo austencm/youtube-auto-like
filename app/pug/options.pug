@@ -9,22 +9,34 @@ html
   body
     h1#title
       strong YouTube
-      |  __MSG_appNamePart2__
+      |  Auto Like
     #options-wrap
       form#options-form(enctype='multipart/form-data')
         .form-group
-          label
-            input(type='radio', name='like_what', value='subscribed')
-            | __MSG_optLikeSub__
+          .form-group-title __MSG_optLikeWhatTitle__
           label
             input(type='radio', name='like_what', value='all')
             | __MSG_optLikeAll__
           label
-            input(type='radio', name='like_what', value='none')
-            | __MSG_optLikeNone__
+            input(type='radio', name='like_what', value='subscribed')
+            | __MSG_optLikeSub__
+              
+        .form-group
+          .form-group-title __MSG_optLikeWhenTitle__
+          label
+            input(type='radio', name='like_when', value='instantly')
+            | __MSG_optLikeInstant__
+          label(title='Or at the end of the video, if shorter.')
+            input(type='radio', name='like_when', value='timed')
+            | __MSG_optLikeTimed__
+        
+        .form-group.form-group__no-title
+          label
+            input(type='checkbox', name='disabled' value='yes')
+            | __MSG_optDisable__
             
     #links
-      a#donate-link(href='https://www.paypal.me/austencm/', title='Donate', target='_blank') __MSG_linkDonate__
+      a#donate-link(href='https://www.paypal.me/austencm/2', title='Donate', target='_blank') __MSG_linkDonate__
       a#github-link(href='https://github.com/austencm/youtube-auto-like', title='GitHub', target='_blank')
         svg
           use(xlink:href='#icon-git')

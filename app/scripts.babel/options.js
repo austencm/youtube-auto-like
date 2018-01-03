@@ -2,31 +2,43 @@
 // Loaded modules: I18n, OptionManager //
 /////////////////////////////////////////
 
-let i18n = new I18n(),
-    optionManager = new OptionManager({
-      like_what: 'subscribed'
-    })
+const defaults = {
+  like_what: 'subscribed',
+  like_when: 'instantly',
+  disabled: false,
+};
+const optionManager = new OptionManager(defaults);
+const i18n = new I18n();
 
-i18n.populateText()
+i18n.populateText();
 
-function onFieldChange() {
-  // Save the new state
-  optionManager.set({
-    [this.name]: this.value
-  })
-}
-
-// Restore options
-optionManager.get().then((options) => {
-  // Populate current option data
+// Load options
+optionManager.get().then(options => {
   document
-    .querySelector(`input[name="like_what"][value="${options.like_what}"]`)
-    .click()
-})
+    .querySelectorAll('input')
+    .forEach(field => {
+      if (!options.hasOwnProperty(field.name)) return;
 
-// Catch when the user changes an input so we can save it
+      const val = options[field.name];
+
+      if (field.type === 'radio' || field.type === 'checkbox') {
+        field.checked = field.value === val;
+      }
+      else {
+        field.value = val;
+      }
+    });
+});
+
+// When the user changes an option, save it
 document
-  .querySelectorAll('input')
-  .forEach((field) => {
-    field.addEventListener( 'click', onFieldChange.bind(field) )
-  })
+  .querySelector('#options-form')
+  .addEventListener('change', e => {
+    const newOptions = {};
+    // Extract form data
+    Array
+      .from((new FormData(e.currentTarget)).entries())
+      .forEach(([name, val]) => newOptions[name] = val);
+
+    optionManager.set(newOptions).then(optionManager.get).then(console.log);
+  });

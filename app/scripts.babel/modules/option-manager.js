@@ -1,35 +1,35 @@
 /**
  * Wrapper around the storage API for easy storing/retrieving of option data
  * Handles defaults based on a configuration object initially provided
- * Stores data under (surprise!) the key 'options'
+ * Stores data under the key 'options'
  */
 class OptionManager {
   /**
-   * @param  {Object} defaults Figure it out
+   * @param  {Object} defaults
    */
 	constructor(defaults) {
 		this.defaults = defaults;
+    this.get = this.get.bind(this);
 	}
 
   /**
-   * Retrieve all options
+   * Retreive all options
    * @return {Promise} Contains options object on resolve
    */
 	get() {
     return new Promise((resolve, reject) => {
-      let defaults = this.defaults
-      chrome.storage.sync.get( { options: defaults }, (items) => resolve(items.options) )
-    })
+      chrome.storage.sync.get({ options: this.defaults }, items => resolve(items.options));
+    });
   }
 
   /**
    * Set options
    * @param {Object} options Key-value pairs of options to set
-   * @return {Promise} Will resolve when successful
+   * @return {Promise}
    */
   set(options) {
   	return new Promise((resolve, reject) => {
-      chrome.storage.sync.set({ options }, resolve)
-    })
+      chrome.storage.sync.set({ options }, resolve);
+    });
   }
 }
