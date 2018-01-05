@@ -1,7 +1,8 @@
-
+// console.log('content script initialized')
 // We need to know which version of YouTube we're dealing with
 // The material version has no ID on the body, hence this dumb check
 const IS_MATERIAL = !document.body.id;
+const IS_GAMING = window.location.href.indexOf('//gaming.youtube') > -1;
 
 // Create an OptionManager
 const defaults = {
@@ -16,10 +17,17 @@ optionManager.get().then(options => {
   if (IS_MATERIAL) {
   	const liker = new MaterialLiker(options);
     /*
-    Hook into one of YouTube's custom events;
-    This fires when page changes, so the liker is run only when needed.
+    We can hook into YouTube's custom events;
+    Both of these fire when page changes, so the liker is run only when needed.
+    However, YouTube Gaming's yt-navigate event doesn't fire inititailly.
      */
-  	document.addEventListener('yt-page-data-updated', liker.init);
+    if (IS_GAMING) {
+      liker.init();
+      document.querySelector('ytg-app').addEventListener('yt-navigate', liker.init);
+      return;
+    }
+
+    document.addEventListener('yt-page-data-updated', liker.init);
   }
   else {
   	const liker = new Liker(options);

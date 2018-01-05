@@ -30,18 +30,19 @@ class MaterialLiker {
    * @param  {Function} callback
    */
   waitForButtons(callback) {
-    console.log('checking buttons...')
+    // console.log('checking buttons...')
 
 		// Select the like/dislike icons using their SVG data
-		const iconLike = document.querySelector(`#menu.ytd-video-primary-info-renderer g path[d="${this.iconSvgData.like}"]`);
-		const iconDislike = document.querySelector(`#menu.ytd-video-primary-info-renderer g path[d="${this.iconSvgData.dislike}"]`);
+		const iconLike = document.querySelector(`g path[d="${this.iconSvgData.like}"]`);
+		const iconDislike = document.querySelector(`g path[d="${this.iconSvgData.dislike}"]`);
 
     // Make sure both icons exist
 		if (iconLike && iconDislike) {
 			// Find and store closest buttons
-			this.dom.like = iconLike.closest('button');
-			this.dom.dislike = iconDislike.closest('button');
-			callback();
+      // YouTube gaming uses a different button type
+			this.dom.like = iconLike.closest('yt-icon-button, paper-icon-button');
+			this.dom.dislike = iconDislike.closest('yt-icon-button, paper-icon-button');
+      callback();
 		}
     // Otherwise wait a second and try again
     else {
@@ -50,9 +51,27 @@ class MaterialLiker {
   }
 
   /**
+   * Detects when the video player has loaded
+   * @param  {Function} callback
+   */
+  waitForVideo(callback) {
+    // console.log('checking video...')
+    this.video = document.querySelector('.video-stream');
+    // Does the video exist?
+    if (this.video) {
+      callback();
+		}
+    // Otherwise wait a second and try again
+    else {
+      setTimeout(() => this.waitForVideo(callback), 1000);
+    }
+  }
+
+  /**
    * @return {Boolean} True if the like or dislike button is active
    */
   isVideoRated() {
+    // console.log('isVideoRated?')
     return this.dom.like.classList.contains('style-default-active') ||
            this.dom.dislike.classList.contains('style-default-active');
   }
@@ -62,9 +81,26 @@ class MaterialLiker {
    *                   the current video's channel
    */
   isUserSubscribed() {
-    // Check if the subscribtion button is active
-    const subscribeButton = document.querySelector('#subscribe-button paper-button');
-    return subscribeButton && subscribeButton.hasAttribute('subscribed');
+    // console.log('isUserSubbed?')
+    // Select the sub button
+    const subButton = this.dom.sub || document.querySelector('#subscribe-button paper-button, ytg-subscribe-button');
+    // console.log(subButton)
+    // Does the button exist?
+    if (!subButton) return false;
+    // Is the button active?
+    if (subButton.hasAttribute('subscribed') || subButton.getAttribute('aria-pressed') === 'true') {
+      this.dom.sub = subButton;
+      return true;
+    }
+    // If not, let's reinitialize the Liker if the user subscribes
+    // else if (this.options.like_what === 'subscribed') {
+    //   subButton.addEventListener('click', e => {
+    //     // console.log('subButton click')
+    //     e.target.removeEventListener(e.type, arguments.callee);
+    //     this.init();
+    //   });
+    // }
+    return false;
   }
 
   /**
@@ -81,7 +117,7 @@ class MaterialLiker {
       if (this.isVideoRated() || (this.options.like_what === 'subscribed' && !this.isUserSubscribed())) {
         return;
       }
-      console.log('attempting like...')
+      // console.log('attempting like...')
       this.dom.like.click();
     });
   }
@@ -91,7 +127,7 @@ class MaterialLiker {
    * The liker won't do anything unless this method is called.
    */
   init() {
-    console.log('initializing...')
+    // console.log('initializing...')
     // Bail if we don't need to do anything
     // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
     if (this.options.disabled || this.options.like_what === 'none') {
@@ -101,18 +137,18 @@ class MaterialLiker {
     this.reset();
 
     if (this.options.like_when === 'timed') {
-      const video = document.querySelector('.video-stream');
-      const { duration } = video;
+      this.waitForVideo(() => {
+        const { video } = this;
 
-      const onVideoTimeUpdate = () => {
-        console.log('timeupdate')
-        if (video.currentTime >= 2 * 60 || video.currentTime >= duration) {
-          this.attemptLike();
-          video.removeEventListener('timeupdate', onVideoTimeUpdate);
+        const onVideoTimeUpdate = e => {
+          // console.log('timeupdate')
+          if (video.currentTime >= 2 * 60 || video.currentTime >= video.duration) {
+            this.attemptLike();
+            video.removeEventListener('timeupdate', onVideoTimeUpdate);
+          }
         }
-      }
-      video.addEventListener('timeupdate', onVideoTimeUpdate);
-
+        video.addEventListener('timeupdate', onVideoTimeUpdate);
+      });
       return;
     }
 

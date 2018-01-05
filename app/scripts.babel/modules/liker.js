@@ -55,7 +55,7 @@ class Liker {
       if (this.isVideoRated() || (this.options.like_what === 'subscribed' && !this.isUserSubscribed())) {
         return;
       }
-      console.log('attempting like...')
+      // console.log('attempting like...')
       this.dom.like.click();
 
       /*
@@ -92,7 +92,7 @@ class Liker {
    * The liker won't do anything unless this method is called.
    */
   init() {
-    console.log('initializing...')
+    // console.log('initializing...')
     // Bail if we don't need to do anything
     // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
     if (this.options.disabled || this.options.like_what === 'none') {
@@ -106,7 +106,7 @@ class Liker {
       const { duration } = video;
 
       const onVideoTimeUpdate = () => {
-        console.log('timeupdate')
+        // console.log('timeupdate')
         if (video.currentTime >= 2 * 60 || video.currentTime >= duration) {
           this.attemptLike();
           video.removeEventListener('timeupdate', onVideoTimeUpdate);
