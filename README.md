@@ -12,3 +12,4 @@ Do you know another language? Feel free to contribute with a [pull request](http
 
 ## Contributors (thank you!)
 [Taknok](https://github.com/Taknok) ~ [Firefox edition](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/), Language-independent button selection method; ES, FR translations
+[JKetelaar](https://github.com/JKetelaar) ~ NL translation
