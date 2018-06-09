@@ -1,0 +1,45 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like",
+    "description": "Namnet på applikationen"
+  },
+  "appNamePart2": {
+    "message": "Auto Like",
+    "description": "Namnet på applikationen efter 'YouTube'"
+  },
+  "appDesc": {
+    "message": "Gillar automagiskt YouTube-videos från dina favoriterkanaler.",
+    "description": "Beskrivning av applikationen"
+  },
+  "appDescDetail": {
+    "message": "Allt detta plugin gör är att trycka på gilla-knappen automatiskt åt dig när du tittar på en kanal du prenumererar på. Ingen ansträngning krävs. Kräver ingen inloggning. Alternativt så kan du gilla ALLA videos. Varför? Jag vet inte. Var lite crazy. Du får gärna komma med förslag eller bidra:",
+    "description": "Detaljerad beskrivning för web store-sidan"
+  },
+  "optLikeSub": {
+    "message": "Gilla bara videos från kanaler du prenumererar på"
+  },
+  "optLikeAll": {
+    "message": "Gilla alla videos"
+  },
+  "optLikeNone": {
+    "message": "Inaktivera"
+  },
+  "optLikeInstant": {
+    "message": "Gilla direkt"
+  },
+  "optLikeCustom": {
+    "message": "Gilla efter en stund"
+  },
+  "optLikePercentage": {
+    "message": "Procent"
+  },
+  "optLikeMinutes": {
+    "message": "Minuter"
+  },
+  "linkDonate": {
+    "message": "Donera"
+  },
+  "linkContribute": {
+    "message": "Bidra"
+  }
+}
