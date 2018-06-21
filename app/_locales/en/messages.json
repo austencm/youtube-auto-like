@@ -33,6 +33,9 @@
   "optLikeTimed": {
     "message": "After 2 minutes"
   },
+  "optLikePercent": {
+    "message": "After I've watched 50%"
+  },
   "linkDonate": {
     "message": "Donate!"
   },

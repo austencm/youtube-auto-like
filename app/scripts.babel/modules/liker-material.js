@@ -103,6 +103,12 @@ class MaterialLiker {
     return false;
   }
 
+  isAdPlaying() {
+    return this.video && ['ad-showing', 'ad-interrupting'].every(c => {
+      return this.video.closest('#movie_player').classList.contains(c);
+    });
+  }
+
   /**
    * Make sure we can & should like the video,
    * then clickity click the button
@@ -128,6 +134,7 @@ class MaterialLiker {
    */
   init() {
     // console.log('initializing...')
+
     // Bail if we don't need to do anything
     // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
     if (this.options.disabled || this.options.like_what === 'none') {
@@ -136,22 +143,39 @@ class MaterialLiker {
 
     this.reset();
 
-    if (this.options.like_when === 'timed') {
-      this.waitForVideo(() => {
-        const { video } = this;
+    switch (this.options.like_when) {
 
-        const onVideoTimeUpdate = e => {
-          // console.log('timeupdate')
-          if (video.currentTime >= 2 * 60 || video.currentTime >= video.duration) {
-            this.attemptLike();
-            video.removeEventListener('timeupdate', onVideoTimeUpdate);
+      case 'timed':
+        return this.waitForVideo(() => {
+          const { video } = this;
+          const onVideoTimeUpdate = e => {
+            if (this.isAdPlaying()) return;
+            // Are we 2 mins in or at the end of the video?
+            if (video.currentTime >= 2 * 60 || video.currentTime >= video.duration) {
+              this.attemptLike();
+              video.removeEventListener('timeupdate', onVideoTimeUpdate);
+            }
           }
-        }
-        video.addEventListener('timeupdate', onVideoTimeUpdate);
-      });
-      return;
-    }
+          video.addEventListener('timeupdate', onVideoTimeUpdate);
+        });
 
-    this.attemptLike();
+      case 'percent':
+        return this.waitForVideo(() => {
+          const { video } = this;
+
+          const onVideoTimeUpdate = e => {
+            if (this.isAdPlaying()) return;
+            // Are we more than 50% through the video?
+            if (video.currentTime / video.duration >= 0.5) {
+              this.attemptLike();
+              video.removeEventListener('timeupdate', onVideoTimeUpdate);
+            }
+          }
+          video.addEventListener('timeupdate', onVideoTimeUpdate);
+        });
+
+      default:
+        return this.attemptLike();
+    }
   }
 }

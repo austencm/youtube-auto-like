@@ -38,6 +38,9 @@
   "optLikeTimed": {
     "message": "Après 2 minutes"
   },
+  "optLikePercent": {
+    "message": "After I've watched 50%"
+  },
   "linkDonate": {
     "message": "Soutenir!",
     "description" : "Donner de l'argent pour aider le createur du plugin"
