@@ -87,11 +87,6 @@ input[type='checkbox']:checked::before {
   #links a {
     padding: 0.6em 0.4em; }
 
-#donate-link {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: bold; }
-
 #github-link svg {
   width: 1.15em;
   height: 1.15em;

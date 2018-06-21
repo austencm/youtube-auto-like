@@ -35,5 +35,8 @@
   },
   "linkDonate": {
     "message": "Donate!"
+  },
+  "linkReport": {
+    "message": "Report a Bug"
   }
 }

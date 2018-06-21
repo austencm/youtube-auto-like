@@ -41,5 +41,8 @@
   "linkDonate": {
     "message": "Soutenir!",
     "description" : "Donner de l'argent pour aider le createur du plugin"
+  },
+  "linkReport": {
+    "message": "Report a Bug"
   }
 }

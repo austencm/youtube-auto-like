@@ -37,5 +37,8 @@
   },
   "linkContribute": {
     "message": "Bijdragen"
+  },
+  "linkReport": {
+    "message": "Report a Bug"
   }
 }
