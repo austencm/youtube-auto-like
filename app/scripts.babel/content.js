@@ -17,8 +17,7 @@ optionManager.get().then(options => {
   if (IS_MATERIAL) {
   	const liker = new MaterialLiker(options);
     /*
-    We can hook into YouTube's custom events;
-    Both of these fire when page changes, so the liker is run only when needed.
+    We're hooking into YouTube's custom events to determine when the video changes.
     However, YouTube Gaming's yt-navigate event doesn't fire inititailly.
      */
     if (IS_GAMING) {
