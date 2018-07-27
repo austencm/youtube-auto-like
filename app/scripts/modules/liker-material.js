@@ -38,11 +38,15 @@ class MaterialLiker {
 				// Find and store closest buttons
 				this.btns.like = likeElement.closest("button");
 				this.btns.dislike = dislikeElement.closest("button");
-				callback()
+				console.log("got buttons");
+				callback();
+				return;
 			} else {
+				console.log("wait 1s for buttons");
 				setTimeout(() => this.waitForButtons(callback), 1000 );
 			}
 		} else {
+			console.log("wait 1s for svg");
 			setTimeout(() => this.waitForButtons(callback), 1000 );
 		}
 	}
@@ -54,6 +58,7 @@ class MaterialLiker {
 		// if Instant like, direct return to like
 		if (this.options.like_timer == "instant") {
 			callback();
+			return;
 		}
 		// else continue
 		
@@ -91,8 +96,8 @@ class MaterialLiker {
 	 * @return {Boolean} True if the like or dislike button is active
 	 */
 	isVideoRated() {
-		return this.btns.like.parentNode.getAttribute("aria-pressed") ||
-				 this.btns.dislike.parentNode.getAttribute("aria-pressed");
+		return this.btns.like.parentNode.classList.contains("style-default-active") ||
+				 this.btns.dislike.parentNode.classList.contains("style-default-active");
 	}
 
 	/*
@@ -125,9 +130,11 @@ class MaterialLiker {
 			or the user isn't subscribed to this channel,
 			then we don't need to do anything.
 			 */
-			var isTrueSet = ( (this.isVideoRated() == 'true') || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
+
+			let rated = this.isVideoRated();
+			let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
 			if ( isTrueSet ) {
-				console.log("not liked");
+				console.log("not liked check 1");
 				return;
 			}
 			/*
@@ -137,9 +144,10 @@ class MaterialLiker {
 				/*
 				Maybe the use did an action while we was waiting, so check again
 				*/
-				var isTrueSet = ( (this.isVideoRated() == 'true') || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
+				let rated = this.isVideoRated();
+				let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
 				if ( isTrueSet ) {
-					console.log("not liked");
+					console.log("not liked check 2");
 					return;
 				}
 				this.attemptLike();

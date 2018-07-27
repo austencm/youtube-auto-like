@@ -11,4 +11,4 @@ function handleInstalled(details) {
 	});
 }
 // triggered when new  version installed
-browser.runtime.onInstalled.addListener(handleInstalled);
+//browser.runtime.onInstalled.addListener(handleInstalled);
