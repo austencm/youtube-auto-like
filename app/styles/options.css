@@ -25,7 +25,7 @@ svg {
 
 #title {
 	font-size: 17px;
-	font-weight: 300;
+	font-weight: normal;
 	margin: 0 0 1em;
 	color: #e62117;
 	text-transform: uppercase;
