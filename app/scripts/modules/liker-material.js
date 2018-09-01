@@ -9,6 +9,13 @@ class MaterialLiker {
 	 */
 	constructor(options) {
 		this.options = options;
+		/*
+		Youtube gaming hasn't the svg path in code like youtube
+		*/
+		this.iconSvgData = {
+			like: 'M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z',
+			dislike: 'M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z'
+		};
 	}
 
 	reset() {
@@ -22,25 +29,29 @@ class MaterialLiker {
 	 * @return {[type]}            [description]
 	 */
 	waitForButtons(callback) {
-		if (this.icon.like == null) {
+		if (this.icon.like == null && IS_CLASSIC) {
 			// get the SVG pattern
 			this.icon.like = document.querySelector('g#like path').getAttribute('d');
 			this.icon.dislike = document.querySelector('g#dislike path').getAttribute('d');
+		} else {
+			this.icon.like = this.iconSvgData.like;
+			this.icon.dislike = this.iconSvgData.dislike;
 		}
-		
+
 		if (this.icon.like != null) {
 			// Select the like/dislike icons using their SVG data
-			let likeElement = document.querySelectorAll('#menu.ytd-video-primary-info-renderer g path[d="' + this.icon.like +'"]')[0];
-			let dislikeElement = document.querySelectorAll('#menu.ytd-video-primary-info-renderer g path[d="' + this.icon.dislike +'"]')[0];
+			// cannot use `g path[d="${this.icon.like}"]` like in Chrome because Firefox display hidden element
+			// that first match with this selector
+			let likeElement = document.querySelector(`g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`);
+			let dislikeElement = document.querySelector(`g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`);
 			
 			// Make sure both icons exist
 			if (likeElement && dislikeElement) {
 				// Find and store closest buttons
-				this.btns.like = likeElement.closest("button");
-				this.btns.dislike = dislikeElement.closest("button");
+				this.btns.like = likeElement.closest('yt-icon-button, paper-icon-button');
+				this.btns.dislike = dislikeElement.closest('yt-icon-button, paper-icon-button');
 				console.log("got buttons");
 				callback();
-				return;
 			} else {
 				console.log("wait 1s for buttons");
 				setTimeout(() => this.waitForButtons(callback), 1000 );
@@ -48,6 +59,19 @@ class MaterialLiker {
 		} else {
 			console.log("wait 1s for svg");
 			setTimeout(() => this.waitForButtons(callback), 1000 );
+		}
+	}
+
+	/**
+	* Detects when the video player has loaded
+	* @param  {Function} callback
+	*/
+	waitForVideo(callback) {
+		this.video = document.querySelector('.video-stream');
+		if (this.video) {
+ 			callback();
+		} else {
+			setTimeout(() => this.waitForVideo(callback), 1000);
 		}
 	}
 
@@ -96,8 +120,15 @@ class MaterialLiker {
 	 * @return {Boolean} True if the like or dislike button is active
 	 */
 	isVideoRated() {
-		return this.btns.like.parentNode.classList.contains("style-default-active") ||
-				 this.btns.dislike.parentNode.classList.contains("style-default-active");
+		if (IS_CLASSIC) {
+			return this.btns.like.parentNode.parentNode.classList.contains("style-default-active") ||
+				 this.btns.dislike.parentNode.parentNode.classList.contains("style-default-active");
+		} else if (IS_GAMING) {
+			return this.btns.like.classList.contains("active") ||
+				 this.btns.dislike.classList.contains("active");
+		}
+	}
+
 	}
 
 	/*
@@ -106,8 +137,8 @@ class MaterialLiker {
 	 *                   the current video's channel
 	 */
 	isUserSubscribed() {
-		let subscribeButton = document.querySelector('#subscribe-button paper-button');
-		return subscribeButton && subscribeButton.hasAttribute('subscribed');
+		let subscribeButton = document.querySelector('#subscribe-button paper-button, ytg-subscribe-button > paper-button');
+		return subscribeButton && (subscribeButton.hasAttribute('subscribed') || subscribeButton.getAttribute("aria-pressed") === "true");
 	}
 
 	/*
@@ -117,11 +148,34 @@ class MaterialLiker {
 		this.btns.like.click();
 	}
 
+	blockMultipleRun() {
+		if (!this.hasOwnProperty("IS_STARTED")) { //if not defined this is the 1st run
+			this.IS_STARTED = true;
+			return;
+		} else {
+			if (this.IS_STARTED) {
+				exit();
+			} else { //could be a new video in playlist
+				this.IS_STARTED = true;
+				return;
+			}
+		}
+	}
+
+	finish() {
+		this.IS_STARTED = false;
+	}
+
 	/*
 	 * Starts the liking.
 	 * The liker won't do anything unless this method is called.
 	 */
 	init() {
+		if (this.options.like_what === "none") {
+			return;
+		}
+
+		this.blockMultipleRun();
 		this.reset()
 		console.log('yt-autolike start')
 		this.waitForButtons(() => {
@@ -135,23 +189,28 @@ class MaterialLiker {
 			let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
 			if ( isTrueSet ) {
 				console.log("not liked check 1");
+				this.finish();
 				return;
 			}
 			/*
 			Else do the stuff
 			*/
-			this.waitTimer(() => {
-				/*
-				Maybe the use did an action while we was waiting, so check again
-				*/
-				let rated = this.isVideoRated();
-				let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
-				if ( isTrueSet ) {
-					console.log("not liked check 2");
-					return;
-				}
-				this.attemptLike();
-				console.log('liked');
+			this.waitForVideo(() => {
+				this.waitTimer(() => {
+					/*
+					Maybe the use did an action while we was waiting, so check again
+					*/
+					let rated = this.isVideoRated();
+					let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
+					if ( isTrueSet ) {
+						console.log("not liked check 2");
+						this.finish();
+						return;
+					}
+					this.attemptLike();
+					console.log('liked');
+					this.finish();
+				});
 			});
 		});
 	}
