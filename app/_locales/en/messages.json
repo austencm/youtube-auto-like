@@ -3,10 +3,6 @@
 		"message": "YouTube Auto Like",
 		"description": "Name of the application"
 	},
-	"appNamePart2": {
-		"message": "Auto Like",
-		"description": "Name of the application after 'YouTube'"
-	},
 	"appDesc": {
 		"message": "Automagically like YouTube videos from your favorite content creators.",
 		"description": "Description of the application"
