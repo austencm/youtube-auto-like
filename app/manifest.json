@@ -29,6 +29,9 @@
 		"run_at": "document_end"
 		}
 	],
+	"background": {
+		"scripts": ["scripts/background.js"]
+	},
 	"options_ui": {
 		"page": "options.html"
 	}
