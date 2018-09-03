@@ -7,7 +7,7 @@ body {
 
 a {
 	display: inline-block;
-	color: #e62117 !important;
+	color: #e62117;
 	text-decoration: none !important;
 	opacity: 0.5;
 	transition: all 0.1s ease-in-out;
@@ -20,21 +20,27 @@ a:hover {
 
 #title {
 	font-size: 17px;
-	font-weight: 300;
+	font-weight: normal;
 	margin: 0 0 1em;
 	color: #e62117;
 	text-transform: uppercase;
 	letter-spacing: 0.1em; 
 }
 
-#links {
-	position: absolute;
-	font-size: 12px;
-	text-align: center;
+#credits div{
+	font-size: 15px;
+	font-weight: normal;
+	margin: 1em 0 0;
+	color: #e62117;
+	text-transform: uppercase;
+	letter-spacing: 0.1em; 
 }
-
-#links a {
-	padding: 0.6em 0.4em;
+#credits a {
+	display: inline-block;
+	color: black;
+	text-decoration: none !important;
+	opacity: 0.8;
+	transition: all 0.1s ease-in-out;
 }
 
 #donate-link {
