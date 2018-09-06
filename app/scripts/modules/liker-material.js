@@ -129,7 +129,6 @@ class MaterialLiker {
 		}
 	}
 
-	}
 
 	/*
 	 * Another tough one
