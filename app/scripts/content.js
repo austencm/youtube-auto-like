@@ -5,7 +5,7 @@ const IS_GAMING = window.location.hostname.indexOf('gaming.youtube') > -1; //usi
 //cannot use hostname, using regex to force starting with
 const IS_TV = window.location.pathname === '/tv';
 //allow to do noting on home page
-const IS_CLASSIC = (window.location.pathname === '/watch') && !IS_GAMING;
+const IS_CLASSIC = (window.location.hostname === 'www.youtube.com') && !IS_TV;
 
 // Create an OptionManager
 let optionManager = new OptionManager(OPTIONS);
