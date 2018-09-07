@@ -129,6 +129,12 @@ class MaterialLiker {
 		}
 	}
 
+	isAdPlaying() {
+		let video = document.querySelector('.video-stream');    
+		return video && ['ad-showing', 'ad-interrupting'].every(c => {
+ 			return video.closest('#movie_player').classList.contains(c);
+		});
+	}
 
 	/*
 	 * Another tough one
@@ -144,6 +150,13 @@ class MaterialLiker {
 	 * Clickity click the button
 	 */
 	attemptLike() {
+		this.btns.like.click();
+	}
+
+	/*
+	 * Clickity click the skip button
+	 */
+	attemptSkip() {
 		this.btns.like.click();
 	}
 
@@ -177,6 +190,11 @@ class MaterialLiker {
 		this.blockMultipleRun();
 		this.reset()
 		console.log('yt-autolike start')
+		// this.skipAd(() => {
+		// 	if(this.isAdPlaying) {
+		// 		document.getElementsByClassName('videoAdUiSkipButton')[0].click;
+		// 	}
+		// });
 		this.waitForButtons(() => {
 			/*
 			If the video is already liked/disliked
