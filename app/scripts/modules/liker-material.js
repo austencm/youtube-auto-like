@@ -183,7 +183,6 @@ class MaterialLiker {
 			or the user isn't subscribed to this channel,
 			then we don't need to do anything.
 			 */
-
 			let rated = this.isVideoRated();
 			let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
 			if ( isTrueSet ) {
