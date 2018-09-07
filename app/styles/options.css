@@ -96,6 +96,8 @@ input[type="radio"].toggle-on-button:checked ~ input[type="number"].toggle-conte
 
 input[type="number"] {
 	width: 15%;
+	min-width: 50px;
+	padding-left: 0.25em;
 }
 
 hr {
