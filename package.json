@@ -1,5 +1,17 @@
 {
   "name": "youtube-auto-like",
+  "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/Taknok)",
+  "contributors": [
+    "Taknok (https://github.com/Taknok)",
+    "JKetelaar (https://github.com/JKetelaar)",
+    "Szmyk (https://github.com/Szmyk)"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/austencm/youtube-auto-like.git"
+  },
+  "description": "Automatically like YouTube videos from your favorite content creators.",
+  "keywords": ["youtube", "auto", "automatic", "like", "chrome", "browser", "extension"],
   "engines": {
     "node": ">=0.8.0"
   },
