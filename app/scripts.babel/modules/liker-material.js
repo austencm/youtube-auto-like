@@ -83,12 +83,12 @@ class MaterialLiker {
   isUserSubscribed() {
     // console.log('isUserSubbed?')
     // Select the sub button
-    const subButton = this.dom.sub || document.querySelector('#subscribe-button paper-button, ytg-subscribe-button');
+    const subButton = this.dom.sub || document.querySelector('ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button .subscribed');
     // console.log(subButton)
     // Does the button exist?
     if (!subButton) return false;
     // Is the button active?
-    if (subButton.hasAttribute('subscribed') || subButton.getAttribute('aria-pressed') === 'true') {
+    if (subButton.hasAttribute('subscribed') || subButton.classList.contains('subscribed')) {
       this.dom.sub = subButton;
       return true;
     }
@@ -105,7 +105,7 @@ class MaterialLiker {
 
   isAdPlaying() {
     return this.video && ['ad-showing', 'ad-interrupting'].every(c => {
-      return this.video.closest('#movie_player').classList.contains(c);
+      return this.video.closest('.html5-video-player').classList.contains(c);
     });
   }
 
