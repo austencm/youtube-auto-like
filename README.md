@@ -21,3 +21,6 @@ Do you know another language? Feel free to contribute with a [pull request](http
 [**Taknok**](https://github.com/Taknok) ~ [Firefox edition](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/), Language-independent button selection method; ES, FR translations<br />
 [**JKetelaar**](https://github.com/JKetelaar) ~ NL translation<br />
 [**Szmyk**](https://github.com/Szmyk) ~ PL translation
+
+## Donations
+Feed my cats: 🐈<br /> [https://www.buymeacoffee.com/austen](https://www.buymeacoffee.com/austen)

@@ -11,7 +11,7 @@ body {
 
 a {
   display: inline-block;
-  color: $color-primary !important;
+  color: #333 !important;
   text-decoration: none !important;
   opacity: 0.5;
   transition: all 0.1s ease-in-out;
@@ -106,7 +106,7 @@ input[type='checkbox']:checked::before {
   position: absolute;
   bottom: 0;
   right: 0.6em;
-  font-size: 12px;
+  font-size: 14px;
   text-align: right;
 
   a {
