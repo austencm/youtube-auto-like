@@ -142,7 +142,7 @@ class MaterialLiker {
 	 *                   the current video's channel
 	 */
 	isUserSubscribed() {
-		let subscribeButton = document.querySelector('#subscribe-button paper-button, ytg-subscribe-button > paper-button');
+		let subscribeButton = document.querySelector('ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button > paper-button');
 		return subscribeButton && (subscribeButton.hasAttribute('subscribed') || subscribeButton.getAttribute("aria-pressed") === "true");
 	}
 
@@ -203,6 +203,9 @@ class MaterialLiker {
 			 */
 			let rated = this.isVideoRated();
 			let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
+			console.log(rated)
+			console.log( this.options.like_what)
+			console.log(this.isUserSubscribed())
 			if ( isTrueSet ) {
 				console.log("not liked check 1");
 				this.finish();
