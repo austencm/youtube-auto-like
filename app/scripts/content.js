@@ -30,7 +30,7 @@ optionManager.get().then((options) => {
 			console.log("gaming youtube detected");
 
 			liker.init();
-			document.querySelector('ytg-app').addEventListener('yt-navigate', () => liker.init() );
+			document.querySelector('ytg-app').addEventListener('yt-page-data-updated', () => liker.init() );
 		} else if (IS_TV) {
 			console.log("tv youtube detected");
 		}
