@@ -1,47 +1,45 @@
 {
   "appName": {
-    "message": "YouTube Auto Like",
-    "description": "Naam van de applicatie"
+    "message": "YouTube Auto Like"
   },
   "appDesc": {
-    "message": "Like automagisch die videos deiner lieblings YouTuber.",
-    "description": "Beschrijving van de applicatie"
+    "message": "Like automatisch jedes Video von deinen lieblings YouTubern"
   },
   "appStoreDesc": {
-		"message": "Het enige wat deze extensie doet, is het indrukken van de like knop van videos van kanalen waarop je bent geabonneerd. Geen inspanning vereist. Geen authenticatie vereist. Je kunt zelfs ELKE video liken. Waarom? Geen idee. Ga los. Schroom niet om suggesties achter te laten:",
-		"description": "Beschrijving voor de winkel pagina"
-	},
+    "message": "Hämmert jedes mal auf den Likebutton, wenn du ein Video von einem abonnierten Kanal guckst! Keinen Aufwand mehr. Keine Anmeldung nötig. Wenn du ein Video schon gedisliked hast, wird dieses Add-on diese (hoffentlich) weise Entscheidung nicht überschreiben. Außerdem kannst du auswählen:  Wann geliket werden soll: erst nach 2 Minuten! - sofort automatisch. Du wahnsinnige Person, du! Schlage uns neue Features vor oder schreibe sie direkt selber:",
+    "description": "Komplette Beschreibung für den Webstore."
+  },
   "optLikeWhatTitle": {
-    "message": "Welke videos?"
+    "message": "Welches Video?"
   },
   "optLikeWhenTitle": {
-    "message": "Hoe snel?"
+    "message": "Wie schnell?"
   },
   "optLikeSub": {
-    "message": "Like nur videos von abonnierten YouTubern"
+    "message": "Nur Videos von abonnierten Kanälen"
   },
   "optLikeAll": {
-    "message": "Like alle videos"
+    "message": "Alle Videos"
   },
   "optLikeNone": {
-    "message": "Deaktivieren"
+    "message": "Vorübergehend deaktivieren"
   },
   "optDisable": {
-    "message": "Deaktivieren"
+    "message": "Vorübergehend deaktivieren"
   },
   "optLikeInstant": {
-    "message": "Sofort liken"
+    "message": "Sofort"
   },
   "optLikeTimed": {
-    "message": "Na 2 minuten"
+    "message": "Nach 2 Minuten"
   },
   "optLikePercent": {
-    "message": "After I've watched 50%"
+    "message": "Nachdem ich 50% des Videos gesehen habe"
   },
   "linkDonate": {
     "message": "Spenden!"
   },
   "linkReport": {
-    "message": "Report a Bug"
+    "message": "Bug melden"
   }
 }
