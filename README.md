@@ -1,5 +1,10 @@
 # YouTube Auto Like
 
+[![Chrome Web Store](	https://img.shields.io/chrome-web-store/v/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
+[![Chrome Web Store](	https://img.shields.io/chrome-web-store/d/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
+[![Chrome Web Store](	https://img.shields.io/chrome-web-store/rating/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
+[![Chrome Web Store](	https://img.shields.io/chrome-web-store/rating-count/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
+
 An extension that instantly likes videos from channels you subscribe to, so you never forget to support your favorite content creators. No authentication required.
 
 ## Gimme
