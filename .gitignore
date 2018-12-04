@@ -9,3 +9,4 @@ test/bower_components
 package
 app/scripts
 *.zip
+app/options.html

@@ -2,8 +2,7 @@ body {
   width: 305px;
   margin: 0;
   padding: 30px;
-  font-family: 'Titillium Web';
-  font-weight: 300; }
+  font-family: 'Titillium Web', sans-serif; }
 
 a {
   display: inline-block;
