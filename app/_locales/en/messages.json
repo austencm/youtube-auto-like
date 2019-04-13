@@ -6,8 +6,10 @@
     "message": "Automatically like YouTube videos from your favorite content creators."
   },
   "appStoreDesc": {
-    "message": "Hammers the like button whenever you watch a video from a subscribed channel! No effort required. No need to authenticate. If you've already disliked a video, this extension won't override your choice. Additionally, you can: - Be more selective with your likes: Only like videos after you've watched for 2 minutes! - Automatically like EVERY video. You insane person, you! Suggest new features or contribute:",
-    "description": "Full description for the web store"
+    "message": "Presses the like button whenever you watch a video from a subscribed channel! No effort required. No need to authenticate. If you've already disliked a video this extension won't override your choice. Additionally, you can: - Be more selective with your likes: Only like videos after you've watched for 2 minutes or 50% of the way through. - Automatically like every video",
+  },
+  "appStoreContribute": {
+    "message": "Contribute"
   },
   "optLikeWhatTitle": {
     "message": "Which videos?"
@@ -34,7 +36,7 @@
     "message": "After 2 minutes"
   },
   "optLikePercent": {
-    "message": "After I've watched 50%"
+    "message": "After watching 50%"
   },
   "linkDonate": {
     "message": "Donate!"
