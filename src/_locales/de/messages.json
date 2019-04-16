@@ -1,0 +1,47 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Like automatisch jedes Video von deinen lieblings YouTubern"
+  },
+  "appStoreDesc": {
+    "message": "Hämmert jedes mal auf den Likebutton, wenn du ein Video von einem abonnierten Kanal guckst! Keinen Aufwand mehr. Keine Anmeldung nötig. Wenn du ein Video schon gedisliked hast, wird dieses Add-on diese (hoffentlich) weise Entscheidung nicht überschreiben. Außerdem kannst du auswählen:  Wann geliket werden soll: erst nach 2 Minuten! - sofort automatisch. Du wahnsinnige Person, du! Schlage uns neue Features vor oder schreibe sie direkt selber:",
+  },
+  "appStoreContribute": {
+    "message": "Contribute"
+  },
+  "optLikeWhatTitle": {
+    "message": "Welches Video?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Wie schnell?"
+  },
+  "optLikeSub": {
+    "message": "Nur Videos von abonnierten Kanälen"
+  },
+  "optLikeAll": {
+    "message": "Alle Videos"
+  },
+  "optLikeNone": {
+    "message": "Vorübergehend deaktivieren"
+  },
+  "optDisable": {
+    "message": "Vorübergehend deaktivieren"
+  },
+  "optLikeInstant": {
+    "message": "Sofort"
+  },
+  "optLikeTimed": {
+    "message": "Nach 2 Minuten"
+  },
+  "optLikePercent": {
+    "message": "Nachdem ich 50% des Videos gesehen habe"
+  },
+  "linkDonate": {
+    "message": "Spenden!"
+  },
+  "linkReport": {
+    "message": "Bug melden"
+  }
+}

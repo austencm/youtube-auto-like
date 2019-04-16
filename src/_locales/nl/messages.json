@@ -1,0 +1,47 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like",
+  },
+  "appDesc": {
+    "message": "Liked de YouTube videos van je favoriete content makers automagisch.",
+  },
+  "appStoreDesc": {
+    "message": "Het enige wat deze extensie doet, is het indrukken van de like knop van videos van kanalen waarop je bent geabonneerd. Geen inspanning vereist. Geen authenticatie vereist. Je kunt zelfs ELKE video liken.",
+  },
+  "appStoreContribute": {
+    "message": "Schroom niet om suggesties achter te laten"
+  },
+  "optLikeWhatTitle": {
+    "message": "Welche videos?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Wie schnell?"
+  },
+  "optLikeSub": {
+    "message": "Vindt videos alleen leuk van geabonneerde kanalen"
+  },
+  "optLikeAll": {
+    "message": "Vindt alle videos leuk"
+  },
+  "optLikeNone": {
+    "message": "Schakel uit"
+  },
+  "optLikeInstant": {
+    "message": "Sofort"
+  },
+  "optLikeTimed": {
+    "message": "Nach 2 minuten"
+  },
+  "optLikePercent": {
+    "message": "After watching 50%"
+  },
+  "linkDonate": {
+    "message": "Doneer"
+  },
+  "linkContribute": {
+    "message": "Bijdragen"
+  },
+  "linkReport": {
+    "message": "Report a Bug"
+  }
+}

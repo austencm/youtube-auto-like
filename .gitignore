@@ -1,12 +1,7 @@
 node_modules
-temp
-.tmp
-dist
-dist.zip
-.sass-cache
-app/bower_components
-test/bower_components
-package
-app/scripts
+build
+secrets.*.js
 *.zip
-app/options.html
+.DS_Store
+waiter.js
+update-notifier.js

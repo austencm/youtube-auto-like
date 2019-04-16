@@ -1,0 +1,47 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Automatically like YouTube videos from your favorite content creators."
+  },
+  "appStoreDesc": {
+    "message": "Presses the like button so you don't have to! Features:  - Like videos instantly from subscribed channels, or like every video  - Be more selective: like after you've watched 2 minutes or 50% through  - Waits for ads to finish when using a timed option  - Won't override your choice if you've already disliked a video  - Lightweight: won't slow down your YouTube load time"
+  },
+  "appStoreContribute": {
+    "message": "Contribute"
+  },
+  "optLikeWhatTitle": {
+    "message": "Which videos?"
+  },
+  "optLikeWhenTitle": {
+    "message": "How quickly?"
+  },
+  "optLikeSub": {
+    "message": "Only videos from subscribed channels"
+  },
+  "optLikeAll": {
+    "message": "All videos"
+  },
+  "optLikeNone": {
+    "message": "Disable"
+  },
+  "optDisable": {
+    "message": "Disable"
+  },
+  "optLikeInstant": {
+    "message": "Instantly"
+  },
+  "optLikeTimed": {
+    "message": "After 2 minutes"
+  },
+  "optLikePercent": {
+    "message": "After watching 50%"
+  },
+  "linkDonate": {
+    "message": "Donate!"
+  },
+  "linkReport": {
+    "message": "Report a Bug"
+  }
+}

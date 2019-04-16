@@ -1,0 +1,141 @@
+:root {
+  --color-brand: #e62117;
+  --gutter: 30px;
+}
+
+body {
+  width: 305px;
+  margin: 0;
+  padding: var(--gutter);
+  font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+  color: #333;
+}
+
+p {
+  line-height: 1.5;
+}
+
+svg {
+  fill: currentColor;
+}
+
+.header {
+  display: flex;
+}
+
+.title {
+  flex-grow: 1;
+  font-size: 17px;
+  font-weight: 300;
+  margin: 0 0 1em;
+  color: var(--color-brand);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.status {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group.form-group__no-title {
+  margin-top: 1.3rem;
+}
+
+.form-group-title {
+  margin-bottom: 0.3em;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.2em;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  position: relative;
+  top: -0.1em;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 1em;
+  border: 2px solid var(--color-brand) !important;
+  background: #fff !important;
+  box-shadow: none;
+}
+
+input[type='radio']:hover,
+input[type='checkbox']:hover {
+  transform: scale(1.1);
+}
+
+input[type='radio']:focus,
+input[type='checkbox']:focus {
+  transform: scale(1.2);
+}
+
+input[type='radio']:checked::before,
+input[type='checkbox']:checked::before {
+  display: block;
+  background-color: var(--color-brand);
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+}
+
+input[type='checkbox']:checked::before {
+  position: absolute;
+  width: auto;
+  height: auto;
+  background-image: none;
+}
+
+#links {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0.6em;
+  font-size: 14px;
+  text-align: right;
+}
+
+#links a {
+  display: inline-block;
+  padding: 0.6em 0.3em;
+  color: #333 !important;
+  text-decoration: none !important;
+  opacity: 0.5;
+  transition: all 0.1s ease-in-out;
+  filter: grayscale(1);
+}
+
+#links a:hover {
+  transform: translateY(-0.1em);
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+#github-link svg {
+  width: 1.3em;
+  height: 1.3em;
+  position: relative;
+  top: 0.25em;
+}
