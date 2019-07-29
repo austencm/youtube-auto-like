@@ -41,6 +41,38 @@ optionManager.get().then((options) => {
 	document.getElementById(`${options.type_timer}-value`).setAttribute("value",`${options.timer_value}`);
 });
 
+// Hide button if not on video or creator page
+function isVideo(url) {
+	return url.indexOf("https://www.youtube.com/watch?v=") !== -1;
+}
+
+function isCreator(url) {
+	return url.indexOf("https://www.youtube.com/channel/") !== -1;
+}
+
+function getCurrentWindowTabs() {
+  return browser.tabs.query({currentWindow: true});
+}
+
+var getActiveTab = new Promise(function(resolve, reject) {
+	getCurrentWindowTabs().then((tabs) => {
+    	for (var tab of tabs) {
+			if (tab.active) {
+				resolve(tab);
+			}
+		}
+		reject();
+	});
+});
+
+getActiveTab.then((tab) => {
+	if (isCreator(tab.url) || isVideo(tab.url)) {
+		console.log(window.location.href)
+		document.getElementById("list-add-creator").style.visibility = "visible";
+	}
+});
+
+
 // Trigger a function when the user changes an option
 document.querySelectorAll('input[type="radio"]').forEach((field) => {
 	field.addEventListener( 'click', onFieldChange.bind(field) );

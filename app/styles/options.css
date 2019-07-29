@@ -100,6 +100,34 @@ input[type="number"] {
 	padding-left: 0.25em;
 }
 
+input[type="button"] {
+  outline: none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid #e62117;
+  color: #e62117;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+input[type="button"]:hover {
+  color: white;
+  background: #cf1e15;
+  border: 2px solid #cf1e15;
+}
+input[type="button"]:active {
+  letter-spacing: 2px;
+}
+input[type="button"]:after {
+  content: "SUBMIT";
+}
+
+
 hr {
 	border-top: 1px solid #8c8b8b;
 }
