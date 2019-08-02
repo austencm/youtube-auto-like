@@ -13,6 +13,7 @@ function onFieldChange() {
 		options[this.name] = this.value;
 		optionManager.set(options);
 	})
+	.catch( (e) => console.error(e) );
 }
 
 function onPercentageChange() {
@@ -39,7 +40,8 @@ optionManager.get().then((options) => {
 	document.querySelector(`input[name="like_timer"][value="${options.like_timer}"]`).click();
 	document.querySelector(`input[name="type_timer"][value="${options.type_timer}"]`).setAttribute("checked", "checked");
 	document.getElementById(`${options.type_timer}-value`).setAttribute("value",`${options.timer_value}`);
-});
+})
+.catch( (e) => console.error(e) );
 
 // Hide button if not on video or creator page
 function isVideo(url) {
@@ -51,26 +53,25 @@ function isCreator(url) {
 }
 
 function getCurrentWindowTabs() {
-  return browser.tabs.query({currentWindow: true});
+	return browser.tabs.query({currentWindow: true});
 }
 
-var getActiveTab = new Promise(function(resolve, reject) {
-	getCurrentWindowTabs().then((tabs) => {
-    	for (var tab of tabs) {
-			if (tab.active) {
-				resolve(tab);
-			}
+async function getActiveTab() {
+	let tabs = await getCurrentWindowTabs();
+	for (let tab of tabs) {
+		if (tab.active) {
+			return tab;
 		}
-		reject();
-	});
-});
+	}
+}
 
-getActiveTab.then((tab) => {
+getActiveTab().then((tab) => {
 	if (isCreator(tab.url) || isVideo(tab.url)) {
 		console.log(window.location.href)
 		document.getElementById("list-add-creator").style.visibility = "visible";
 	}
-});
+})
+.catch( (e) => console.error(e) );
 
 
 // Trigger a function when the user changes an option
@@ -87,4 +88,12 @@ document.getElementById("instant_like").addEventListener( 'click', () => {
 
 document.getElementById("custom_like").addEventListener( 'click', () => {
 	document.getElementById("options-timer").style.visibility = "visible";
+});
+
+document.getElementById("list-manage").addEventListener( 'click', () => {
+	window.open("./manage.html")
+});
+
+document.getElementById("list-add-creator").addEventListener( 'click', () => {
+
 });
