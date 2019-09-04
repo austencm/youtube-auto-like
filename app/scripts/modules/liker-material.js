@@ -75,6 +75,10 @@ class MaterialLiker {
 		}
 	}
 
+	randomIntFromInterval(min, max) { // min and max included 
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	}
+
 	/*
 	 * Wait the number of minutes or % specified by user
 	 */
@@ -83,34 +87,49 @@ class MaterialLiker {
 		if (this.options.like_timer == "instant") {
 			callback();
 			return;
-		}
-		// else continue
-		
-		var video = document.getElementsByClassName('video-stream')[0];
-		let duration = video.duration;
+		} 
+		else if (this.options.like_timer == "random") {
+			var video = document.getElementsByClassName('video-stream')[0];
+			let duration = video.duration;
 
-		if (this.options.type_timer == "percentage") {
 			//normally buttons load after video, but if they load before, maybe a bug can happen
-			let percentageAtLike = this.options.timer_value;
+
 			let nowInPercent = video.currentTime / duration * 100;
-			if (nowInPercent >= percentageAtLike) {
+
+			if (nowInPercent >= this.randomTimerPercent) {
 				callback();
 			} else {
 				setTimeout(() => this.waitTimer(callback), 1000 );
 			}
-		} else if (this.options.type_timer == "minute") {
-			let timeAtLike = this.options.timer_value;
-			// change timeAtLike if vid shorter than time set by user
-			if (video.duration < timeAtLike) {
-				timeAtLike = video.duration;
-			} else {
-				// convert in second
-				timeAtLike *= 60;
-			}
-			if (video.currentTime >= timeAtLike) {
-				callback();
-			} else {
-				setTimeout(() => this.waitTimer(callback), 1000 );
+		}
+		else {
+		
+			var video = document.getElementsByClassName('video-stream')[0];
+			let duration = video.duration;
+
+			if (this.options.type_timer == "percentage") {
+				//normally buttons load after video, but if they load before, maybe a bug can happen
+				let percentageAtLike = this.options.timer_value;
+				let nowInPercent = video.currentTime / duration * 100;
+				if (nowInPercent >= percentageAtLike) {
+					callback();
+				} else {
+					setTimeout(() => this.waitTimer(callback), 1000 );
+				}
+			} else if (this.options.type_timer == "minute") {
+				let timeAtLike = this.options.timer_value;
+				// change timeAtLike if vid shorter than time set by user
+				if (video.duration < timeAtLike) {
+					timeAtLike = video.duration;
+				} else {
+					// convert in second
+					timeAtLike *= 60;
+				}
+				if (video.currentTime >= timeAtLike) {
+					callback();
+				} else {
+					setTimeout(() => this.waitTimer(callback), 1000 );
+				}
 			}
 		}
 	}
@@ -203,9 +222,7 @@ class MaterialLiker {
 			 */
 			let rated = this.isVideoRated();
 			let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
-			console.log(rated)
-			console.log( this.options.like_what)
-			console.log(this.isUserSubscribed())
+
 			if ( isTrueSet ) {
 				console.log("not liked check 1");
 				this.finish();
@@ -214,6 +231,11 @@ class MaterialLiker {
 			/*
 			Else do the stuff
 			*/
+			// Define a random timer if selected
+			if (this.options.like_timer == "random") {
+				this.randomTimerPercent = this.randomIntFromInterval(0, 99);
+			}
+
 			this.waitForVideo(() => {
 				this.waitTimer(() => {
 					/*

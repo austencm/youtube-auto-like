@@ -22,3 +22,4 @@ Do you know another language? _I sure don't._ Feel free to contribute with a [pu
 - [JKetelaar](https://github.com/JKetelaar) ~ NL translation
 - [Szmyk](https://github.com/Szmyk) ~ PL translation
 - [Hultan](https://github.com/Hultan) ~ SV translation
+- [C4H7Cl2O4P](https://github.com/C4H7Cl2O4P) ~ UK translation
