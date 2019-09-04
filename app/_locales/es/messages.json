@@ -36,6 +36,9 @@
 	"optLikeMinutes" :{
 		"message": "Minutos"
 	},
+	"optLikeRandom" :{
+		"message": "Random timer"
+	},
 	"linkDonate": {
 	"message": "Dar",
 	"description": "Vinculo para ayudar el creador del plugin"

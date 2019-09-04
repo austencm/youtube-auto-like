@@ -36,6 +36,9 @@
 	"optLikeMinutes" :{
 		"message": "Minuten"
 	},
+	"optLikeRandom" :{
+		"message": "Random timer"
+	},
 	"linkDonate": {
 		"message": "Spenden"
 	},

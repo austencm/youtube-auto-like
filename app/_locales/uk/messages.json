@@ -32,6 +32,9 @@
 	"optLikeMinutes" :{
 		"message": "На хвилині"
 	},
+	"optLikeRandom" :{
+		"message": "Random timer"
+	},
 	"linkDonate": {
 		"message": "Підтримай грошима"
 	},
