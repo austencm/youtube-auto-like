@@ -1,6 +1,6 @@
 {
 	"appName": {
-		"message": "Самовподобування ТиТрубу",
+		"message": "YouTube Auto Like",
 		"description": "Ім'я допоміжного застосунку"
 	},
 	"appDesc": {
@@ -33,7 +33,7 @@
 		"message": "На хвилині"
 	},
 	"optLikeRandom" :{
-		"message": "Random timer"
+		"message": "Обирати випадково"
 	},
 	"linkDonate": {
 		"message": "Підтримай грошима"
