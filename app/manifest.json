@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_appName__",
-	"version": "2.3.4",
+	"version": "3.0.0",
 	"manifest_version": 2,
 	"description": "__MSG_appDesc__",
 	"icons": {
@@ -25,7 +25,7 @@
 	"content_scripts": [
 		{
 		"matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
-		"js": ["scripts/constants.js", "scripts/modules/option-manager.js", "scripts/modules/liker-material.js", "scripts/modules/liker.js", "scripts/content.js"],
+		"js": ["scripts/constants.js", "scripts/modules/option-manager.js", "scripts/modules/miscellaneous.js", "scripts/modules/liker-material.js", "scripts/content.js"],
 		"run_at": "document_end"
 		}
 	],

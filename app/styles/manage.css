@@ -1,5 +1,4 @@
 body {
-	width: 305px;
 	margin: 0;
 	padding: 30px;
 	font-family: 'Titillium Web';
@@ -24,12 +23,7 @@ svg {
 }
 
 
-.hide-by-default {
-	display: None;
-}
-
 .box {
-	position: absolute;
 	padding: 0px;
 	height: 2em;
 	width: 2em;
@@ -57,115 +51,17 @@ svg {
 	letter-spacing: 0.1em; 
 }
 
-label {
-	margin-bottom: 0.2em;
-	font-size: 15px;
-	letter-spacing: 0.01em;
-	cursor: pointer;
-}
-
-input {
-	position: relative;
-	top: -0.1em;
-	cursor: pointer;
-	transition: all 0.1s ease-in-out;
-	width: 1.2em;
-    height: 1.2em;
-    margin-right: 1em;
-}
-
-input[type='radio'], input[type='radio']:focus, input[type='radio']:hover, input[type='radio']:active {
-    width: 1.2em;
-    height: 1.2em;
-    margin-right: 1em;
-    border: 2px solid #e62117 !important;
-    background: #fff !important;
-    box-shadow: none !important;
-    outline: 0;
-}
-
-input[type='radio']:hover, input[type='radio']:checked {
-	transform: scale(1.1);
-}
-
-input[type='radio']:active {
-	transform: scale(1.2);
-}
-
-input[type='radio']:checked::before {
-	background-color: #e62117;
-	bottom: 2px;
-	left: 2px;
-	right: 2px;
-	top: 2px;
-}
-
-input.toggle-on-button ~ .toggle-content {
-	max-height: 0;
-	overflow: hidden;
-}
-
-input.toggle-on-button:checked ~ .toggle-content {
-	max-height:100%;
-}
-
-.toggle-content{
-	max-width: 100%;
-	padding-left: 20px;
-}
-
-input.toggle-on-button ~ input.toggle-content {
-	visibility: hidden;
-}
-
-input.toggle-on-button:checked ~ input.toggle-content {
-	visibility: visible;
-}
-
-input[type="number"] {
-	width: 15%;
-	min-width: 50px;
-	padding-left: 0.25em;
-}
-
-input[type="button"] {
-  outline: none;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius: 40px;
-  background: #fff;
-  border: 2px solid #e62117;
-  color: #e62117;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
-  transition: all 0.25s ease;
-}
-input[type="button"]:hover {
-  color: white;
-  background: #cf1e15;
-  border: 2px solid #cf1e15;
-}
-input[type="button"]:active {
-  letter-spacing: 2px;
-}
-input[type="button"]:after {
-  content: "SUBMIT";
-}
 
 
-hr {
-	border-top: 1px solid #8c8b8b;
-}
 
 table {
   border: 1px solid #ccc;
   border-collapse: collapse;
-  margin: 0;
+  margin: auto;
   padding: 0;
   width: 100%;
+  max-width: 55em;
+  min-width: 15em;
   table-layout: fixed;
 }
 
@@ -192,6 +88,17 @@ table th {
   text-transform: uppercase;
 }
 
+@media screen and (min-width: 600px) {
+  .rm-box {
+    width: 2em;
+  }
+
+  .name-box {
+    width: 30%;
+    min-width: 10em;
+  }
+}
+
 @media screen and (max-width: 600px) {
   table {
     border: 0;
@@ -202,7 +109,7 @@ table th {
   }
   
   table thead {
-    border: none;
+    border: none;       
     clip: rect(0 0 0 0);
     height: 1px;
     margin: -1px;
@@ -222,7 +129,11 @@ table th {
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: .8em;
-    text-align: right;
+    text-align: center;
+  }
+
+  .rm-box {
+    text-align: right;;
   }
   
   table td::before {

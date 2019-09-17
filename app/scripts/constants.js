@@ -3,5 +3,10 @@ var OPTIONS = {
 	like_timer: 'instant',
 	type_timer: 'percentage',
 	timer_value: 10,
-	plugin_version: "0.0.0"
+	use_list: true,
+	type_list: 'white',
+	plugin_version: "0.0.0",
+	creator_list: [],
+	debug: false,
+	debug_displayed: false,
 }

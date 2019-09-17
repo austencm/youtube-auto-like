@@ -65,14 +65,14 @@ class MaterialLiker {
 					.closest('yt-icon-button, paper-icon-button');
 				this.btns.dislike = dislikeElement
 					.closest('yt-icon-button, paper-icon-button');
-				console.log("got buttons");
+				log("got buttons");
 				callback();
 			} else {
-				console.log("wait 1s for buttons");
+				log("wait 1s for buttons");
 				setTimeout(() => this.waitForButtons(callback), 1000 );
 			}
 		} else {
-			console.log("wait 1s for svg");
+			log("wait 1s for svg");
 			setTimeout(() => this.waitForButtons(callback), 1000 );
 		}
 	}
@@ -172,6 +172,19 @@ class MaterialLiker {
 		}
 	}
 
+	/*
+	 * Another tough one
+	 * @return {Boolean} True if the user is subscribed to
+	 *                   the current video's channel
+	 */
+	isUserSubscribed() {
+		let subscribeButton = document.querySelector(
+			'ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button > paper-button'
+		);
+		return subscribeButton && (subscribeButton.hasAttribute('subscribed') ||
+			subscribeButton.getAttribute("aria-pressed") === "true");
+	}	
+
 	/**
 	 * Wait the end of the ad
 	 * @return {function} callback The function to execute when the ad 
@@ -191,17 +204,55 @@ class MaterialLiker {
 		callback();
 	}
 
-	/*
-	 * Another tough one
-	 * @return {Boolean} True if the user is subscribed to
-	 *                   the current video's channel
-	 */
-	isUserSubscribed() {
-		let subscribeButton = document.querySelector(
-			'ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button > paper-button'
-		);
-		return subscribeButton && (subscribeButton.hasAttribute('subscribed') ||
-			subscribeButton.getAttribute("aria-pressed") === "true");
+	shouldLike() {
+		let rated = this.isVideoRated();
+		if (rated) {
+			log("Not like: already liked video")
+			return false;
+		}
+
+		let mode_should_like = "";
+		if (this.options.like_what === "subscribed") {
+			log("Sub mode")
+			mode_should_like = this.isUserSubscribed();	
+		} else { // it all mode
+			log("All mode")
+			mode_should_like = true;
+		}
+		
+		if (this.options.use_list) {
+			let list_should_like = "";
+			let creator = getCreatorFromVideo();
+			let creator_list = this.options.creator_list;
+			let in_list = false;
+			for (var i = 0; i < creator_list.length; i++) {
+				if ( creator_list[i].URL === creator.URL ) {
+					log("Creator is in list")
+					in_list = true;
+					break;
+				}
+			}
+
+			if (this.options.type_list === "white") {
+				log("List is in white mode")
+				list_should_like = in_list;
+				let should_like = list_should_like || mode_should_like;
+				log(`Should like: ${should_like}`);
+				return should_like;
+			} else if (this.options.type_list === "black") {
+				log("List is in black mode")
+				list_should_like = !in_list;
+
+				let should_like = list_should_like && mode_should_like;
+				log(`Should like: ${should_like}`)
+				return should_like;
+			} else {
+				console.error("Unknow list type for liker")
+			}
+		} else {
+			log(`Should like: ${mode_should_like}`)
+			return mode_should_like;
+		}
 	}
 
 	/*
@@ -249,13 +300,13 @@ class MaterialLiker {
 	 */
 	init() {
 		if (this.options.like_what === "none") {
-			console.log("yt-autolike disabled")
+			log("yt-autolike disabled")
 			return;
 		}
 
 		this.blockMultipleRun();
 		this.reset()
-		console.log('yt-autolike start')
+		log('yt-autolike start')
 		// this.skipAd(() => {
 		// 	if(this.isAdPlaying) {
 		// 		document.getElementsByClassName('videoAdUiSkipButton')[0].click;
@@ -268,11 +319,8 @@ class MaterialLiker {
 				or the user isn't subscribed to this channel,
 				then we don't need to do anything.
 				 */
-				let rated = this.isVideoRated();
-				let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
-
-				if ( isTrueSet ) {
-					console.log("not liked check 1");
+				if ( !this.shouldLike() ) {
+					log("not liked check 1");
 					this.finish();
 					return;
 				}
@@ -289,15 +337,13 @@ class MaterialLiker {
 						/*
 						Maybe the use did an action while we was waiting, so check again
 						*/
-						let rated = this.isVideoRated();
-						let isTrueSet = ( rated || ( this.options.like_what === 'subscribed' && !this.isUserSubscribed() ) );
-						if ( isTrueSet ) {
-							console.log("not liked check 2");
+						if ( !this.shouldLike() ) {
+							log("not liked check 2");
 							this.finish();
 							return;
 						}
 						this.attemptLike();
-						console.log('liked');
+						log('liked');
 						this.finish();
 					});
 				});

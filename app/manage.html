@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles/fonts.css">
-	<link rel="stylesheet" type="text/css" href="styles/options.css">
+	<link rel="stylesheet" type="text/css" href="styles/manage.css">
 </head>
 
 <body>
@@ -13,16 +13,35 @@
 	<div id="links">
 		<a id="donate-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F8J6T6WHJBRAA" title="Donate" target="_blank">__MSG_linkDonate__</a>
 		<a id="github-link" href="https://github.com/Taknok/youtube-auto-like" title="GitHub" target="_blank">
-		<svg>
-			<use xlink:href="#icon-git"></use>
-		</svg>
+		<svg><use xlink:href="#icon-git"></use></svg>
 		</a>
 	</div>
-	<script src="scripts/modules/i18n.js"></script><script src="scripts/constants.js"></script><script src="scripts/modules/option-manager.js"></script><script src="scripts/options.js"></script>
+	<div >
+		<table>
+			<thead>
+				<tr>
+					<th class="name-box">__MSG_mngName__</th>
+					<th class="url-box">__MSG_mngURL__</th>
+					<th class="rm-box"></th>
+				</tr>
+			</thead>
+			<tbody id="creator_list">
+			</tbody>
+		</table>
+	</div>
+	<script src="scripts/modules/i18n.js"></script><script src="scripts/constants.js"></script><script src="scripts/modules/option-manager.js"></script><script src="scripts/modules/miscellaneous.js"></script><script src="scripts/manage.js"></script>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 	<symbol id="icon-git" viewbox="0 0 512 512">
 		<path d="m200 304c2 7 3 15 3 22c0 15-4 31-15 43c-5 6-12 9-20 9c-15 0-27-14-31-30c-3-7-4-15-4-22c0-15 4-31 16-43c5-6 12-9 19-9c16 0 28 14 32 30z m175 0c2 7 3 15 3 22c0 15-4 31-15 43c-5 6-12 9-20 9c-15 0-26-14-31-30c-2-7-4-15-4-22c0-15 5-31 16-43c5-6 12-9 19-9c16 0 28 14 32 30z m47 22c0-44-27-79-70-79c-7 0-25 2-53 6c-13 2-28 3-43 3c-16 0-30-1-43-3c-28-4-45-6-53-6c-43 0-70 35-70 79c0 32 13 56 30 70c18 14 48 22 72 25c12 1 26 2 41 2l46 0c30 0 52-2 79-10c26-9 44-21 55-45c6-12 9-26 9-42z m62-48c0 38-6 68-17 90c-14 29-41 49-67 60c-27 11-67 18-94 19c-14 1-29 2-46 2c-28 0-48-1-79-5c-30-3-54-11-79-22c-25-11-45-30-57-54c-11-22-17-52-17-90c0-43 13-79 38-108c-5-16-8-31-8-47c0-21 5-41 14-60c40 0 65 14 104 45c27-6 55-10 84-10c27 0 53 4 77 9c38-30 64-44 103-44c9 19 14 39 14 60c0 16-3 31-8 46c25 29 38 65 38 109z"></path>
-	 </symbol>
+	</symbol>
+	</svg>
+	<svg xmlns="http://www.w3.org/2000/svg" >
+		<symbol id="icon-close" viewBox="0 0 365 365" preserveAspectRatio="xMidYMid meet" width="1em" height="1em">
+		 	<g fill="white">
+				<path d="m356.339844 296.347656-286.613282-286.613281c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503906-12.5 32.769532 0 45.25l286.613281 286.613282c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082032c12.523438-12.480468 12.523438-32.75.019532-45.25zm0 0"/>
+				<path d="m295.988281 9.734375-286.613281 286.613281c-12.5 12.5-12.5 32.769532 0 45.25l15.082031 15.082032c12.503907 12.5 32.769531 12.5 45.25 0l286.632813-286.59375c12.503906-12.5 12.503906-32.765626 0-45.246094l-15.082032-15.082032c-12.5-12.523437-32.765624-12.523437-45.269531-.023437zm0 0"/>
+			</g>
+		</symbol>
 	</svg>
 </body>
 

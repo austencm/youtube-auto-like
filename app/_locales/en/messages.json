@@ -20,7 +20,7 @@
 	"optLikeNone": {
 		"message": "Disable"
 	},
-	"optLikeInstant" : {
+	"optLikeInstant": {
 		"message": "Instant Like"
 	},
 	"optLikeCustom": {
@@ -29,16 +29,31 @@
 	"optLikePercentage": {
 		"message": "Percentage"
 	},
-	"optLikeMinutes" :{
+	"optLikeMinutes": {
 		"message": "Minutes"
 	},
-	"optLikeRandom" :{
+	"optLikeRandom": {
 		"message": "Random timer"
+	},
+	"optUseList": {
+		"message": "Use list"
+	},
+	"optBlackList": {
+		"message": "Black list mode"
+	},
+	"optWhiteList": {
+		"message": "White list mode"
 	},
 	"linkDonate": {
 		"message": "Donate"
 	},
 	"linkContribute": {
 		"message": "Contribute"
+	},
+	"mngName": {
+		"message": "Channel Name"
+	},
+	"mngURL": {
+		"message": "Channel URL"
 	}
 }

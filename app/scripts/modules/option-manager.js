@@ -16,10 +16,7 @@ class OptionManager {
 	 * @return {Promise} Contains options object on resolve
 	 */
 	get() {
-		return new Promise((resolve, reject) => {
-			let defaults = this.defaults
-			browser.storage.local.get(defaults).then( (items) => resolve(items) )
-		})
+		return browser.storage.local.get(this.defaults);
 	}
 
 	/*
@@ -28,8 +25,6 @@ class OptionManager {
 	 * @return {Promise} Will resolve when successful
 	 */
 	set(options) {
-		return new Promise((resolve, reject) => {
-			browser.storage.local.set( options, resolve)
-		})
+		return browser.storage.local.set(options);
 	}
  }

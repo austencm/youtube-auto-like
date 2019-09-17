@@ -13,6 +13,7 @@ You can report a issue [here](https://github.com/Taknok/youtube-auto-like/issues
 Do you know another language? _I sure don't._ Feel free to contribute with a [pull request](https://github.com/Taknok/youtube-auto-like/pulls), or grab [the JSON file](https://raw.githubusercontent.com/Taknok/youtube-auto-like/master/app/_locales/en/messages.json), translate it, and [send it back to me](mailto:pg.developper.fr@gmail.com).
 
 ## Developpers
+The debug mode option can be display in the addon popup by entering the konami code while the addon popup is opened.<br>
 :warning: `browser.storage.sync` can cause issues when loaded temporarily, change it by `browser.storage.local` in **scripts/option-manager.js**.<br>
 [PR](https://github.com/Taknok/youtube-auto-like/pulls) are welcomed :)
 
