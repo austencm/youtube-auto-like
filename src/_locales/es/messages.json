@@ -1,12 +1,12 @@
 {
 	"appName": {
-		"message": "YouTube Auto Like",
+		"message": "YouTube Auto Like"
 	},
 	"appDesc": {
-		"message": "Este plugin like automaticamente los videos de YouTube.",
+		"message": "Este plugin like automaticamente los videos de YouTube."
 	},
   "appStoreDesc": {
-    "message": "Este plugin like automáticamente los vídeos de YouTube. Puedes elegir de utilizar el plugin en todos los vídeos o unicamente en los vídeos suscribidos,  tambien puedes desactivar el plugin. Puedes poner un dislike en un vídeo, despues el plugin no pondra like automáticamente. Ninguna conexión necesitada. Puedes señalar problemas, proponer ideos y contribuir.",
+    "message": "Este plugin like automáticamente los vídeos de YouTube. Puedes elegir de utilizar el plugin en todos los vídeos o unicamente en los vídeos suscribidos,  tambien puedes desactivar el plugin. Puedes poner un dislike en un vídeo, despues el plugin no pondra like automáticamente. Ninguna conexión necesitada. Puedes señalar problemas, proponer ideos y contribuir."
   },
   "appStoreContribute": {
     "message": "Contribuir"
@@ -18,13 +18,13 @@
     "message": "¿Cuan rápido?"
   },
 	"optLikeSub": {
-		"message": "Like los videos de los canales suscritos",
+		"message": "Like los videos de los canales suscritos"
 	},
 	"optLikeAll": {
-		"message": "Like todos los videos",
+		"message": "Like todos los videos"
 	},
 	"optLikeNone": {
-		"message": "Desactivar",
+		"message": "Desactivar"
 	},
   "optDisable": {
 		"message": "Desactivar"
@@ -39,7 +39,7 @@
     "message": "After watching 50%"
   },
   "linkDonate": {
-    "message": "¡Dar!",
+    "message": "¡Dar!"
   },
   "linkReport": {
     "message": "Report a Bug"
