@@ -44,16 +44,14 @@ const init = () => {
       if (env.DEBUG) {
         window.Liker = liker;
       }
+
+      liker.init();
+
       /*
       We're hooking into YouTube's custom events to determine when the video changes.
-      However YouTube Gaming's yt-navigate event doesn't fire initially.
        */
-      if (IS_GAMING) {
-        liker.init();
-        document.querySelector('ytg-app').addEventListener('yt-page-data-updated', liker.init);
-        return;
-      }
-      document.querySelector('ytd-app').addEventListener('yt-page-data-updated', liker.init);
+      const appSelector = IS_GAMING ? 'ytg-app' : 'ytd-app';
+      document.querySelector('ytg-app').addEventListener('yt-page-data-updated', liker.init);
     }
     else {
     	const liker = new Liker(options);
