@@ -42,6 +42,11 @@ svg {
   opacity: 0.8;
 }
 
+.reload-notice {
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
 .form-group {
   margin-bottom: 1rem;
 }
