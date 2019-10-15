@@ -6,8 +6,9 @@ export default class MaterialLiker {
   /**
    * @param {Object} options
    */
-  constructor(options) {
+  constructor({ options, log }) {
     this.options = options;
+    this.log = log ? log : () => {};
     this.iconSvgData = {
       like: 'M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z',
       dislike: 'M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z'
@@ -16,6 +17,16 @@ export default class MaterialLiker {
     this.init = this.init.bind(this);
     this.reset = this.reset.bind(this);
     this.attemptLike = this.attemptLike.bind(this);
+  }
+
+  /**
+   * Just helpful for thisging at the moment
+   */
+  stop() {
+    this.log('stopped');
+    if (typeof this.onStop === 'function') {
+      this.onStop();
+    }
   }
 
   /**
@@ -30,8 +41,6 @@ export default class MaterialLiker {
    * @param  {Function} callback
    */
   waitForButtons(callback) {
-    // console.log('checking buttons...')
-
 		// Select the like/dislike icons using their SVG data
 		const iconLike = document.querySelector(`g path[d="${this.iconSvgData.like}"]`);
 		const iconDislike = document.querySelector(`g path[d="${this.iconSvgData.dislike}"]`);
@@ -42,6 +51,8 @@ export default class MaterialLiker {
       // YouTube gaming uses a different button type
 			this.dom.like = iconLike.closest('yt-icon-button, paper-icon-button');
 			this.dom.dislike = iconDislike.closest('yt-icon-button, paper-icon-button');
+
+      this.log('...buttons ready');
       callback();
 		}
     // Otherwise wait a second and try again
@@ -55,10 +66,12 @@ export default class MaterialLiker {
    * @param  {Function} callback
    */
   waitForVideo(callback) {
-    // console.log('checking video...')
+    this.log('waiting for video...');
+
     this.video = document.querySelector('.video-stream');
     // Does the video exist?
     if (this.video) {
+      this.log('...video ready');
       callback();
 		}
     // Otherwise wait a second and try again
@@ -71,7 +84,6 @@ export default class MaterialLiker {
    * @return {Boolean} True if the like or dislike button is active
    */
   isVideoRated() {
-    // console.log('isVideoRated?')
     return (this.dom.like.classList.contains('style-default-active') && !this.dom.like.classList.contains('size-default')) ||
            this.dom.dislike.classList.contains('style-default-active');
   }
@@ -81,7 +93,6 @@ export default class MaterialLiker {
    *                   the current video's channel
    */
   isUserSubscribed() {
-    // console.log('isUserSubbed?')
     // Select the sub button
     const subButton = this.dom.sub || document.querySelector('ytd-watch-flexy ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button .subscribed');;
     // Does the button exist?
@@ -94,7 +105,6 @@ export default class MaterialLiker {
     // TODO: If not, let's reinitialize the Liker if the user subscribes
     // else if (this.options.like_what === 'subscribed') {
     //   subButton.addEventListener('click', e => {
-    //     // console.log('subButton click')
     //     e.target.removeEventListener(e.type, arguments.callee);
     //     this.init();
     //   });
@@ -113,19 +123,26 @@ export default class MaterialLiker {
    * then clickity click the button
    */
   attemptLike() {
+    this.log('waiting for buttons...');
+
     this.waitForButtons(() => {
       /*
       If the video is already liked/disliked
       or the user isn't subscribed to this channel,
       then we don't need to do anything.
        */
-      if (this.isVideoRated() || (this.options.like_what === 'subscribed' && !this.isUserSubscribed())) {
-        return;
+      if (this.isVideoRated()) {
+        this.log('video already rated');
+        return this.stop();
+      }
+      if (this.options.like_what === 'subscribed' && !this.isUserSubscribed()) {
+        this.log('user not subscribed');
+        return this.stop();
       }
 
-      // console.log('attempting like...')
-
       this.dom.like.click();
+      this.log('like button clicked');
+      this.stop();
     });
   }
 
@@ -134,12 +151,13 @@ export default class MaterialLiker {
    * The liker won't do anything unless this method is called.
    */
   init() {
-    // console.log('initializing...')
+    this.log('liker initialized');
 
     // Bail if we don't need to do anything
     // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
     if (this.options.disabled || this.options.like_what === 'none') {
-      return;
+      this.log('liker is disabled');
+      return this.stop();
     }
 
     this.reset();

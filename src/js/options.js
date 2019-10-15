@@ -17,24 +17,15 @@ const defaults = {
 const optionManager = new OptionManager(defaults);
 const i18n = new I18n();
 const bugReportTemplate = `
-> Thanks for reporting! Please fill in the following info:
+<!-- Thanks for reporting! A debug log is already attached. If you have any other info that might be helpful, please write above the line. -->
 
-OS (Windows / MacOS / etc.):
 
-YouTube version (YouTube / YouTube Gaming):
 
-What happened:
-
-Anything helpful to reproduce the issue:
-
-Current settings (leave this alone):
+__________________________
+### Log
 `;
 
 i18n.populateText();
-
-function serialize(obj) {
-  return Object.keys(obj).map(k => `${encodeURIComponent(k)}: ${encodeURIComponent(obj[k])}`).join(encodeURI(', '));
-}
 
 const loadOptions = async () => {
   const options = await optionManager.get();
@@ -53,10 +44,16 @@ const loadOptions = async () => {
         field.value = val;
       }
     });
-  // Add options state to report issue link
-  const reportLink = document.querySelector('#report-link');
-  const url = `https://github.com/austencm/youtube-auto-like/issues/new?labels=bug&body=${encodeURI(bugReportTemplate)}${serialize(options)}`;
-  reportLink.setAttribute('href', url);
+
+  chrome.storage.sync.get({ log: '[no log found]' }, ({ log }) => {
+    // Add options state to report issue link
+    const reportLink = document.querySelector('#report-link');
+    const url = `https://github.com/austencm/youtube-auto-like/issues/new?title=Bug%20Report&labels=bug&body=${encodeURIComponent(bugReportTemplate + log)}`;
+    reportLink.setAttribute('href', url);
+
+    document.querySelector('.reload-notice').innerText = log;
+  })
+
 }
 
 const handleOptionsChange = async (e) => {
