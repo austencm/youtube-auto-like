@@ -43,5 +43,8 @@
   },
   "linkReport": {
     "message": "Report a Bug"
+  },
+  "reloadNotice": {
+    "message": "Reload the page to apply changes."
   }
 }

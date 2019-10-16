@@ -40,5 +40,8 @@
   },
   "linkReport": {
     "message": "Not working?"
+  },
+  "reloadNotice": {
+    "message": "Reload the page to apply changes."
   }
 }

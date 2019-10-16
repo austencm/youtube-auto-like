@@ -40,5 +40,8 @@
   },
   "linkReport": {
     "message": "Bug melden"
+  },
+  "reloadNotice": {
+    "message": "Reload the page to apply changes."
   }
 }
