@@ -13,14 +13,17 @@
     "like",
     "chrome",
     "browser",
-    "extension"
+    "extension",
+    "plugin",
+    "addon"
   ],
   "contributors": [
     "Taknok (https://github.com/Taknok)",
     "JKetelaar (https://github.com/JKetelaar)",
     "Szmyk (https://github.com/Szmyk)",
     "moweME (https://github.com/moweME)",
-    "mariovalney (https://github.com/mariovalney)"
+    "mariovalney (https://github.com/mariovalney)",
+    "Borian23 (https://github.com/Borian23)"
   ],
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.0",
