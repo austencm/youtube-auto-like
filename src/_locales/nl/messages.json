@@ -23,7 +23,7 @@
   "optLikeAll": {
     "message": "Vindt alle videos leuk"
   },
-  "optLikeNone": {
+  "optDisable": {
     "message": "Schakel uit"
   },
   "optLikeInstant": {

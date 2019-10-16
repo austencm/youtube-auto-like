@@ -23,9 +23,6 @@
   "optLikeAll": {
     "message": "All videos"
   },
-  "optLikeNone": {
-    "message": "Disable"
-  },
   "optDisable": {
     "message": "Disable"
   },
@@ -42,6 +39,6 @@
     "message": "Feed my cats"
   },
   "linkReport": {
-    "message": "Something wrong?"
+    "message": "Not working?"
   }
 }

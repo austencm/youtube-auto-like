@@ -23,9 +23,6 @@
   "optLikeAll": {
     "message": "Wszystkie filmy"
   },
-  "optLikeNone": {
-    "message": "Wyłączone"
-  },
   "optDisable": {
     "message": "Wyłączone"
   },
@@ -36,12 +33,12 @@
     "message": "Po dwóch minutach"
   },
   "optLikePercent": {
-    "message": "After watching 50%"
+    "message": "Po obejrzeniu 50%"
   },
   "linkDonate": {
     "message": "Wspomóż!"
   },
   "linkReport": {
-    "message": "Report a Bug"
+    "message": "Zgłoś błąd"
   }
 }

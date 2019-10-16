@@ -23,9 +23,6 @@
 	"optLikeAll": {
 		"message": "Like toutes les vidéos"
 	},
-	"optLikeNone": {
-		"message": "Désactiver"
-  },
   "optDisable": {
 		"message": "Désactiver"
   },
