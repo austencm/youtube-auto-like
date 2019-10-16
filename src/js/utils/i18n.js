@@ -8,36 +8,47 @@ export default class I18n {
     this.msg = syntax || {
       start: '__MSG_',
       end: '__'
+    };
+  }
+
+  localize(text) {
+    while(text.includes(this.msg.start)) {
+      let keyStart = text.indexOf(this.msg.start) + this.msg.start.length;
+      let key = text.substring(keyStart, text.indexOf(this.msg.end, keyStart));
+      let placeholder = `${this.msg.start}${key}${this.msg.end}`;
+      let localized = chrome.i18n.getMessage(key);
+
+      // Replace all instances of this placeholder with the localized text
+      text = text.replace(new RegExp(placeholder, 'g'), localized);
     }
+
+    return text;
   }
 
   /**
    * Finds and replaces placeholder strings with localized text
    */
   populateText() {
-    let node,
-        walker = document.createTreeWalker(
-                    document.body,
-                    // Only look at text nodes
-                    NodeFilter.SHOW_TEXT,
-                    // Ignore script and style tags
-                    (node) => 'script style'.includes(node.tagName) ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT,
-                    false
-                  )
+    let node = null;
+    let walker = document.createTreeWalker(
+      document.body,
+      // Only look at text nodes
+      NodeFilter.SHOW_TEXT,
+      // Ignore script and style tags
+      node => 'script style'.includes(node.tagName) ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT,
+      false
+    );
 
-    // Loop through all text nodes
-    while( node = walker.nextNode() ) {
-      // We only care about this text if it contains placeholder syntax
-      while( node.textContent.includes(this.msg.start) ) {
-        let text = node.textContent,
-            keyStart = text.indexOf(this.msg.start) + this.msg.start.length,
-            key = text.substring( keyStart, text.indexOf(this.msg.end, keyStart) ),
-            placeholder = `${this.msg.start}${key}${this.msg.end}`,
-            localized = chrome.i18n.getMessage(key)
-
-        // Replace all instances of this placeholder with the localized text
-        node.textContent = text.replace(new RegExp(placeholder, 'g'), localized)
-      }
+    // Localize text nodes
+    while(node = walker.nextNode()) {
+      node.textContent = this.localize(node.textContent);
     }
+
+    // Localize attributes of elements tagged with the 'data-i18n' attribute
+    document.querySelectorAll('[data-i18n]').forEach($elem => {
+      Array.from($elem.attributes).forEach(({ nodeName, nodeValue }) => {
+        $elem.setAttribute(nodeName, this.localize(nodeValue));
+      });
+    });
   }
 }
