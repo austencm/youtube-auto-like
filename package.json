@@ -2,6 +2,7 @@
   "name": "youtube-auto-like",
   "description": "Automatically like YouTube videos from your favorite content creators.",
   "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
+  "version": "2.5.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/austencm/youtube-auto-like.git"
