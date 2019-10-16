@@ -51,7 +51,7 @@ const init = () => {
       We're hooking into YouTube's custom events to determine when the video changes.
        */
       const appSelector = IS_GAMING ? 'ytg-app' : 'ytd-app';
-      document.querySelector('ytg-app').addEventListener('yt-page-data-updated', liker.init);
+      document.querySelector(appSelector).addEventListener('yt-page-data-updated', liker.init);
     }
     else {
     	const liker = new Liker(options);
