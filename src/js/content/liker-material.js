@@ -2,6 +2,12 @@
  * Likes YouTube videos.
  * For the newer material design layout
  */
+const selectors = {
+ iconLike: 'g path[d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"]',
+ iconDislike: 'g path[d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"]',
+ subscribeButton: 'ytd-watch-flexy ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button .subscribed',
+};
+
 export default class MaterialLiker {
   /**
    * @param {Object} options
@@ -9,10 +15,7 @@ export default class MaterialLiker {
   constructor({ options, log }) {
     this.options = options;
     this.log = log ? log : () => {};
-    this.iconSvgData = {
-      like: 'M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z',
-      dislike: 'M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z'
-    };
+    this.cache = {};
 
     this.init = this.init.bind(this);
     this.reset = this.reset.bind(this);
@@ -33,7 +36,7 @@ export default class MaterialLiker {
    * Clears data for another round of slick liking action
    */
   reset() {
-    this.dom = {};
+    this.cache = {};
   }
 
   /**
@@ -41,16 +44,15 @@ export default class MaterialLiker {
    * @param  {Function} callback
    */
   waitForButtons(callback) {
-		// Select the like/dislike icons using their SVG data
-		const iconLike = document.querySelector(`g path[d="${this.iconSvgData.like}"]`);
-		const iconDislike = document.querySelector(`g path[d="${this.iconSvgData.dislike}"]`);
+		const iconLike = document.querySelector(selectors.iconLike);
+		const iconDislike = document.querySelector(selectors.iconDislike);
 
     // Make sure both icons exist
 		if (iconLike && iconDislike) {
 			// Find and store closest buttons
       // YouTube gaming uses a different button type
-			this.dom.like = iconLike.closest('yt-icon-button, paper-icon-button');
-			this.dom.dislike = iconDislike.closest('yt-icon-button, paper-icon-button');
+			this.cache.likeButton = iconLike.closest('yt-icon-button, paper-icon-button');
+			this.cache.dislikeButton = iconDislike.closest('yt-icon-button, paper-icon-button');
 
       this.log('...buttons ready');
       callback();
@@ -84,8 +86,13 @@ export default class MaterialLiker {
    * @return {Boolean} True if the like or dislike button is active
    */
   isVideoRated() {
-    return (this.dom.like.classList.contains('style-default-active') && !this.dom.like.classList.contains('size-default')) ||
-           this.dom.dislike.classList.contains('style-default-active');
+    return (
+      (
+        this.cache.likeButton.classList.contains('style-default-active') &&
+        !this.cache.likeButton.classList.contains('size-default')
+      ) ||
+      this.cache.dislikeButton.classList.contains('style-default-active')
+    );
   }
 
   /**
@@ -94,12 +101,12 @@ export default class MaterialLiker {
    */
   isUserSubscribed() {
     // Select the sub button
-    const subButton = this.dom.sub || document.querySelector('ytd-watch-flexy ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button .subscribed');;
+    const subscribeButton = this.cache.subscribeButton || document.querySelector(selectors.subscribeButton);
     // Does the button exist?
-    if (!subButton) return false;
+    if (!subscribeButton) return false;
     // Is the button active?
-    if (subButton.hasAttribute('subscribed') || subButton.classList.contains('subscribed')) {
-      this.dom.sub = subButton;
+    if (subscribeButton.hasAttribute('subscribed') || subscribeButton.classList.contains('subscribed')) {
+      this.cache.subscribeButton = subscribeButton;
       return true;
     }
     // TODO: If not, let's reinitialize the Liker if the user subscribes
@@ -140,7 +147,7 @@ export default class MaterialLiker {
         return this.stop();
       }
 
-      this.dom.like.click();
+      this.cache.likeButton.click();
       this.log('like button clicked');
       this.stop();
     });
