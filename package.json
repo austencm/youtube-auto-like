@@ -1,23 +1,26 @@
 {
   "name": "youtube-auto-like",
-  "description": "Automatically like YouTube videos from your favorite content creators.",
-  "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
   "version": "2.5.0",
+  "description": "Automatically like YouTube videos from your favorite content creators.",
+  "keywords": [
+    "addon",
+    "auto",
+    "automatic",
+    "browser",
+    "chrome",
+    "extension",
+    "like",
+    "plugin",
+    "youtube"
+  ],
+  "homepage": "https://github.com/austencm/youtube-auto-like",
+  "bugs": "https://github.com/austencm/youtube-auto-like/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/austencm/youtube-auto-like.git"
   },
-  "keywords": [
-    "youtube",
-    "auto",
-    "automatic",
-    "like",
-    "chrome",
-    "browser",
-    "extension",
-    "plugin",
-    "addon"
-  ],
+  "license": "MIT",
+  "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
   "contributors": [
     "Taknok (https://github.com/Taknok)",
     "JKetelaar (https://github.com/JKetelaar)",
@@ -26,6 +29,10 @@
     "mariovalney (https://github.com/mariovalney)",
     "Borian23 (https://github.com/Borian23)"
   ],
+  "scripts": {
+    "build": "NODE_ENV=production node utils/build.js",
+    "start": " NODE_ENV=development DEBUG=true node utils/webserver.js"
+  },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
@@ -42,9 +49,9 @@
     "webpack-merge": "^4.2.2",
     "write-file-webpack-plugin": "4.5.1"
   },
-  "scripts": {
-    "build": "NODE_ENV=production node utils/build.js",
-    "start": " NODE_ENV=development DEBUG=true node utils/webserver.js"
-  },
-  "dependencies": {}
+  "engines": {
+    "node": ">= 11.6.0",
+    "npm": ">= 6.12.0",
+    "yarn": ">= 1.17.3"
+  }
 }
