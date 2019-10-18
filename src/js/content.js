@@ -10,8 +10,7 @@ const debug = new Debug();
 // We need to know which version of YouTube we're dealing with
 // The material version has no ID on the body, hence this dumb check
 const IS_MATERIAL = !document.body.id;
-const IS_GAMING = window.location.href.indexOf('//gaming.youtube') > -1;
-debug.log('YouTube variant:', IS_GAMING ? 'gaming' : (IS_MATERIAL ? 'material' : 'classic'));
+debug.log('YouTube variant:', IS_MATERIAL ? 'material' : 'classic');
 
 debug.log('navigated:', window.location.href);
 ['yt-navigate', 'yt-navigate-finish', 'yt-page-data-updated'].forEach(eventType => {
@@ -50,8 +49,7 @@ const init = () => {
       /*
       We're hooking into YouTube's custom events to determine when the video changes.
        */
-      const appSelector = IS_GAMING ? 'ytg-app' : 'ytd-app';
-      document.querySelector(appSelector).addEventListener('yt-page-data-updated', liker.init);
+      document.querySelector('ytd-app').addEventListener('yt-page-data-updated', liker.init);
     }
     else {
     	const liker = new Liker(options);
