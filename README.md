@@ -20,6 +20,7 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 ## Releases
 | Version     | Date           | Changelog |
 | ----------- | -------------- | --------- |
+| **`v2.5.1`** | _Oct 17, 2019_ | <ul><li>Fix misidentifying comment like buttons on homepage and trying to click them</li></ul> |
 | **`v2.5.0`** | _Oct 16, 2019_ | <ul><li>YouTube changed a thing and the first video viewed was not getting liked</li><li>Now creates a log when the extension runs that will be included with bug reports</li><li>Polish translation additions from @Borian23</li></ul> |
 | **`v2.4.0`** | _Apr 15, 2019_ | <ul><li>Switch to Webpack</li><li>Fix liker thinking user wasn't subscribed when navigating to a video from the homepage</li><li>PT_BR translation</li></ul> |
 | **`v2.3.2`** | _Dec 3, 2018_ | <ul><li>Fix font not loading</li><li>Better DE translation</li>
