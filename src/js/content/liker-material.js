@@ -166,6 +166,11 @@ export default class MaterialLiker {
       this.log('liker is disabled');
       return this.stop();
     }
+    // YouTube designates pages with a video as watch pages
+    if (!document.querySelector('ytd-app[is-watch-page]')) {
+      this.log('not a watch page');
+      return this.stop();
+    }
 
     this.reset();
 
