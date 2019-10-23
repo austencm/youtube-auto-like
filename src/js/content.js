@@ -13,14 +13,17 @@ const IS_MATERIAL = !document.body.id;
 debug.log('YouTube variant:', IS_MATERIAL ? 'material' : 'classic');
 
 debug.log('navigated:', window.location.href);
-['yt-navigate', 'yt-navigate-finish', 'yt-page-data-updated'].forEach(eventType => {
-  document.querySelector('ytd-app').addEventListener(eventType, e => {
-    debug.log('event:', e.type);
-    if (eventType === 'yt-navigate-finish') {
-      debug.log('navigated:', window.location.href);
-    }
+if (env.DEBUG) {
+  ['yt-navigate', 'yt-navigate-finish', 'yt-page-data-updated'].forEach(eventType => {
+    const appRoot = document.querySelector('ytd-app');
+    appRoot && appRoot.addEventListener(eventType, e => {
+      debug.log('event:', e.type);
+      if (eventType === 'yt-navigate-finish') {
+        debug.log('navigated:', window.location.href);
+      }
+    });
   });
-});
+}
 
 const init = () => {
   // Create an OptionManager
