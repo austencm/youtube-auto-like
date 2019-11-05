@@ -35,7 +35,7 @@ class Liker {
 			setTimeout(() => this.waitForButtons(callback), 1000 );
 	}
 
-		/**
+	/**
 	* Detects when the video player has loaded
 	* @param  {Function} callback
 	*/
@@ -52,7 +52,7 @@ class Liker {
 		return Math.floor(Math.random() * (max - min + 1) + min);
 	}
 
-	/*
+	/**
 	 * Wait the number of minutes or % specified by user
 	 */
 	waitTimer(callback) {
@@ -158,6 +158,7 @@ class Liker {
 	 */
 	init() {
 		if (this.options.like_what === "none") {
+			console.log("yt-autolike disabled")
 			return;
 		}
 
