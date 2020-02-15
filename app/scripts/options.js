@@ -42,23 +42,6 @@ function onMinuteChange() {
 	onFieldChange.call(buttonPercentage);
 }
 
-
-// Restore options
-optionManager.get().then((options) => {
-	document.querySelector(`input[name="like_what"][value="${options.like_what}"]`).setAttribute("checked", "checked");
-	document.querySelector(`input[name="like_timer"][value="${options.like_timer}"]`).click();
-	document.querySelector(`input[name="type_timer"][value="${options.type_timer}"]`).setAttribute("checked", "checked");
-	document.querySelector(`input[name="type_list"][value="${options.type_list}"]`).setAttribute("checked", "checked");
-	if (options.use_list)
-		document.getElementById("use_list").setAttribute("checked", "checked");
-	document.getElementById(`${options.type_timer}-value`).setAttribute("value",`${options.timer_value}`);
-	if (options.debug)
-		document.getElementById("debug-div").setAttribute("checked", "checked");
-	if (options.debug_displayed)
-			document.getElementById("debug-div").classList.remove("hide-by-default");
-})
-.catch( (e) => console.error(e) );
-
 // Hide button if not on video or creator page
 function isVideo(url) {
 	return url.indexOf("https://www.youtube.com/watch?v=") !== -1;
@@ -141,9 +124,11 @@ function displayAddRmButton() {
 			getThisCreator(tab).then((creator) => {
 				isInList(creator).then((in_list) => {
 					if ( in_list ) {
+						console.log("Displaying 'Remove' button");
 						document.getElementById("list-remove-creator").classList.remove("hide-by-default");
 						document.getElementById("list-add-creator").classList.add("hide-by-default");
 					} else {
+						console.log("Displaying 'Add' button");
 						document.getElementById("list-remove-creator").classList.add("hide-by-default");
 						document.getElementById("list-add-creator").classList.remove("hide-by-default");
 					}
@@ -216,6 +201,29 @@ MAIN
 docReady(function() {
 	// Set the counter
 	cronRefreshCounter()
+
+	// Display the right button regard to the current video
+	displayAddRmButton();
+
+	// Restore options
+	optionManager.get().then((options) => {
+		document.querySelector(`input[name="like_what"][value="${options.like_what}"]`).setAttribute("checked", "checked");
+		document.querySelector(`input[name="like_timer"][value="${options.like_timer}"]`).click();
+		document.querySelector(`input[name="type_timer"][value="${options.type_timer}"]`).setAttribute("checked", "checked");
+		document.querySelector(`input[name="type_list"][value="${options.type_list}"]`).setAttribute("checked", "checked");
+		if (options.use_list)
+			document.getElementById("use_list").setAttribute("checked", "checked");
+		document.getElementById(`${options.type_timer}-value`).setAttribute("value",`${options.timer_value}`);
+		console.log("Debug is:", options.debug);
+		if (options.debug)
+			document.getElementById("debug").setAttribute("checked", "checked");
+		console.log("Debug display is:", options.debug_displayed);
+		if (options.debug_displayed) {
+			console.log("Removing hidden prop for debug button");
+			document.getElementById("debug-div").classList.remove("hide-by-default");
+		}
+	})
+	.catch( (e) => console.error(e) );
 
 	// Reset the counter if double click
 	document.getElementById("counter").addEventListener( 'dblclick', () => {
