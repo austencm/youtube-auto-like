@@ -47,14 +47,38 @@ svg {
   margin: auto;
 }
 
-
 #title {
-	font-size: 17px;
-	font-weight: normal;
-	margin: 0 0 1em;
-	color: #e62117;
-	text-transform: uppercase;
-	letter-spacing: 0.1em; 
+  display: inline-flex;
+  color: #e62117;
+  width: 100%;
+}
+
+#title h1 {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  font-size: 17px;
+  font-weight: normal;
+  color: #e62117;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  width: auto;
+}
+
+#counter {
+  flex-grow: 1; 
+  float: right;
+  margin-top: 0px;
+  width: 100px;
+  text-align: right;
+  cursor: pointer;
+}
+
+#counter-value {
+  vertical-align: middle;
+}
+
+#counter svg {
+  vertical-align: middle;
 }
 
 label {

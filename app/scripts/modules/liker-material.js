@@ -344,7 +344,10 @@ class MaterialLiker {
 						}
 						this.attemptLike();
 						log('liked');
-						this.finish();
+						this.options.counter += 1;
+						optionManager.set(this.options).then(() => {
+							this.finish();							
+						});
 					});
 				});
 			});

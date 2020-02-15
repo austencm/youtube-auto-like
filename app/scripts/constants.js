@@ -9,4 +9,5 @@ var OPTIONS = {
 	creator_list: [],
 	debug: false,
 	debug_displayed: false,
+	counter: 0,
 }

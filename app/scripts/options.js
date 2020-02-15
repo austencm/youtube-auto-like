@@ -154,59 +154,127 @@ function displayAddRmButton() {
 	.catch( (e) => console.error(e) );
 }
 
+function refreshCounter() {
+	optionManager.get().then((options) => {
+		var counter_value = document.getElementById("counter-value")
+		counter_value.textContent = options.counter;
+		resizeCounter();
+	});
+}
+
+function cronRefreshCounter() {
+	refreshCounter();
+	setTimeout(cronRefreshCounter, 1000);
+}
+
+function isCounterOverflown() {
+	var counter = document.getElementById("counter");
+	var svg = document.querySelector("#counter>svg").getBBox();
+	var counter_value = document.getElementById("counter-value");
+
+	if (counter.offsetWidth < (counter_value.offsetWidth + svg.width) ) {
+		concole.log("counter overflow");
+		return true
+	} else {
+		console.log("counter no overflow");
+		return false
+	}
+}
+
+function resizeCounter() {
+	console.log("Resizing counter")
+	var element = document.getElementById("counter-value");
+	var fontSize = parseFloat(window.getComputedStyle(element).getPropertyValue('font-size'));
+	console.log("Current font size of counter: ", fontSize)
+	for (let i = fontSize; i > 7; i--) {
+		console.log("Iteration on size:", i);
+		let overflow = isCounterOverflown();
+		console.log("Is overflow:", overflow)
+		if (overflow) {
+			element.style.fontSize = i + "px";
+		} else {
+			break;
+		}
+	}
+}
+
+function docReady(fn) {
+	// see if DOM is already available
+	if (document.readyState === "complete" || document.readyState === "interactive") {
+		// call on next available tick
+		setTimeout(fn, 1);
+	} else {
+		document.addEventListener("DOMContentLoaded", fn);
+	}
+}
+
+
+
 /*
 MAIN
 */
+docReady(function() {
+	// Set the counter
+	cronRefreshCounter()
 
-displayAddRmButton();
+	// Reset the counter if double click
+	document.getElementById("counter").addEventListener( 'dblclick', () => {
+		optionManager.get().then((options) => {
+			options.counter = 0;
+			optionManager.set(options);
+			refreshCounter();
+		});
 
-// Trigger a function when the user changes an option
-document.querySelectorAll('input[type="radio"]').forEach((field) => {
-	field.addEventListener( 'click', onFieldChange.bind(field) );
-});
+	});
 
-document.querySelectorAll("input[type='checkbox']").forEach((field) => {
-	field.addEventListener("click", onCheckboxChange.bind(field));	
-});
+	// Trigger a function when the user changes an option
+	document.querySelectorAll('input[type="radio"]').forEach((field) => {
+		field.addEventListener( 'click', onFieldChange.bind(field) );
+	});
 
-document.getElementById("percentage-value").addEventListener( 'input', onPercentageChange);
-document.getElementById("minute-value").addEventListener( 'input', onMinuteChange);
+	document.querySelectorAll("input[type='checkbox']").forEach((field) => {
+		field.addEventListener("click", onCheckboxChange.bind(field));	
+	});
 
-document.getElementById("instant_like").addEventListener( 'click', () => {
-	document.getElementById("options-timer").style.visibility = "hidden";
-});
+	document.getElementById("percentage-value").addEventListener( 'input', onPercentageChange);
+	document.getElementById("minute-value").addEventListener( 'input', onMinuteChange);
 
-document.getElementById("custom_like").addEventListener( 'click', () => {
-	document.getElementById("options-timer").style.visibility = "visible";
-});
+	document.getElementById("instant_like").addEventListener( 'click', () => {
+		document.getElementById("options-timer").style.visibility = "hidden";
+	});
 
-document.getElementById("random_like").addEventListener( 'click', () => {
-	document.getElementById("options-timer").style.visibility = "hidden";
-});
+	document.getElementById("custom_like").addEventListener( 'click', () => {
+		document.getElementById("options-timer").style.visibility = "visible";
+	});
 
-document.getElementById("list-manage").addEventListener( 'click', () => {
-	window.open("./manage.html");
-	window.close()
-});
+	document.getElementById("random_like").addEventListener( 'click', () => {
+		document.getElementById("options-timer").style.visibility = "hidden";
+	});
 
-document.getElementById("list-add-creator").addEventListener( 'click', () => {
-	saveThisCreator();
-});
+	document.getElementById("list-manage").addEventListener( 'click', () => {
+		window.open("./manage.html");
+		window.close()
+	});
 
-document.getElementById("list-remove-creator").addEventListener( 'click', () => {
-	removeThisCreator();
-});
+	document.getElementById("list-add-creator").addEventListener( 'click', () => {
+		saveThisCreator();
+	});
 
-var enable_debug = new Konami(function() {
-	console.log("Konami code done !")
-	optionManager.get().then((options) => {
-		options.debug_displayed = !options.debug_displayed
-		optionManager.set(options).then(() => {
-			if (options.debug_displayed) {
-				document.getElementById("debug-div").classList.remove("hide-by-default");
-			} else {
-				document.getElementById("debug-div").classList.add("hide-by-default");
-			}
+	document.getElementById("list-remove-creator").addEventListener( 'click', () => {
+		removeThisCreator();
+	});
+
+	var enable_debug = new Konami(function() {
+		console.log("Konami code done !")
+		optionManager.get().then((options) => {
+			options.debug_displayed = !options.debug_displayed
+			optionManager.set(options).then(() => {
+				if (options.debug_displayed) {
+					document.getElementById("debug-div").classList.remove("hide-by-default");
+				} else {
+					document.getElementById("debug-div").classList.add("hide-by-default");
+				}
+			});
 		});
 	});
 });
