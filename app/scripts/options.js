@@ -68,12 +68,10 @@ async function getActiveTab() {
 
 
 async function callCreatorFromVideo(tab) {
-	console.log("Get creator from video");
 	return await browser.tabs.sendMessage(tab.id, "get_creator_from_video");
 }
 
 async function callCreatorFromHome(tab) {
-	console.log("Get creator from home");
 	let creator = await browser.tabs.sendMessage(tab.id, "get_creator_from_home");
 	return creator
 }
@@ -124,11 +122,11 @@ function displayAddRmButton() {
 			getThisCreator(tab).then((creator) => {
 				isInList(creator).then((in_list) => {
 					if ( in_list ) {
-						console.log("Displaying 'Remove' button");
+						// Displaying 'Remove' button
 						document.getElementById("list-remove-creator").classList.remove("hide-by-default");
 						document.getElementById("list-add-creator").classList.add("hide-by-default");
 					} else {
-						console.log("Displaying 'Add' button");
+						// Displaying 'Add' button
 						document.getElementById("list-remove-creator").classList.add("hide-by-default");
 						document.getElementById("list-add-creator").classList.remove("hide-by-default");
 					}
@@ -158,23 +156,17 @@ function isCounterOverflown() {
 	var counter_value = document.getElementById("counter-value");
 
 	if (counter.offsetWidth < (counter_value.offsetWidth + svg.width) ) {
-		concole.log("counter overflow");
 		return true
 	} else {
-		console.log("counter no overflow");
 		return false
 	}
 }
 
 function resizeCounter() {
-	console.log("Resizing counter")
 	var element = document.getElementById("counter-value");
 	var fontSize = parseFloat(window.getComputedStyle(element).getPropertyValue('font-size'));
-	console.log("Current font size of counter: ", fontSize)
 	for (let i = fontSize; i > 7; i--) {
-		console.log("Iteration on size:", i);
 		let overflow = isCounterOverflown();
-		console.log("Is overflow:", overflow)
 		if (overflow) {
 			element.style.fontSize = i + "px";
 		} else {
@@ -200,7 +192,7 @@ MAIN
 */
 docReady(function() {
 	// Set the counter
-	cronRefreshCounter()
+	cronRefreshCounter();
 
 	// Display the right button regard to the current video
 	displayAddRmButton();
@@ -209,15 +201,24 @@ docReady(function() {
 	optionManager.get().then((options) => {
 		document.querySelector(`input[name="like_what"][value="${options.like_what}"]`).setAttribute("checked", "checked");
 		document.querySelector(`input[name="like_timer"][value="${options.like_timer}"]`).click();
-		document.querySelector(`input[name="type_timer"][value="${options.type_timer}"]`).setAttribute("checked", "checked");
 		document.querySelector(`input[name="type_list"][value="${options.type_list}"]`).setAttribute("checked", "checked");
+
+		document.getElementById("percentage-value").value = options.percentage_value;
+		if (options.percentage_timer) {
+			document.getElementById("percentage-like").setAttribute("checked", "checked");
+		}
+
+		document.getElementById("minute-value").value = options.minute_value;
+		if (options.minute_timer) {
+			document.getElementById("minute-like").setAttribute("checked", "checked");
+		}
+
 		if (options.use_list)
 			document.getElementById("use_list").setAttribute("checked", "checked");
-		document.getElementById(`${options.type_timer}-value`).setAttribute("value",`${options.timer_value}`);
-		console.log("Debug is:", options.debug);
+
 		if (options.debug)
 			document.getElementById("debug").setAttribute("checked", "checked");
-		console.log("Debug display is:", options.debug_displayed);
+
 		if (options.debug_displayed) {
 			console.log("Removing hidden prop for debug button");
 			document.getElementById("debug-div").classList.remove("hide-by-default");

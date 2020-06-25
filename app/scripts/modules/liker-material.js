@@ -129,17 +129,18 @@ class MaterialLiker {
 			var video = document.getElementsByClassName('video-stream')[0];
 			let duration = video.duration;
 
-			if (this.options.type_timer == "percentage") {
-				let percentageAtLike = this.options.timer_value;
+			if (this.options.percentage_timer) {
+				let percentageAtLike = this.options.percentage_value;
 				let nowInPercent = video.currentTime / duration * 100;
 
 				if (nowInPercent >= percentageAtLike) {
 					callback();
-				} else {
-					setTimeout(() => this.waitTimer(callback), 1000 );
+					return;
 				}
-			} else if (this.options.type_timer == "minute") {
-				let timeAtLike = this.options.timer_value;
+			}
+
+			if (this.options.minute_timer) {
+				let timeAtLike = this.options.minute_value;
 				// change timeAtLike if vid shorter than time set by user
 				if (video.duration < timeAtLike) {
 					timeAtLike = video.duration;
@@ -149,10 +150,11 @@ class MaterialLiker {
 				}
 				if (video.currentTime >= timeAtLike) {
 					callback();
-				} else {
-					setTimeout(() => this.waitTimer(callback), 1000 );
+					return;
 				}
 			}
+
+			setTimeout(() => this.waitTimer(callback), 1000 );
 		}
 	}
 
@@ -220,6 +222,7 @@ class MaterialLiker {
 			mode_should_like = true;
 		}
 		
+		log("Use list:", this.options.use_list);
 		if (this.options.use_list) {
 			let list_should_like = "";
 			let creator = getCreatorFromVideo();
@@ -236,7 +239,8 @@ class MaterialLiker {
 			if (this.options.type_list === "white") {
 				log("List is in white mode")
 				list_should_like = in_list;
-				let should_like = list_should_like || mode_should_like;
+				// in white list only the list matter
+				let should_like = list_should_like;
 				log(`Should like: ${should_like}`);
 				return should_like;
 			} else if (this.options.type_list === "black") {
