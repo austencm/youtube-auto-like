@@ -154,6 +154,13 @@ class MaterialLiker {
 				}
 			}
 
+			// if both are disable event if custom timer is set
+			if (!this.options.minute_timer && !this.options.percentage_timer) {
+				// instant like
+				callback();
+				return;
+			}
+
 			setTimeout(() => this.waitTimer(callback), 1000 );
 		}
 	}
