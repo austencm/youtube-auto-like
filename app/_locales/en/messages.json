@@ -44,6 +44,9 @@
 	"optWhiteList": {
 		"message": "White list mode"
 	},
+	"optWhiteListWarning": {
+		"message": "⚠️ list is empty, nothing will be liked"
+	},
 	"linkDonate": {
 		"message": "Donate"
 	},

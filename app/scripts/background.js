@@ -4,8 +4,8 @@
  */
 function isNewVersion(stored_version, manifest_version) {
 	for (var i = 0; i <= stored_version.split(".").length - 1; i++) {
-		console.log(stored_version.split(".")[i])
-		console.log( manifest_version.split(".")[i])
+		console.log(stored_version.split(".")[i]);
+		console.log(manifest_version.split(".")[i]);
 		if (stored_version.split(".")[i] < manifest_version.split(".")[i]) {
 			return true;
 		}
@@ -24,6 +24,13 @@ function handleInstalled(details) {
 			// save the new version number
 			options.plugin_version = browser.runtime.getManifest().version;
 			optionManager.set(options);
+
+			// remove list if list is empty
+			if (options.creator_list.length === 0) {
+				options.use_list = false;
+				options.type_list = "black";
+				optionManager.set(options);
+			}
 		}
 		//browser.storage.local.clear();
 	});	

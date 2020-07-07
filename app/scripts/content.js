@@ -15,13 +15,13 @@ var log = () => {}
 
 // Add a listener to get the creator
 browser.runtime.onMessage.addListener( function(msg, sender, sendResponse) {
-	log("New message received")
+	log("New message received");
 	// If the received message has the expected format...
 	if (msg === "get_creator_from_video") {
 		// Get main video creator HTML block, if not main block is selected, others block from side video are selected
 		// This children main block selection can be done each time in CSS but this is quite heavy (3 times repetition)
-		let creator = getCreatorFromVideo()
-		log("Sending response", creator)
+		let creator = getCreatorFromVideo();
+		log("Sending response", creator);
 		sendResponse(creator);
 	} else if (msg == "get_creator_from_home") {
 		// too complicated to get the channel URL, this is not consisten between user
@@ -37,7 +37,7 @@ optionManager.get().then((options) => {
 	log("auto like injected");
 	if (IS_NOT_MATERIAL) {
 		log("old youtube detected");
-		console.error("youtube-auto-like do not support old youtube layout anymore")
+		console.error("youtube-auto-like do not support old youtube layout anymore");
 	} else {
 		let liker = new MaterialLiker(options);
 		if (IS_CLASSIC) {

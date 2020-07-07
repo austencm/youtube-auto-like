@@ -216,16 +216,16 @@ class MaterialLiker {
 	shouldLike() {
 		let rated = this.isVideoRated();
 		if (rated) {
-			log("Not like: already liked video")
+			log("Not like: already liked video");
 			return false;
 		}
 
 		let mode_should_like = "";
 		if (this.options.like_what === "subscribed") {
-			log("Sub mode")
+			log("Sub mode");
 			mode_should_like = this.isUserSubscribed();	
 		} else { // it all mode
-			log("All mode")
+			log("All mode");
 			mode_should_like = true;
 		}
 		
@@ -237,7 +237,7 @@ class MaterialLiker {
 			let in_list = false;
 			for (var i = 0; i < creator_list.length; i++) {
 				if ( creator_list[i].URL === creator.URL ) {
-					log("Creator is in list")
+					log("Creator is in list");
 					in_list = true;
 					break;
 				}
@@ -255,7 +255,7 @@ class MaterialLiker {
 				list_should_like = !in_list;
 
 				let should_like = list_should_like && mode_should_like;
-				log(`Should like: ${should_like}`)
+				log(`Should like: ${should_like}`);
 				return should_like;
 			} else {
 				console.error("Unknow list type for liker")

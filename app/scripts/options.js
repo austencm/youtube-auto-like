@@ -185,6 +185,23 @@ function docReady(fn) {
 	}
 }
 
+function getLabel(btn_id) {
+	return document.querySelector(`label[for="${btn_id}"]`);
+}
+
+function warnIfEmpty(btn) {
+	optionManager.get().then((options) => {
+		if (options.creator_list.length === 0 && btn.checked) {
+			let label = getLabel(btn.id);
+			let warned = label.getAttribute("warned");
+			if (!warned) {
+				label.setAttribute("warned", true);
+				label.innerText += " __MSG_optWhiteListWarning__" ;
+				i18n.populateText();
+			}
+		}
+	});
+}
 
 
 /*
@@ -235,6 +252,11 @@ docReady(function() {
 		});
 
 	});
+
+	//set a warning if list is empty in white list mode
+	let white_list_btn = document.getElementById("list-white");
+	warnIfEmpty(white_list_btn);
+	white_list_btn.addEventListener("click", () => {warnIfEmpty(white_list_btn)});
 
 	// Trigger a function when the user changes an option
 	document.querySelectorAll('input[type="radio"]').forEach((field) => {
