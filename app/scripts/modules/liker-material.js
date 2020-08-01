@@ -22,6 +22,12 @@ class MaterialLiker {
 		this.btns = {}
 	}
 
+	async update_options() {
+		this.options = await optionManager.get();
+		log("options updated");
+		return;
+	}
+
 	/**
 	 * Reset the attributes
 	 */
@@ -309,7 +315,7 @@ class MaterialLiker {
 	 * Starts the liking.
 	 * The liker won't do anything unless this method is called.
 	 */
-	init() {
+	async init() {
 		if (this.options.like_what === "none") {
 			log("yt-autolike disabled")
 			return;
@@ -323,6 +329,7 @@ class MaterialLiker {
 		// 		document.getElementsByClassName('videoAdUiSkipButton')[0].click;
 		// 	}
 		// });
+		await this.update_options();
 		this.waitForVideo(() => {
 			this.waitForButtons(() => {
 				/*
