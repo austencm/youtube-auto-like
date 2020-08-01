@@ -4,8 +4,6 @@
  */
 function isNewVersion(stored_version, manifest_version) {
 	for (var i = 0; i <= stored_version.split(".").length - 1; i++) {
-		console.log(stored_version.split(".")[i]);
-		console.log(manifest_version.split(".")[i]);
 		if (stored_version.split(".")[i] < manifest_version.split(".")[i]) {
 			return true;
 		}
