@@ -22,13 +22,6 @@ function handleInstalled(details) {
 			// save the new version number
 			options.plugin_version = browser.runtime.getManifest().version;
 			optionManager.set(options);
-
-			// remove list if list is empty
-			if (options.creator_list.length === 0) {
-				options.use_list = false;
-				options.type_list = "black";
-				optionManager.set(options);
-			}
 		}
 		//browser.storage.local.clear();
 	});	
