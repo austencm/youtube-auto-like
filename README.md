@@ -2,17 +2,22 @@
 
 # YouTube Auto Like
 
-[![Chrome Web Store](	https://img.shields.io/chrome-web-store/v/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
-[![Chrome Web Store](	https://img.shields.io/chrome-web-store/d/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
-[![Chrome Web Store](	https://img.shields.io/chrome-web-store/rating/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
-[![Chrome Web Store](	https://img.shields.io/chrome-web-store/rating-count/loodalcnddclgnfekfomcoiipiohcdim.svg)](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
+Never forget to like a video again.
 
-An extension that instantly likes videos from channels you subscribe to, so you never forget to support your favorite content creators. No authentication required.
+**Feb 2021: Sadly, Chrome removed this extension for violating [YouTube's terms of service](https://www.youtube.com/t/terms) (specifically the part about causing inaccurate measurements of user engagement). You can still load the extension locally by following these steps. Only do this for extensions you trust.**
+
+1. Download the latest release: https://github.com/austencm/youtube-auto-like/releases/download/v2.5.2/build.zip
+2. Unzip `build.zip` and put it somewhere it won't get deleted accidentally
+3. Open your extensions page in Chrome (in the top right, click ![the 3 dots](https://lh3.googleusercontent.com/E2q6Vj9j60Dw0Z6NZFEx5vSB9yoZJp7C8suuvQXVA_2weMCXstGD7JEvNrzX3wuQrPtL=w36-h36) > More Tools > Extensions)
+4. Turn on Developer Mode (in the top right)
+5. Click 'Load unpacked' and select the unzipped `build` folder
+
+Please note that the extension can't update automatically. Check back here if it stops working.
 
 ## Gimme
-> [Chrome](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)
+> <s>Chrome</s> (see above)
 
-> [Firefox (maintained by @Taknok)](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)
+> [Firefox (by @Taknok)](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)
 
 ## Translations
 Feel free to contribute with a [pull request](https://github.com/austencm/youtube-auto-like/pulls) or grab [the JSON file](https://raw.githubusercontent.com/austencm/youtube-auto-like/master/app/_locales/en/messages.json), translate it, and [send it back to me](mailto:heyausten@gmail.com).
@@ -20,6 +25,7 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 ## Releases
 | Version     | Date           | Changelog |
 | ----------- | -------------- | --------- |
+| **`v2.5.2`** | _Oct 22, 2019_ | <ul><li>Fix logging code causing error in old YouTube</li></ul> |
 | **`v2.5.1`** | _Oct 17, 2019_ | <ul><li>Fix misidentifying comment like buttons on homepage and trying to click them</li></ul> |
 | **`v2.5.0`** | _Oct 16, 2019_ | <ul><li>YouTube changed a thing and the first video viewed was not getting liked</li><li>Now creates a log when the extension runs that will be included with bug reports</li><li>Polish translation additions from @Borian23</li></ul> |
 | **`v2.4.0`** | _Apr 15, 2019_ | <ul><li>Switch to Webpack</li><li>Fix liker thinking user wasn't subscribed when navigating to a video from the homepage</li><li>PT_BR translation</li></ul> |
