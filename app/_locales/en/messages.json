@@ -39,10 +39,10 @@
 		"message": "Use list"
 	},
 	"optBlackList": {
-		"message": "Black list mode"
+		"message": "Block list mode"
 	},
 	"optWhiteList": {
-		"message": "White list mode"
+		"message": "Allow list mode"
 	},
 	"optWhiteListWarning": {
 		"message": "⚠️ list is empty, nothing will be liked"
