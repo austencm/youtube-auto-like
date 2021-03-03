@@ -119,10 +119,9 @@ class MaterialLiker {
 			return;
 		} 
 		else if (this.options.like_timer == "random") {
-			var video = document.getElementsByClassName('video-stream')[0];
-			let duration = video.duration;
+			let duration = this.video.duration;
 
-			let nowInPercent = video.currentTime / duration * 100;
+			let nowInPercent = this.video.currentTime / duration * 100;
 
 			if (nowInPercent >= this.randomTimerPercent) {
 				callback();
@@ -131,13 +130,11 @@ class MaterialLiker {
 			}
 		}
 		else {
-		
-			var video = document.getElementsByClassName('video-stream')[0];
-			let duration = video.duration;
+			let duration = this.video.duration;
 
 			if (this.options.percentage_timer) {
 				let percentageAtLike = this.options.percentage_value;
-				let nowInPercent = video.currentTime / duration * 100;
+				let nowInPercent = this.video.currentTime / duration * 100;
 
 				if (nowInPercent >= percentageAtLike) {
 					callback();
@@ -148,13 +145,13 @@ class MaterialLiker {
 			if (this.options.minute_timer) {
 				let timeAtLike = this.options.minute_value;
 				// change timeAtLike if vid shorter than time set by user
-				if (video.duration < timeAtLike) {
-					timeAtLike = video.duration;
+				if (this.video.duration < timeAtLike) {
+					timeAtLike = this.video.duration;
 				} else {
 					// convert in second
 					timeAtLike *= 60;
 				}
-				if (video.currentTime >= timeAtLike) {
+				if (this.video.currentTime >= timeAtLike) {
 					callback();
 					return;
 				}
@@ -169,6 +166,35 @@ class MaterialLiker {
 
 			setTimeout(() => this.waitTimer(callback), 1000 );
 		}
+	}
+
+	/**
+	 * Wait the video time indicator is greater the timer
+	 * @param {int} timer The time in second to wait
+	 * @param {function} callback The function to execute when timer is over
+	 */
+	waitTimerTwo(timer, callback) {
+		if (this.video.currentTime >= timer) {
+			callback();
+			return;
+		}
+		setTimeout(() => this.waitTimerTwo(timer, callback), 1000);
+	}
+
+	/**
+	 * Check timer not greater than video length and wait the video 
+	 * time indicator to be greater than the seconds requested
+	 * @param {int} timer The time in second to wait
+	 * @param {function} callback The function to execute when timer is over
+	 */
+	startTimer(timer, callback) {
+		let duration = this.video.duration;
+		// change timer if vid shorter than time requested
+		if (duration < timer) {
+			timer = duration;
+		}
+		this.waitTimerTwo(timer, callback)
+
 	}
 
 	/**
@@ -205,18 +231,32 @@ class MaterialLiker {
 	 * @return {function} callback The function to execute when the ad 
 	 *     is finished
 	 */
-	waitEndOfAd(callback) {
-		let video = document.querySelector('.video-stream');
-		if (typeof this.video === "undefined") {
-			console.error(
-				"waitEndOfAd can only be used after waitForVideo or else this.video is not defined"
-			);
-		}
-		if (this.video.closest(".ad-showing,.ad-interrupting") !== null) {
-			setTimeout(() => this.waitEndOfAd(), 1000 );
-		}
+	_waitEndOfAd(callback) {
+		// wait 1s to be sure that ad as load or not :
+		// if not waiting, js may be faster than ad loading (which is done after video loading)
+		// fortunatly, true video never start auto when an ad is loading, then wait video start to
+		// detect if this is an ad or true vid
+	 	this.waitTimerTwo(1, () => {
+			if (typeof this.video === "undefined") {
+				console.error(
+					"waitEndOfAd can only be used after waitForVideo or else this.video is not defined"
+				);
+			}
+			if (this.video.closest(".ad-showing,.ad-interrupting") !== null) {
+				setTimeout(() => this._waitEndOfAd(callback), 1000);
+				return;
+			} else {
+				log("ad finished");
 
-		callback();
+				// update video element to not be the ad element
+				callback();
+			}
+		});
+	}
+	waitEndOfAd(callback) {
+		log("Detecting ad");
+		this._waitEndOfAd(callback);
+		
 	}
 
 	shouldLike() {
