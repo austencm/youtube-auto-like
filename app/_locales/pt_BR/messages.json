@@ -4,15 +4,15 @@
 		"description": "Nome da Aplicação"
 	},
 	"appDesc": {
-		"message": "\"Automagicamente dá \"like\" em vídeos do YouTube de seus creadores de conteúdo favoritos.",
+		"message": "\"Automagicamente dá \"like\" em vídeos do YouTube de seus criadores de conteúdo favoritos.",
 		"description": "Descrição da aplicação"
 	},
 	"appDescDetail": {
-		"message": "Tudo que esta extensão faz é \"martelar\" o botão de \"like\" sempre que você assite à algum vídeo de um canal que você esteja inscrito. Sem nenhum esforço. Sem necessidade de autenticar. Opcionalmente, você pode de forma automática dar \"like\" em TODOS os vídeos. Porque? Eu não sei. Divirta-se. Sinta-se livre para sugerir novas funcionalidades ou contribuir:",
+		"message": "Tudo que esta extensão faz é \"martelar\" o botão de \"like\" sempre que você assiste à algum vídeo de um canal que você esteja inscrito. Sem nenhum esforço. Sem necessidade de autenticar. Opcionalmente, você pode de forma automática dar \"like\" em TODOS os vídeos. Porque? Eu não sei. Divirta-se. Sinta-se livre para sugerir novas funcionalidades ou contribuir:",
 		"description": "Descrição detalhada para a página da loja \"web\""
 	},
 	"optLikeSub": {
-		"message": "\"Like\" só vídeos da lista de canais que estou incrito"
+		"message": "\"Like\" só vídeos da lista de canais que estou inscrito"
 	},
 	"optLikeAll": {
 		"message": "\"Like\" em todos os vídeos"
@@ -24,7 +24,7 @@
 		"message": "\"Like\" Instantâneo"
 	},
 	"optLikeCustom": {
-		"message": "Cronometro personalizado"
+		"message": "Cronômetro personalizado"
 	},
 	"optLikePercentage": {
 		"message": "Porcentagem"
@@ -42,10 +42,10 @@
 		"message": "Modo Lista de Bloqueados"
 	},
 	"optWhiteList": {
-		"message": "Mode Lista de Permitidos"
+		"message": "Modo Lista de Permitidos"
 	},
 	"optWhiteListWarning": {
-		"message": "⚠️ lista está vazia, nehum \"Like\" será dado"
+		"message": "⚠️ lista está vazia, nenhum \"Like\" será dado"
 	},
 	"linkDonate": {
 		"message": "Doar"
@@ -54,7 +54,7 @@
 		"message": "Contribuir"
 	},
 	"mngName": {
-		"message": "Name do Canal"
+		"message": "Nome do Canal"
 	},
 	"mngURL": {
 		"message": "URL do Canal"
