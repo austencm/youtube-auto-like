@@ -220,7 +220,7 @@ class MaterialLiker {
 	 */
 	isUserSubscribed() {
 		let subscribeButton = document.querySelector(
-			'ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button > paper-button'
+			'ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button > paper-button, ytd-subscribe-button-renderer > .ytd-subscribe-button-renderer'
 		);
 		return subscribeButton && (subscribeButton.hasAttribute('subscribed') ||
 			subscribeButton.getAttribute("aria-pressed") === "true");
