@@ -1,5 +1,3 @@
-import env from 'utils/env';
-
 /**
  * Helper for generating debug info sent with bug reports
  */
@@ -18,7 +16,7 @@ export default class Debug {
     const message = Array.from(arguments).join(' ');
     this.messages.push(message);
 
-    if (env.DEBUG) {
+    if (process.env.NODE_ENV === 'development') {
       console.log(`%c[DEBUG] %c${message}`, 'font-style: italic', '');
     }
   }

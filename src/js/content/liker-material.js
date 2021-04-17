@@ -16,19 +16,31 @@ export default class MaterialLiker {
     this.options = options;
     this.log = log ? log : () => {};
     this.cache = {};
+    this.start = this.start.bind(this);
 
-    this.init = this.init.bind(this);
-    this.reset = this.reset.bind(this);
-    this.attemptLike = this.attemptLike.bind(this);
+    // Bail if we don't need to do anything
+    // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
+    if (this.options.disabled || this.options.like_what === 'none') {
+      this.log('liker is disabled');
+      return this.pause();
+    }
+
+    /*
+    We're hooking into YouTube's custom events to determine when the page changes.
+     */
+    document.querySelector('ytd-app').addEventListener('yt-page-data-updated', this.start);
+
+    this.log('liker initialized');
+    this.start();
   }
 
   /**
-   * Just helpful for thisging at the moment
+   * Just helpful for debugging at the moment
    */
-  stop() {
-    this.log('stopped');
-    if (typeof this.onStop === 'function') {
-      this.onStop();
+  pause() {
+    this.log('paused');
+    if (typeof this.onPause === 'function') {
+      this.onPause();
     }
   }
 
@@ -41,44 +53,45 @@ export default class MaterialLiker {
 
   /**
    * Detects when like/dislike buttons have loaded (so we can press them)
-   * @param  {Function} callback
    */
-  waitForButtons(callback) {
-		const iconLike = document.querySelector(selectors.iconLike);
-		const iconDislike = document.querySelector(selectors.iconDislike);
+  waitForButtons() {
+    this.log('waiting for buttons...');
 
-    // Make sure both icons exist
-		if (iconLike && iconDislike) {
-			// Find and store closest buttons
-			this.cache.likeButton = iconLike.closest('yt-icon-button');
-			this.cache.dislikeButton = iconDislike.closest('yt-icon-button');
+		return new Promise(resolve => {
+      const interval = setInterval(() => {
+        const iconLike = document.querySelector(selectors.iconLike);
+    		const iconDislike = document.querySelector(selectors.iconDislike);
+        // Make sure both icons exist
+        if (iconLike && iconDislike) {
+          // Find and store closest buttons
+          this.cache.likeButton = iconLike.closest('yt-icon-button');
+          this.cache.dislikeButton = iconDislike.closest('yt-icon-button');
 
-      this.log('...buttons ready');
-      callback();
-		}
-    // Otherwise wait a second and try again
-    else {
-      setTimeout(() => this.waitForButtons(callback), 1000);
-    }
+          this.log('...buttons ready');
+          clearInterval(interval);
+          resolve();
+        }
+      }, 1000);
+    });
   }
 
   /**
    * Detects when the video player has loaded
-   * @param  {Function} callback
    */
-  waitForVideo(callback) {
+  waitForVideo() {
     this.log('waiting for video...');
 
-    this.video = document.querySelector('.video-stream');
-    // Does the video exist?
-    if (this.video) {
-      this.log('...video ready');
-      callback();
-		}
-    // Otherwise wait a second and try again
-    else {
-      setTimeout(() => this.waitForVideo(callback), 1000);
-    }
+    return new Promise(resolve => {
+      const interval = setInterval(() => {
+        this.cache.video = document.querySelector('.video-stream');
+        // Does the video exist?
+        if (this.cache.video) {
+          this.log('...video ready');
+          clearInterval(interval);
+          resolve();
+    		}
+      }, 1000);
+    });
   }
 
   /**
@@ -104,7 +117,7 @@ export default class MaterialLiker {
     // Does the button exist?
     if (!subscribeButton) return false;
     // Is the button active?
-    if (subscribeButton.hasAttribute('subscribed') || subscribeButton.classList.contains('subscribed')) {
+    if (subscribeButton.hasAttribute('subscribed')) {
       this.cache.subscribeButton = subscribeButton;
       return true;
     }
@@ -119,8 +132,8 @@ export default class MaterialLiker {
   }
 
   isAdPlaying() {
-    return this.video && ['ad-showing', 'ad-interrupting'].every(c => {
-      return this.video.closest('.html5-video-player').classList.contains(c);
+    return this.cache.video && ['ad-showing', 'ad-interrupting'].every(c => {
+      return this.cache.video.closest('.html5-video-player').classList.contains(c);
     });
   }
 
@@ -128,83 +141,68 @@ export default class MaterialLiker {
    * Make sure we can & should like the video,
    * then clickity click the button
    */
-  attemptLike() {
-    this.log('waiting for buttons...');
+  async clickLike() {
+    await this.waitForButtons();
+    /*
+    If the video is already liked/disliked
+    or the user isn't subscribed to this channel,
+    then we don't need to do anything.
+     */
+    if (this.isVideoRated()) {
+      this.log('video already rated');
+      return this.pause();
+    }
+    if (this.options.like_what === 'subscribed' && !this.isUserSubscribed()) {
+      this.log('user not subscribed');
+      return this.pause();
+    }
 
-    this.waitForButtons(() => {
-      /*
-      If the video is already liked/disliked
-      or the user isn't subscribed to this channel,
-      then we don't need to do anything.
-       */
-      if (this.isVideoRated()) {
-        this.log('video already rated');
-        return this.stop();
-      }
-      if (this.options.like_what === 'subscribed' && !this.isUserSubscribed()) {
-        this.log('user not subscribed');
-        return this.stop();
-      }
-
-      this.cache.likeButton.click();
-      this.log('like button clicked');
-      this.stop();
-    });
+    this.cache.likeButton.click();
+    this.log('like button clicked');
+    this.pause();
   }
 
   /**
    * Starts the liking magic.
    * The liker won't do anything unless this method is called.
    */
-  init() {
-    this.log('liker initialized');
-
-    // Bail if we don't need to do anything
-    // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
-    if (this.options.disabled || this.options.like_what === 'none') {
-      this.log('liker is disabled');
-      return this.stop();
-    }
-    // YouTube designates pages with a video as watch pages
-    if (!document.querySelector('ytd-app[is-watch-page]')) {
-      this.log('not a watch page');
-      return this.stop();
-    }
-
-    this.reset();
+  async start() {
+    this.log('liker started');
+    this.cache = {};
 
     switch (this.options.like_when) {
-      case 'timed':
-        return this.waitForVideo(() => {
-          const { video } = this;
-          const onVideoTimeUpdate = e => {
-            if (this.isAdPlaying()) return;
-            // Are we 2 mins in or at the end of the video?
-            if (video.currentTime >= 2 * 60 || video.currentTime >= video.duration) {
-              this.attemptLike();
-              video.removeEventListener('timeupdate', onVideoTimeUpdate);
-            }
+      case 'timed': {
+        await this.waitForVideo();
+        const { video } = this.cache;
+        const onVideoTimeUpdate = e => {
+          if (this.isAdPlaying()) return;
+          // Are we 2 mins in or at the end of the video?
+          if (video.currentTime >= 2 * 60 || video.currentTime >= video.duration) {
+            this.clickLike();
+            video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
-          video.addEventListener('timeupdate', onVideoTimeUpdate);
-        });
+        }
+        video.addEventListener('timeupdate', onVideoTimeUpdate);
+        break;
+      }
 
-      case 'percent':
-        return this.waitForVideo(() => {
-          const { video } = this;
-
-          const onVideoTimeUpdate = e => {
-            if (this.isAdPlaying()) return;
-            // Are we more than 50% through the video?
-            if (video.currentTime / video.duration >= 0.5) {
-              this.attemptLike();
-              video.removeEventListener('timeupdate', onVideoTimeUpdate);
-            }
+      case 'percent': {
+        await this.waitForVideo();
+        const { video } = this.cache;
+        const onVideoTimeUpdate = e => {
+          if (this.isAdPlaying()) return;
+          // Are we more than 50% through the video?
+          if (video.currentTime / video.duration >= 0.5) {
+            this.clickLike();
+            video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
-          video.addEventListener('timeupdate', onVideoTimeUpdate);
-        });
+        }
+        video.addEventListener('timeupdate', onVideoTimeUpdate);
+        break;
+      }
 
       default:
-        return this.attemptLike();
+        this.clickLike();
     }
   }
 }
