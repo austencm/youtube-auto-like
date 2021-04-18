@@ -29,7 +29,8 @@
     "Szmyk (https://github.com/Szmyk)",
     "moweME (https://github.com/moweME)",
     "mariovalney (https://github.com/mariovalney)",
-    "Borian23 (https://github.com/Borian23)"
+    "Borian23 (https://github.com/Borian23)",
+    "UtkuGARIP (https://github.com/UtkuGARIP)"
   ],
   "scripts": {
     "start": "xt-build -e dev -w",

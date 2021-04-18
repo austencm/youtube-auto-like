@@ -20,6 +20,7 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 ## Releases
 | Version     | Date           | Changelog |
 | ----------- | -------------- | --------- |
+| **`v2.5.2`** | _Oct 22, 2019_ | <ul><li>Fix logging code causing extension to crash in old YT</li></ul> |
 | **`v2.5.1`** | _Oct 17, 2019_ | <ul><li>Fix misidentifying comment like buttons on homepage and trying to click them</li></ul> |
 | **`v2.5.0`** | _Oct 16, 2019_ | <ul><li>YouTube changed a thing and the first video viewed was not getting liked</li><li>Now creates a log when the extension runs that will be included with bug reports</li><li>Polish translation additions from @Borian23</li></ul> |
 | **`v2.4.0`** | _Apr 15, 2019_ | <ul><li>Switch to Webpack</li><li>Fix liker thinking user wasn't subscribed when navigating to a video from the homepage</li><li>PT_BR translation</li></ul> |
@@ -42,6 +43,7 @@ Details of releases before v2.0.0 are scarce due to the author not knowing how t
 | @moweME | DE translation |
 | @mariovalney | PT_BR translation |
 | @Borian23 | Updated PL translation |
+| @UtkuGARIP | TR translation |
 
 ## Feed my kitties 🐈
 They're _starving_, but could the food be room temp and a different flavor thank mew.<br />
