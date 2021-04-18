@@ -57,6 +57,10 @@
       {
         "name": "options",
         "src": "./src/js/options.js"
+      },
+      {
+        "name": "background",
+        "src": "./src/js/utils/check-updates.js"
       }
     ],
     "scss_bundles": [

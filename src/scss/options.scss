@@ -4,7 +4,7 @@
 }
 
 body {
-  width: 305px;
+  width: 355px;
   margin: 0;
   padding: var(--gutter);
   font-family: 'Titillium Web', sans-serif;
@@ -40,6 +40,37 @@ svg {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   opacity: 0.8;
+}
+
+.update-notice {
+  padding: 9px 12px 10px;
+  background: #ffcece;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 115%;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.button {
+  padding: 4px 9px 5px;
+  display: inline-block;
+  font-size: 0.9em;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid #000;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.button--primary {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #fff;
+  margin-right: 3px;
 }
 
 .reload-notice {
