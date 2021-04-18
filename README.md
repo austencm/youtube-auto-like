@@ -6,11 +6,11 @@ Never forget to like a video again.
 
 **Feb 2021: Sadly, Chrome removed this extension for violating [YouTube's terms of service](https://www.youtube.com/t/terms) (specifically the part about causing inaccurate measurements of user engagement). You can still load the extension locally by following these steps. Only do this for extensions you trust.**
 
-1. Download the latest release: https://github.com/austencm/youtube-auto-like/releases/latest/download/dist.zip
-2. Unzip `dist.zip` and put it somewhere it won't get deleted accidentally
+1. Download the latest release: https://github.com/austencm/youtube-auto-like/releases/latest/download/release.zip
+2. Unzip `release.zip` and put it somewhere it won't get deleted accidentally
 3. Open your extensions page in Chrome (in the top right, click ![the 3 dots](https://lh3.googleusercontent.com/E2q6Vj9j60Dw0Z6NZFEx5vSB9yoZJp7C8suuvQXVA_2weMCXstGD7JEvNrzX3wuQrPtL=w36-h36) > More Tools > Extensions)
 4. Turn on Developer Mode (in the top right)
-5. Click 'Load unpacked' and select the unzipped `dist` folder
+5. Click 'Load unpacked' and select the unzipped `release` folder
 
 Extensions loaded this way are unable to update automatically. Keep an eye out for a badge on the icon that indicates a new version is available.
 
