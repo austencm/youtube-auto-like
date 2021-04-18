@@ -17,7 +17,7 @@ Extensions loaded this way are unable to update automatically. Keep an eye out f
 ## Gimme
 > <s>Chrome</s> (see above)
 
-> [Firefox (maintained by @Taknok)](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)
+> [Firefox (by @Taknok)](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)
 
 ## Translations
 Feel free to contribute with a [pull request](https://github.com/austencm/youtube-auto-like/pulls) or grab [the JSON file](https://raw.githubusercontent.com/austencm/youtube-auto-like/master/app/_locales/en/messages.json), translate it, and [send it back to me](mailto:heyausten@gmail.com).
@@ -26,7 +26,7 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 | Version     | Date           | Changelog |
 | ----------- | -------------- | --------- |
 | **`v2.6.0`** | _Apr 17, 2021_ | <ul><li>YouTube changed the subscribe button, fixed detection</li><li>Automatic update checking</li><li>Update to manifest v3</li><li>TR translation from @UtkuGARIP</li><li>Removed code for old YouTube</li></ul> |
-| **`v2.5.2`** | _Oct 22, 2019_ | <ul><li>Fix logging code causing extension to crash in old YT</li></ul> |
+| **`v2.5.2`** | _Oct 22, 2019_ | <ul><li>Fix logging code causing error in old YouTube</li></ul> |
 | **`v2.5.1`** | _Oct 17, 2019_ | <ul><li>Fix misidentifying comment like buttons on homepage and trying to click them</li></ul> |
 | **`v2.5.0`** | _Oct 16, 2019_ | <ul><li>YouTube changed a thing and the first video viewed was not getting liked</li><li>Now creates a log when the extension runs that will be included with bug reports</li><li>Polish translation additions from @Borian23</li></ul> |
 | **`v2.4.0`** | _Apr 15, 2019_ | <ul><li>Switch to Webpack</li><li>Fix liker thinking user wasn't subscribed when navigating to a video from the homepage</li><li>PT_BR translation</li></ul> |
