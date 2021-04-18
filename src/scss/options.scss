@@ -4,7 +4,7 @@
 }
 
 body {
-  width: 305px;
+  width: 355px;
   margin: 0;
   padding: var(--gutter);
   font-family: 'Titillium Web', sans-serif;
@@ -42,6 +42,37 @@ svg {
   opacity: 0.8;
 }
 
+.update-notice {
+  padding: 9px 12px 10px;
+  background: #ffcece;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 115%;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.button {
+  padding: 4px 9px 5px;
+  display: inline-block;
+  font-size: 0.9em;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid #000;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.button--primary {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #fff;
+  margin-right: 3px;
+}
+
 .reload-notice {
   margin-bottom: 8px;
   font-style: italic;
@@ -65,25 +96,31 @@ svg {
 }
 
 label {
-  display: block;
-  margin-bottom: 0.2em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
   font-size: 15px;
-  letter-spacing: 0.01em;
   cursor: pointer;
 }
 
 input[type='radio'],
 input[type='checkbox'] {
-  position: relative;
-  top: -0.1em;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   width: 1.2em;
   height: 1.2em;
-  margin-right: 1em;
-  border: 2px solid var(--color-brand) !important;
-  background: #fff !important;
-  box-shadow: none;
+  margin-top: 0.05em;
+  margin-right: 0.7em;
+  border: 2px solid var(--color-brand);
+  appearance: none;
+}
+
+input[type='radio'] {
+  border-radius: 50%;
+}
+
+input[type='checkbox'] {
+  border-radius: 10%;
 }
 
 input[type='radio']:hover,
@@ -94,23 +131,12 @@ input[type='checkbox']:hover {
 input[type='radio']:focus,
 input[type='checkbox']:focus {
   transform: scale(1.2);
+  outline: 0;
 }
 
-input[type='radio']:checked::before,
-input[type='checkbox']:checked::before {
-  display: block;
+input[type='radio']:checked,
+input[type='checkbox']:checked {
   background-color: var(--color-brand);
-  bottom: 2px;
-  left: 2px;
-  right: 2px;
-  top: 2px;
-}
-
-input[type='checkbox']:checked::before {
-  position: absolute;
-  width: auto;
-  height: auto;
-  background-image: none;
 }
 
 #links {

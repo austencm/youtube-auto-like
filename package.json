@@ -1,57 +1,73 @@
 {
   "name": "youtube-auto-like",
-  "version": "2.5.2",
-  "description": "Automatically like YouTube videos from your favorite content creators.",
+  "description": "Never forget to like a video again.",
+  "version": "2.6.0",
+  "homepage": "https://github.com/austencm/youtube-auto-like",
+  "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austencm/youtube-auto-like.git"
+  },
+  "bugs": "https://github.com/austencm/youtube-auto-like/issues",
   "keywords": [
     "addon",
     "auto",
     "automatic",
     "browser",
     "chrome",
+    "firefox",
     "extension",
     "like",
     "plugin",
-    "youtube"
+    "youtube",
+    "video"
   ],
-  "homepage": "https://github.com/austencm/youtube-auto-like",
-  "bugs": "https://github.com/austencm/youtube-auto-like/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/austencm/youtube-auto-like.git"
-  },
-  "license": "MIT",
-  "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
   "contributors": [
     "Taknok (https://github.com/Taknok)",
     "JKetelaar (https://github.com/JKetelaar)",
     "Szmyk (https://github.com/Szmyk)",
     "moweME (https://github.com/moweME)",
     "mariovalney (https://github.com/mariovalney)",
-    "Borian23 (https://github.com/Borian23)"
+    "Borian23 (https://github.com/Borian23)",
+    "UtkuGARIP (https://github.com/UtkuGARIP)"
   ],
   "scripts": {
-    "build": "NODE_ENV=production node utils/build.js",
-    "start": " NODE_ENV=development DEBUG=true node utils/webserver.js"
+    "start": "xt-build -e dev -w",
+    "build": "xt-build -e prod",
+    "clean": "xt-clean"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "eslintIgnore": [
+    "test/**/*"
+  ],
   "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.0.4",
-    "css-loader": "3.2.0",
-    "file-loader": "4.2.0",
-    "filemanager-webpack-plugin": "^2.0.5",
-    "fs-extra": "8.1.0",
-    "html-loader": "0.5.5",
-    "html-webpack-plugin": "3.2.0",
-    "style-loader": "^1.0.0",
-    "webpack": "4.41.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "3.8.2",
-    "webpack-merge": "^4.2.2",
-    "write-file-webpack-plugin": "4.5.1"
+    "extension-cli": "latest"
   },
-  "engines": {
-    "node": ">= 11.6.0",
-    "npm": ">= 6.12.0",
-    "yarn": ">= 1.17.3"
+  "xtbuild": {
+    "js_bundles": [
+      {
+        "name": "content",
+        "src": "./src/js/content.js"
+      },
+      {
+        "name": "options",
+        "src": "./src/js/options.js"
+      },
+      {
+        "name": "background",
+        "src": "./src/js/utils/check-updates.js"
+      }
+    ],
+    "scss_bundles": [
+      {
+        "name": "options",
+        "src": "./src/scss/options.scss"
+      }
+    ]
   }
 }

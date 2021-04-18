@@ -1,7 +1,4 @@
 node_modules
-build
-secrets.*.js
+dist
 *.zip
 .DS_Store
-waiter.js
-update-notifier.js

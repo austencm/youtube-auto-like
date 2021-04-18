@@ -1,11 +1,3 @@
-import '../img/icon-16.png';
-import '../img/icon-19.png';
-import '../img/icon-32.png';
-import '../img/icon-38.png';
-import '../img/icon-48.png';
-import '../img/icon-128.png';
-import '../css/options.css';
-
 import I18n from './utils/i18n';
 import OptionManager from './utils/option-manager';
 
@@ -77,3 +69,25 @@ loadOptions();
 document
   .querySelector('#options-form')
   .addEventListener('change', handleOptionsChange);
+
+// Check for saved update info
+async function checkForSavedRelease() {
+  chrome.storage.local.get('latestRelease', ({ latestRelease }) => {
+    if (latestRelease) {
+      const updateNotice = document.querySelector('.update-notice');
+
+      updateNotice.innerHTML = `
+        <p>Hey! There's a newer version of the extension available.</p>
+        <div>
+          <a class="button button--primary" href="${latestRelease.downloadUrl}">Download v${latestRelease.version}</a>
+          <a class="button" href="https://github.com/austencm/youtube-auto-like/releases" target="_blank" rel="noreferrer">See releases</a>
+        </div>
+      `;
+
+      updateNotice.removeAttribute('hidden');
+    }
+  });
+  
+}
+
+checkForSavedRelease();
