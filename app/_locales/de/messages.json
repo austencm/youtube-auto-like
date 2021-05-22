@@ -20,8 +20,8 @@
 	"optLikeNone": {
 		"message": "Deaktivieren"
 	},
-	"optLikeInstant" : {
-		"message": "Sofort Liken"
+	"optLikeInstant": {
+		"message": "Sofort liken"
 	},
 	"optLikeCustom": {
 		"message": "Benutzerdefiniert"
@@ -29,16 +29,34 @@
 	"optLikePercentage": {
 		"message": "Prozent"
 	},
-	"optLikeMinutes" :{
+	"optLikeMinutes": {
 		"message": "Minuten"
 	},
-	"optLikeRandom" :{
-		"message": "Nach Zufallszeit Liken"
+	"optLikeRandom": {
+		"message": "Nach Zufallszeit liken"
+	},
+	"optUseList": {
+		"message": "Liste verwenden"
+	},
+	"optBlackList": {
+		"message": "'Auschließen' Modus"
+	},
+	"optWhiteList": {
+		"message": "'Erlauben' Modus"
+	},
+	"optWhiteListWarning": {
+		"message": "⚠️ Liste ist leer, es wird nichts geliked"
 	},
 	"linkDonate": {
 		"message": "Spenden"
 	},
 	"linkContribute": {
 		"message": "Beitragen"
+	},
+	"mngName": {
+		"message": "Kanalname"
+	},
+	"mngURL": {
+		"message": "Kanal URL"
 	}
 }
