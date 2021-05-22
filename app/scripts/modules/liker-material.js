@@ -117,7 +117,10 @@ class MaterialLiker {
 		if (this.options.like_timer == "instant") {
 			callback();
 			return;
-		} 
+		}
+		else if (this.video.closest(".ad-showing,.ad-interrupting") !== null) {
+			setTimeout(() => this.waitTimer(callback), 1000 );
+		}
 		else if (this.options.like_timer == "random") {
 			let duration = this.video.duration;
 
@@ -225,39 +228,6 @@ class MaterialLiker {
 		return subscribeButton && (subscribeButton.hasAttribute('subscribed') ||
 			subscribeButton.getAttribute("aria-pressed") === "true");
 	}	
-
-	/**
-	 * Wait the end of the ad
-	 * @return {function} callback The function to execute when the ad 
-	 *     is finished
-	 */
-	_waitEndOfAd(callback) {
-		// wait 1s to be sure that ad as load or not :
-		// if not waiting, js may be faster than ad loading (which is done after video loading)
-		// fortunatly, true video never start auto when an ad is loading, then wait video start to
-		// detect if this is an ad or true vid
-	 	this.waitTimerTwo(1, () => {
-			if (typeof this.video === "undefined") {
-				console.error(
-					"waitEndOfAd can only be used after waitForVideo or else this.video is not defined"
-				);
-			}
-			if (this.video.closest(".ad-showing,.ad-interrupting") !== null) {
-				setTimeout(() => this._waitEndOfAd(callback), 1000);
-				return;
-			} else {
-				log("ad finished");
-
-				// update video element to not be the ad element
-				callback();
-			}
-		});
-	}
-	waitEndOfAd(callback) {
-		log("Detecting ad");
-		this._waitEndOfAd(callback);
-		
-	}
 
 	shouldLike() {
 		let rated = this.isVideoRated();
@@ -390,22 +360,20 @@ class MaterialLiker {
 					this.randomTimerPercent = this.randomIntFromInterval(0, 99);
 				}
 				
-				this.waitEndOfAd(() => {
-					this.waitTimer(() => {
-						/*
-						Maybe the use did an action while we was waiting, so check again
-						*/
-						if ( !this.shouldLike() ) {
-							log("not liked check 2");
-							this.finish();
-							return;
-						}
-						this.attemptLike();
-						log('liked');
-						this.options.counter += 1;
-						optionManager.set(this.options).then(() => {
-							this.finish();							
-						});
+				this.waitTimer(() => {
+					/*
+					Maybe the use did an action while we was waiting, so check again
+					*/
+					if ( !this.shouldLike() ) {
+						log("not liked check 2");
+						this.finish();
+						return;
+					}
+					this.attemptLike();
+					log('liked');
+					this.options.counter += 1;
+					optionManager.set(this.options).then(() => {
+						this.finish();							
 					});
 				});
 			});
