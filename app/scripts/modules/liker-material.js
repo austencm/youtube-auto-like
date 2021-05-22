@@ -58,10 +58,10 @@ class MaterialLiker {
 		if (this.icon.like != null) {
 			// Select the like button of the main video
 			let likeElement = document.querySelector(
-				`ytd-video-primary-info-renderer g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`
+				`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`
 			);
 			let dislikeElement = document.querySelector(
-				`ytd-video-primary-info-renderer g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`
+				`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`
 			);
 			
 			// Make sure both icons exist
