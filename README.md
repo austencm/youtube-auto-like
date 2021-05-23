@@ -26,3 +26,5 @@ The debug mode option can be display in the addon popup by entering the konami c
 - [Hultan](https://github.com/Hultan) ~ SV translation
 - [C4H7Cl2O4P](https://github.com/C4H7Cl2O4P) ~ UK translation
 - [Alexandre Pennetier](https://github.com/alexandre-pennetier) ~ FR translation
+- [msmafra](https://github.com/msmafra) ~ PT translation
+- [Plunts](https://github.com/Plunts) ~ DE translation + bug fix
