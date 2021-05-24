@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
   "homepage_url": "https://github.com/austencm/youtube-auto-like",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "manifest_version": 3,
   "default_locale": "en",
   "minimum_chrome_version": "88",
@@ -23,12 +23,12 @@
   "content_scripts": [
     {
       "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
-      "js": ["js/content.js"],
+      "js": ["content.js"],
       "run_at": "document_end"
     }
   ],
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "background.js"
   },
   "options_ui": {
     "page": "options.html"

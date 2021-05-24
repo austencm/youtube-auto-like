@@ -25,6 +25,7 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 ## Releases
 | Version     | Date           | Changelog |
 | ----------- | -------------- | --------- |
+| **`v2.7.1`** | _May 23, 2021_ | <ul><li>Fix update checker not loading</li></ul> |
 | **`v2.7.0`** | _May 23, 2021_ | <ul><li>Make minutes & percent configurable</li><li>Fix a visual bug caused by a YouTube change</li><li>Partial RU translation from @Makishima</li><li>Better logging</li></ul> |
 | **`v2.6.0`** | _Apr 17, 2021_ | <ul><li>YouTube changed the subscribe button, fixed detection</li><li>Automatic update checking</li><li>Update to manifest v3</li><li>TR translation from @UtkuGARIP</li><li>Removed code for old YouTube</li></ul> |
 | **`v2.5.2`** | _Oct 22, 2019_ | <ul><li>Fix logging code causing error in old YouTube</li></ul> |
