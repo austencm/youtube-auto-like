@@ -43,13 +43,13 @@ Details of releases before v2.0.0 are scarce due to the author not knowing how t
 ## Acknowledgments
 | Name | Contribution |
 |-|-|
-| @Taknok | [Firefox edition](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)<br />Language-independent button selection method<br />ES, FR translations |
-| @JKetelaar | NL translation |
-| @Szmyk | PL translation |
-| @moweME | DE translation |
-| @mariovalney | PT_BR translation |
-| @Borian23 | Updated PL translation |
-| @UtkuGARIP | TR translation |
+| [@Taknok](https://github.com/Taknok) | [Firefox edition](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)<br />Language-independent button selection method<br />ES, FR translations |
+| [@JKetelaar](https://github.com/JKetelaar) | NL translation |
+| [@Szmyk](https://github.com/Szmyk) | PL translation |
+| [@moweME](https://github.com/moweME) | DE translation |
+| [@mariovalney](https://github.com/mariovalney) | PT_BR translation |
+| [@Borian23](https://github.com/Borian23) | Updated PL translation |
+| [@UtkuGARIP](https://github.com/@UtkuGARIP) | TR translation |
 
 ## Feed my kitties 🐈
 They're _starving_, but could the food be room temp and a different flavor thank mew.<br />
