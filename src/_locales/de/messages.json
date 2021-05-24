@@ -30,10 +30,10 @@
     "message": "Sofort"
   },
   "optLikeTimed": {
-    "message": "Nach 2 Minuten"
+    "message": "Minuten"
   },
   "optLikePercent": {
-    "message": "Nachdem ich 50% des Videos gesehen habe"
+    "message": "Prozent"
   },
   "linkDonate": {
     "message": "Spenden!"

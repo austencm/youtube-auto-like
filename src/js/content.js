@@ -4,7 +4,7 @@ import Debug from './content/debug';
 
 const debug = new Debug();
 
-(async function() {
+(async function () {
   try {
     debug.log('navigated:', window.location.href);
 
@@ -12,13 +12,15 @@ const debug = new Debug();
       ['yt-navigate', 'yt-navigate-finish', 'yt-page-data-updated'].forEach((eventType) => {
         const appRoot = document.querySelector('ytd-app');
 
-        appRoot && appRoot.addEventListener(eventType, (e) => {
-          debug.log('event:', e.type);
+        if (appRoot) {
+          appRoot.addEventListener(eventType, (e) => {
+            debug.log('event:', e.type);
 
-          if (eventType === 'yt-navigate-finish') {
-            debug.log('navigated:', window.location.href);
-          }
-        });
+            if (eventType === 'yt-navigate-finish') {
+              debug.log('navigated:', window.location.href);
+            }
+          });
+        }
       });
     }
 
@@ -26,6 +28,8 @@ const debug = new Debug();
     const defaults = {
       like_what: 'subscribed',
       like_when: 'instantly',
+      like_when_minutes: '2',
+      like_when_percent: '50',
       disabled: false,
     };
     const optionManager = new OptionManager(defaults);
@@ -39,11 +43,9 @@ const debug = new Debug();
 
     const liker = new Liker({ options, log: debug.log });
     liker.onStop = debug.save;
-  }
-  catch(err) {
+  } catch (err) {
     debug.log(err);
-  }
-  finally {
+  } finally {
     debug.save();
   }
 })();

@@ -27,10 +27,10 @@
     "message": "Многовенный лайк"
   },
   "optLikeTimed": {
-    "message": "2 минуты"
+    "message": "минуты"
   },
   "optLikePercent": {
-    "message": "Проценты (50%)"
+    "message": "проценты"
   },
   "linkDonate": {
     "message": "Поддержать разработчика"

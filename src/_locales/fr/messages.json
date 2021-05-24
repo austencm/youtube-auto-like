@@ -30,16 +30,16 @@
     "message": "Immédiatement"
   },
   "optLikeTimed": {
-    "message": "Après 2 minutes"
+    "message": "minutes"
   },
   "optLikePercent": {
-    "message": "After watching 50%"
+    "message": "pour cent"
   },
   "linkDonate": {
     "message": "Soutenir!"
   },
   "linkReport": {
-    "message": "Report a Bug"
+    "message": "Ne fonctionne pas?"
   },
   "reloadNotice": {
     "message": "Reload the page to apply changes."

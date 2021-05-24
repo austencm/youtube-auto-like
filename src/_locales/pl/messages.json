@@ -30,10 +30,10 @@
     "message": "Natychmiastowo"
   },
   "optLikeTimed": {
-    "message": "Po dwóch minutach"
+    "message": "minutach"
   },
   "optLikePercent": {
-    "message": "Po obejrzeniu 50%"
+    "message": "procent"
   },
   "linkDonate": {
     "message": "Wspomóż!"

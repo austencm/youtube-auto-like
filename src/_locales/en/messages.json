@@ -5,12 +5,6 @@
   "appDesc": {
     "message": "Never forget to like a video again."
   },
-  "appStoreDesc": {
-    "message": "Presses the like button so you don't have to! Features:  - Like videos instantly from subscribed channels, or like every video  - Be more selective: like after you've watched 2 minutes or 50% through  - Waits for ads to finish when using a timed option  - Won't override your choice if you've already disliked a video  - Lightweight: won't slow down your YouTube load time"
-  },
-  "appStoreContribute": {
-    "message": "Contribute"
-  },
   "optLikeWhatTitle": {
     "message": "Which videos?"
   },
@@ -30,10 +24,10 @@
     "message": "Instantly"
   },
   "optLikeTimed": {
-    "message": "After 2 minutes"
+    "message": "minutes"
   },
   "optLikePercent": {
-    "message": "After watching 50%"
+    "message": "percent"
   },
   "linkDonate": {
     "message": "Feed my cats"

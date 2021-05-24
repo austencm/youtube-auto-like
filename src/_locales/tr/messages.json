@@ -30,10 +30,10 @@
     "message": "Anında"
   },
   "optLikeTimed": {
-    "message": "2 dakika sonra"
+    "message": "dakika"
   },
   "optLikePercent": {
-    "message": "%50'sini izledikten sonra"
+    "message": "yüzde"
   },
   "linkDonate": {
     "message": "Kedilerimi besle"

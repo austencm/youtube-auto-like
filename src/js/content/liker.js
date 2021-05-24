@@ -174,12 +174,13 @@ export default class Liker {
 
     switch (this.options.like_when) {
       case 'timed': {
+        const minutes = parseFloat(this.options.like_when_minutes);
         await this.waitForVideo();
         const { video } = this.cache;
         const onVideoTimeUpdate = (e) => {
           if (this.isAdPlaying()) return;
-          // Are we 2 mins in or at the end of the video?
-          if (video.currentTime >= 2 * 60 || video.currentTime >= video.duration) {
+          // Are we more than the chosen mins in or at the end of the video?
+          if (video.currentTime >= minutes * 60 || video.currentTime >= video.duration) {
             this.clickLike();
             video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
@@ -189,12 +190,13 @@ export default class Liker {
       }
 
       case 'percent': {
+        const percent = parseFloat(this.options.like_when_percent) / 100;
         await this.waitForVideo();
         const { video } = this.cache;
         const onVideoTimeUpdate = (e) => {
           if (this.isAdPlaying()) return;
-          // Are we more than 50% through the video?
-          if (video.currentTime / video.duration >= 0.5) {
+          // Are we more than the chosen percent through the video?
+          if (video.currentTime / video.duration >= percent) {
             this.clickLike();
             video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
