@@ -50,6 +50,7 @@ Details of releases before v2.0.0 are scarce due to the author not knowing how t
 | [@mariovalney](https://github.com/mariovalney) | PT_BR translation |
 | [@Borian23](https://github.com/Borian23) | Updated PL translation |
 | [@UtkuGARIP](https://github.com/@UtkuGARIP) | TR translation |
+| [@Makishima](https://github.com/@Makishima) | RU translation |
 
 ## Feed my kitties 🐈
 They're _starving_, but could the food be room temp and a different flavor thank mew.<br />

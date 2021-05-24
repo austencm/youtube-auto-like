@@ -1,0 +1,44 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Автоматически лайкает видео от ваших любимых авторов"
+  },
+  "appStoreContribute": {
+    "message": "Contribute"
+  },
+  "optLikeWhatTitle": {
+    "message": "Which videos?"
+  },
+  "optLikeWhenTitle": {
+    "message": "How quickly?"
+  },
+  "optLikeSub": {
+    "message": "Лайкать видео только от подписанных каналов"
+  },
+  "optLikeAll": {
+    "message": "Лайкать все видео"
+  },
+  "optDisable": {
+    "message": "Отключить авто-лайки"
+  },
+  "optLikeInstant": {
+    "message": "Многовенный лайк"
+  },
+  "optLikeTimed": {
+    "message": "2 минуты"
+  },
+  "optLikePercent": {
+    "message": "Проценты (50%)"
+  },
+  "linkDonate": {
+    "message": "Поддержать разработчика"
+  },
+  "linkReport": {
+    "message": "Not working?"
+  },
+  "reloadNotice": {
+    "message": "Reload the page to apply changes."
+  }
+}
