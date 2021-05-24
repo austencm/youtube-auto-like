@@ -1,4 +1,4 @@
-import MaterialLiker from './content/liker-material';
+import Liker from './content/liker';
 import OptionManager from './utils/option-manager';
 import Debug from './content/debug';
 
@@ -37,7 +37,7 @@ const debug = new Debug();
 
     debug.log('...options loaded', `(${JSON.stringify(options, null, 2)})`);
 
-    const liker = new MaterialLiker({ options, log: debug.log });
+    const liker = new Liker({ options, log: debug.log });
     liker.onStop = debug.save;
   }
   catch(err) {
