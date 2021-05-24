@@ -1,7 +1,6 @@
 import MaterialLiker from './content/liker-material';
 import OptionManager from './utils/option-manager';
 import Debug from './content/debug';
-import serialize from './utils/serialize';
 
 const debug = new Debug();
 
@@ -36,7 +35,7 @@ const debug = new Debug();
 
     const options = await optionManager.get();
 
-    debug.log('...options loaded', `(${serialize(options)})`);
+    debug.log('...options loaded', `(${JSON.stringify(options, null, 2)})`);
 
     const liker = new MaterialLiker({ options, log: debug.log });
     liker.onStop = debug.save;

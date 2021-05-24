@@ -30,7 +30,6 @@ export default class MaterialLiker {
      */
     document.querySelector('ytd-app').addEventListener('yt-page-data-updated', this.start);
 
-    this.log('liker initialized');
     this.start();
   }
 

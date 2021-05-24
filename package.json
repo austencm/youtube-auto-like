@@ -33,41 +33,17 @@
     "UtkuGARIP (https://github.com/UtkuGARIP)"
   ],
   "scripts": {
-    "start": "xt-build -e dev -w",
-    "build": "xt-build -e prod",
-    "clean": "xt-clean"
+    "start": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=production webpack"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
-  "eslintIgnore": [
-    "test/**/*"
-  ],
   "devDependencies": {
-    "extension-cli": "latest"
+    "clean-webpack-plugin": "*",
+    "copy-webpack-plugin": "^7.0.0",
+    "webpack": "^5.37.1",
+    "webpack-run-chrome-extension": "^0.3.0",
+    "zip-webpack-plugin": "^4.0.1"
   },
-  "xtbuild": {
-    "js_bundles": [
-      {
-        "name": "content",
-        "src": "./src/js/content.js"
-      },
-      {
-        "name": "options",
-        "src": "./src/js/options.js"
-      },
-      {
-        "name": "background",
-        "src": "./src/js/utils/check-updates.js"
-      }
-    ],
-    "scss_bundles": [
-      {
-        "name": "options",
-        "src": "./src/scss/options.scss"
-      }
-    ]
+  "dependencies": {
+    "bowser": "^2.11.0"
   }
 }
