@@ -4,15 +4,15 @@
 		"description": "Name der Anwendung"
 	},
 	"appDesc": {
-		"message": "Like 'automagisch' die Videos deiner Lieblings YouTuber.",
+		"message": "Like 'automagisch' die Videos deiner Lieblingscreator.",
 		"description": "Beschreibung der Anwendung"
 	},
 	"appDescDetail": {
-		"message": "Die einzige Aufgabe dieses Add-Ons ist es den 'Like Knopf' zu drücken. Du musst nur auf YouTube angemeldet sein und das Add-On macht alles von alleine. Ob nur abonnierte Videos oder alle 'geliked' werden ist einstellbar. Hab keine Angst Vorschläge für das Add-On abzugeben oder mir zu helfen.",
-		"description": "Detaillierte Beschreibung für den AddOn store"
+		"message": "Die einzige Aufgabe dieses Addons ist es den Like-Knopf zu drücken. Du musst nur auf YouTube angemeldet sein und das Addon macht alles von alleine. Ob alle Videos geliked werden sollen, oder nur die von abonnierten Kanälen ist einstellbar. Scheue dich nicht, Vorschläge für das Addon abzugeben oder mir zu helfen.",
+		"description": "Detaillierte Beschreibung für den Addon-Store"
 	},
 	"optLikeSub": {
-		"message": "Like nur Videos von abonnierten YouTuber'n"
+		"message": "Like nur Videos von abonnierten Kanälen"
 	},
 	"optLikeAll": {
 		"message": "Like alle Videos"
@@ -57,6 +57,6 @@
 		"message": "Kanalname"
 	},
 	"mngURL": {
-		"message": "Kanal URL"
+		"message": "Kanal-URL"
 	}
 }
