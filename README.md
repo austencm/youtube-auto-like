@@ -8,9 +8,10 @@ Never forget to like a video again.
 
 1. Download the latest release: https://github.com/austencm/youtube-auto-like/releases/latest/download/release.zip
 2. Unzip `release.zip` and put it somewhere it won't get deleted accidentally
-3. Open your extensions page in Chrome (in the top right, click ![the 3 dots](https://lh3.googleusercontent.com/E2q6Vj9j60Dw0Z6NZFEx5vSB9yoZJp7C8suuvQXVA_2weMCXstGD7JEvNrzX3wuQrPtL=w36-h36) > More Tools > Extensions)
+3. Open your extensions page in Chrome (in the top right, click the <img width="18" height="18" src="https://lh3.googleusercontent.com/5nlvcUtFevZLAkSJALBl5Fa8thP_-mGFnUngJLuAFzt0jws-Lr09I9mIfawW4vKiT6k=w36-h36" alt="puzzle piece"> icon, then "Manage Extensions" (at the bottom of the popup)
 4. Turn on Developer Mode (in the top right)
 5. Click 'Load unpacked' and select the unzipped `release` folder
+6. Set your options again (sorry, the browser thinks it's a new extension and options get reset. I don't have a good way around this.)
 
 Extensions loaded this way are unable to update automatically. Keep an eye out for a badge on the icon that indicates a new version is available.
 
