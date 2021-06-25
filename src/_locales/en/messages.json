@@ -37,5 +37,15 @@
   },
   "reloadNotice": {
     "message": "Reload the page to apply changes."
+  },
+
+  "donate": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can "
+  },
+  "donate1": {
+    "message": "buy my cats a snack"
+  },
+  "donate2": {
+    "message": "I really appreciate it. <3"
   }
 }
