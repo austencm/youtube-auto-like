@@ -9,10 +9,10 @@
     "message": "Contribute"
   },
   "optLikeWhatTitle": {
-    "message": "Какие видео?"
+    "message": "Which videos?"
   },
   "optLikeWhenTitle": {
-    "message": "Как быстро?"
+    "message": "How quickly?"
   },
   "optLikeSub": {
     "message": "Лайкать видео только от подписанных каналов"
@@ -36,9 +36,9 @@
     "message": "Поддержать разработчика"
   },
   "linkReport": {
-    "message": "Не работает?"
+    "message": "Not working?"
   },
   "reloadNotice": {
-    "message": "Перезагрузить страницу, чтобы применить изменения"
+    "message": "Reload the page to apply changes."
   }
 }
