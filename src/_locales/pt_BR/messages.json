@@ -1,62 +1,41 @@
 {
 	"appName": {
 		"message": "YouTube Auto Like",
-		"description": "Nome da Aplicação"
 	},
 	"appDesc": {
 		"message": "\"Automagicamente dá \"like\" em vídeos do YouTube de seus criadores de conteúdo favoritos.",
-		"description": "Descrição da aplicação"
 	},
-	"appDescDetail": {
-		"message": "Tudo que esta extensão faz é \"martelar\" o botão de \"like\" sempre que você assiste à algum vídeo de um canal que você esteja inscrito. Sem nenhum esforço. Sem necessidade de autenticar. Opcionalmente, você pode de forma automática dar \"like\" em TODOS os vídeos. Porque? Eu não sei. Divirta-se. Sinta-se livre para sugerir novas funcionalidades ou contribuir:",
-		"description": "Descrição detalhada para a página da loja \"web\""
-	},
+    "optLikeWhatTitle": {
+      "message": "Quais vídeos?"
+    },
+    "optLikeWhenTitle": {
+      "message": "Quão rápido?"
+    },
 	"optLikeSub": {
 		"message": "\"Like\" só vídeos da lista de canais que estou inscrito"
 	},
 	"optLikeAll": {
 		"message": "\"Like\" em todos os vídeos"
 	},
-	"optLikeNone": {
+	"optDisable": {
 		"message": "Desativar"
 	},
 	"optLikeInstant": {
-		"message": "\"Like\" Instantâneo"
+		"message": "Instantaneamente"
 	},
-	"optLikeCustom": {
-		"message": "Cronômetro personalizado"
-	},
-	"optLikePercentage": {
-		"message": "Porcentagem"
-	},
-	"optLikeMinutes": {
-		"message": "Minutos"
-	},
-	"optLikeRandom": {
-		"message": "Cronômetro aleatório"
-	},
-	"optUseList": {
-		"message": "Usar lista"
-	},
-	"optBlackList": {
-		"message": "Modo Lista de Bloqueados"
-	},
-	"optWhiteList": {
-		"message": "Modo Lista de Permitidos"
-	},
-	"optWhiteListWarning": {
-		"message": "⚠️ lista está vazia, nenhum \"Like\" será dado"
-	},
-	"linkDonate": {
-		"message": "Doar"
-	},
-	"linkContribute": {
-		"message": "Contribuir"
-	},
-	"mngName": {
-		"message": "Nome do Canal"
-	},
-	"mngURL": {
-		"message": "URL do Canal"
-	}
-}
+    "optLikeTimed": {
+      "message": "minutos"
+    },
+    "optLikePercent": {
+      "message": "porcentagem"
+    },
+    "linkDonate": {
+      "message": "Trate meus gatos"
+    },
+    "linkReport": {
+      "message": "Não funciona?"
+    },
+    "reloadNotice": {
+      "message": "Recarregue a página para aplicar as mudanças."
+    }
+  }

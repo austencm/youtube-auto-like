@@ -2,11 +2,10 @@
 
 # YouTube Auto Like
 
-<<<<<<< HEAD
 ## Presentation
 A plugin that likes videos from channels you subscribe to, so you never forget to support your favorite content creators. No login required.
 
-Available in the [Firefox Add-ons store](https://addons.mozilla.org/en/firefox/addon/youtube_auto_like/) 
+Available in the [Firefox Add-ons store](https://addons.mozilla.org/en/firefox/addon/youtube_auto_like/)
 The chrome extension is currently banned from the store ([old link](https://chrome.google.com/webstore/detail/youtube-auto-like/loodalcnddclgnfekfomcoiipiohcdim)).
 
 ## Issues
@@ -31,8 +30,7 @@ Extensions loaded this way are unable to update automatically. Keep an eye out f
 > [Firefox (by @Taknok)](https://addons.mozilla.org/en-US/firefox/addon/youtube_auto_like/)
 
 ## Translations
-Feel free to contribute with a [pull request](https://github.com/austencm/youtube-auto-like/pulls) or grab [the JSON file](https://raw.githubusercontent.com/austencm/youtube-auto-like/master/app/_locales/en/messages.json), translate it, and [send it back to me](mailto:heyausten@gmail.com).
->>>>>>> 4461d9a76ec51971660ab9797cdedbc7af386b47
+Feel free to contribute with a [pull request](https://github.com/austencm/youtube-auto-like/pulls) or grab [the JSON file](https://github.com/austencm/youtube-auto-like/blob/main/src/_locales/en/messages.json), translate it, and [send it back to me](mailto:heyausten@gmail.com).
 
 ## Releases
 | Version     | Date           | Changelog |
@@ -52,7 +50,6 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 | **`v2.0.1`** | _Aug 21, 2017_ | <ul><li>I18n improvements</li><li>Misc fixes</li></ul> |
 | **`v2.0.0`** | _Jul 4, 2017_ | <ul><li>Total rewrite and graphic updates</li></ul> |
 
-<<<<<<< HEAD
 Do you know another language? _I sure don't._ Feel free to contribute with a [pull request](https://github.com/Taknok/youtube-auto-like/pulls), or grab [the JSON file](https://raw.githubusercontent.com/Taknok/youtube-auto-like/master/app/_locales/en/messages.json), translate it, and [send it back to me](mailto:pg.developper.fr@gmail.com).
 
 ## Developpers
@@ -86,4 +83,3 @@ Details of releases before v2.0.0 are scarce due to the author not knowing how t
 ## Feed my kitties 🐈
 They're _starving_, but could the food be room temp and a different flavor thank mew.<br />
 https://www.buymeacoffee.com/austen
->>>>>>> 4461d9a76ec51971660ab9797cdedbc7af386b47
