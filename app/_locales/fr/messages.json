@@ -1,0 +1,61 @@
+{
+	"appName": {
+		"message": "YouTube Auto Like",
+		"description": "Nom de l'application"
+	},
+	"appDesc": {
+		"message": "Like automatiquement les vidéos YouTube de vos créateurs préférés.",
+		"description": "Description de l'application"
+	},
+	"appDescDetail": {
+		"message": "Ce plugin like automatiquement les vidéos YouTube. Comme ça, vous n'oublierez plus de supporter vos créateurs préférés. Vous pouvez choisir d'aimer toutes les vidéos, seulement des chaînes souscrites ou aucune. Si vous dislikez une vidéo, celle-ci ne sera pas relikée par la suite. Aucune connexion nécessaire. Vous pouvez proposer de nouvelles fonctionnalités ou contribuer au plugin.",
+		"description": "Description detaillée pour la page web du plugin"
+	},
+	"optLikeSub": {
+		"message": "Liker les vidéos des chaines abonnées"
+	},
+	"optLikeAll": {
+		"message": "Liker toutes les vidéos"
+	},
+	"optLikeNone": {
+		"message": "Désactiver"
+	},
+	"optLikeInstant" : {
+		"message": "Liker instantanément"
+	},
+	"optLikeCustom": {
+		"message": "Personnaliser"
+	},
+	"optLikePercentage": {
+		"message": "Pourcentage"
+	},
+	"optLikeMinutes" :{
+		"message": "Minutes"
+	},
+	"optLikeRandom" :{
+		"message": "Minuteur aléatoire"
+	},
+	"optUseList": {
+		"message": "Utiliser la liste"
+	},
+	"optBlackList": {
+		"message": "Mode liste noire"
+	},
+	"optWhiteList": {
+		"message": "Mode liste blanche"
+	},
+	"linkDonate": {
+		"message": "Soutenir",
+		"description" : "Donner de l'argent pour aider le createur du plugin"
+	},
+	"linkContribute": {
+		"message": "Contribuer",
+		"description" : "Lien pour contribuer au plugin"
+	},
+	"mngName": {
+		"message": "Nom de la chaîne"
+	},
+	"mngURL": {
+		"message": "URL de la chaîne"
+	}
+}

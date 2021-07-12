@@ -1,0 +1,63 @@
+body {
+	margin: 0;
+	padding: 30px;
+	font-family: 'Titillium Web';
+	font-weight: 300;
+}
+
+a {
+	display: inline-block;
+	color: #e62117;
+	text-decoration: none !important;
+	opacity: 0.5;
+	transition: all 0.1s ease-in-out;
+}
+
+a:hover {
+	transform: translateY(-0.1em);
+	opacity: 1;
+}
+
+#title {
+	font-size: 17px;
+	font-weight: normal;
+	margin: 0 0 1em;
+	color: #e62117;
+	text-transform: uppercase;
+	letter-spacing: 0.1em; 
+}
+
+#credits div{
+	font-size: 15px;
+	font-weight: normal;
+	margin: 1em 0 0;
+	color: #e62117;
+	text-transform: uppercase;
+	letter-spacing: 0.1em; 
+}
+#credits a {
+	display: inline-block;
+	color: black;
+	text-decoration: none !important;
+	opacity: 0.8;
+	transition: all 0.1s ease-in-out;
+}
+
+#donate-link {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+}
+
+#report-link {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: bold;
+}
+
+#github-link svg {
+	width: 1.15em;
+	height: 1.15em;
+	position: relative;
+	top: 0.2em;
+}
