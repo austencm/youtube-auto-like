@@ -1,2 +1,10 @@
+<<<<<<< HEAD
 .DS_Store
 *.zip
+=======
+node_modules
+dist
+release
+*.zip
+.DS_Store
+>>>>>>> 4461d9a76ec51971660ab9797cdedbc7af386b47

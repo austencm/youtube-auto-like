@@ -1,0 +1,49 @@
+{
+  "name": "youtube-auto-like",
+  "description": "Never forget to like a video again.",
+  "version": "2.7.1",
+  "homepage": "https://github.com/austencm/youtube-auto-like",
+  "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austencm/youtube-auto-like.git"
+  },
+  "bugs": "https://github.com/austencm/youtube-auto-like/issues",
+  "keywords": [
+    "addon",
+    "auto",
+    "automatic",
+    "browser",
+    "chrome",
+    "firefox",
+    "extension",
+    "like",
+    "plugin",
+    "youtube",
+    "video"
+  ],
+  "contributors": [
+    "Taknok (https://github.com/Taknok)",
+    "JKetelaar (https://github.com/JKetelaar)",
+    "Szmyk (https://github.com/Szmyk)",
+    "moweME (https://github.com/moweME)",
+    "mariovalney (https://github.com/mariovalney)",
+    "Borian23 (https://github.com/Borian23)",
+    "UtkuGARIP (https://github.com/UtkuGARIP)"
+  ],
+  "scripts": {
+    "start": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=production webpack"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "*",
+    "copy-webpack-plugin": "^7.0.0",
+    "webpack": "^5.37.1",
+    "webpack-run-chrome-extension": "^0.3.0",
+    "zip-webpack-plugin": "^4.0.1"
+  },
+  "dependencies": {
+    "bowser": "^2.11.0"
+  }
+}
