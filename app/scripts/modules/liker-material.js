@@ -36,6 +36,16 @@ class MaterialLiker {
 		this.btns = {}
 	}
 
+	getActionsElements() {
+		return document.querySelector("#actions #top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer");
+	}
+
+	isNewLayout() {
+		let actionsElements = this.getActionsElements();
+		if (actionsElements) return !actionsElements.closest("ytd-watch-metadata").hidden;
+		return false;
+	}
+
 	/**
 	 * Detects when like/dislike buttons have loaded (so we can press them)
 	 * and register element in the attributes
@@ -57,12 +67,21 @@ class MaterialLiker {
 
 		if (this.icon.like != null) {
 			// Select the like button of the main video
-			let likeElement = document.querySelector(
-				`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`
-			);
-			let dislikeElement = document.querySelector(
-				`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`
-			);
+			let likeElement, dislikeElement;
+			let isNew = this.isNewLayout();
+			log("new layout:", isNew);
+			if (isNew) {
+				let actionsElements = this.getActionsElements();
+				likeElement = actionsElements.querySelector(`g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`);
+				dislikeElement = actionsElements.querySelector(`g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`);
+			} else {
+				likeElement = document.querySelector(
+					`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`
+				);
+				dislikeElement = document.querySelector(
+					`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`
+				);
+			}
 			
 			// Make sure both icons exist
 			if (likeElement && dislikeElement) {
@@ -326,6 +345,7 @@ class MaterialLiker {
 	 * The liker won't do anything unless this method is called.
 	 */
 	async init() {
+		console.log("ok")
 		if (this.options.like_what === "none") {
 			log("yt-autolike disabled")
 			return;
