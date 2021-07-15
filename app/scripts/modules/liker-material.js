@@ -345,7 +345,6 @@ class MaterialLiker {
 	 * The liker won't do anything unless this method is called.
 	 */
 	async init() {
-		console.log("ok")
 		if (this.options.like_what === "none") {
 			log("yt-autolike disabled")
 			return;
