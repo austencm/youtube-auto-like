@@ -37,13 +37,92 @@ class MaterialLiker {
 	}
 
 	getActionsElements() {
-		return document.querySelector("#actions #top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer");
+		// return document.querySelector("#actions #top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer");
+		return document.querySelector("#menu-container");
+	}
+
+	/**
+	 * Search the svg that has .style-scope.yt-icon (which is the svg used in yt-app)
+	 * @param {string} id The id of the svg to query
+	 */
+	getUsedSVG(id) {
+		var likeSvgRawList = document.querySelectorAll(`g#${id} path`);
+
+		let svgs = null;
+		let p = null;
+		for (let item of likeSvgRawList) {
+			p = item.getAttribute("d");
+			svgs = document.querySelectorAll(`path[d="${p}"]`);
+			for (let i of svgs) {
+				if (i.matches(".style-scope.yt-icon")) return p;
+			}
+		}
+		log("No active svg found.");
+		return null;
+	}
+
+	getUsedLikeSVG() {
+		return this.getUsedSVG("like");
+	}
+
+	getUsedDislikeSVG() {
+		return this.getUsedSVG("dislike");
+	}
+
+	getUsedLikeFilledSVG() {
+		return this.getUsedSVG("like-filled");
+	}
+
+	getUsedDislikeFilledSVG() {
+		return this.getUsedSVG("dislike-filled");
+	}
+
+	getLikeDislikeElements(likePath, dislikePath) {
+		let likeElement, dislikeElement;
+		let actionsElements = this.getActionsElements();
+		
+		likeElement = actionsElements.querySelector(`g.yt-icon path[d="${likePath}"], g.iron-icon path[d="${likePath}"]`);
+		dislikeElement = actionsElements.querySelector(`g.yt-icon path[d="${dislikePath}"], g.iron-icon path[d="${dislikePath}"]`);
+
+		return [likeElement, dislikeElement];
+	}
+
+	getButtons() {
+		let _;
+		let [likeElement, dislikeElement] = this.getLikeDislikeElements(this.getUsedLikeSVG(), this.getUsedDislikeSVG());
+
+		// if a button is not found, maybe it is due to svg-filled (and the video is liked)
+		if (likeElement === null) {
+			[likeElement, _] = this.getLikeDislikeElements(this.getUsedLikeFilledSVG(), this.getUsedDislikeSVG());
+		}
+		if (dislikeElement === null) {
+			[_, dislikeElement] = this.getLikeDislikeElements(this.getUsedLikeSVG(), this.getUsedDislikeFilledSVG())
+		}
+		
+		// Make sure both icons exist
+		if (likeElement && dislikeElement) {
+			// Find and store closest buttons
+			log("got buttons");
+			let btnLike = likeElement
+				.closest('yt-icon-button, paper-icon-button');
+			let btnDislike = dislikeElement
+				.closest('yt-icon-button, paper-icon-button');
+
+			return [btnLike, btnDislike];
+				;
+		} else {
+			log ("did not get buttons");
+			return [null, null];
+		}
+	}
+
+	updateButtons() {
+		[this.btns.like, this.btns.dislike] = this.getButtons();
+
 	}
 
 	isNewLayout() {
-		let actionsElements = this.getActionsElements();
-		if (actionsElements) return !actionsElements.closest("ytd-watch-metadata").hidden;
-		return false;
+		return this.getUsedLikeFilledSVG() === null;
 	}
 
 	/**
@@ -53,53 +132,17 @@ class MaterialLiker {
 	 *     have loaded
 	 */
 	waitForButtons(callback) {
-		if (this.icon.like == null && IS_CLASSIC) {
-			// get the SVG pattern
-			this.icon.like = document.querySelector('g#like path')
-				.getAttribute('d');
-			this.icon.dislike = document.querySelector('g#dislike path')
-				.getAttribute('d');
+		// wait button box load
+		let box = this.getActionsElements();
+
+		if (!box) {
+			log("wait 1s for box");
+			setTimeout(() => this.waitForButtons(callback), 1000 );
 		} else {
-			// else use the stored one
-			this.icon.like = this.iconSvgData.like;
-			this.icon.dislike = this.iconSvgData.dislike;
+			this.updateButtons();
+			callback();
 		}
 
-		if (this.icon.like != null) {
-			// Select the like button of the main video
-			let likeElement, dislikeElement;
-			let isNew = this.isNewLayout();
-			log("new layout:", isNew);
-			if (isNew) {
-				let actionsElements = this.getActionsElements();
-				likeElement = actionsElements.querySelector(`g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`);
-				dislikeElement = actionsElements.querySelector(`g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`);
-			} else {
-				likeElement = document.querySelector(
-					`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.like}"], g.iron-icon path[d="${this.icon.like}"]`
-				);
-				dislikeElement = document.querySelector(
-					`ytd-video-primary-info-renderer #top-level-buttons-computed g.yt-icon path[d="${this.icon.dislike}"], g.iron-icon path[d="${this.icon.dislike}"]`
-				);
-			}
-			
-			// Make sure both icons exist
-			if (likeElement && dislikeElement) {
-				// Find and store closest buttons
-				this.btns.like = likeElement
-					.closest('yt-icon-button, paper-icon-button');
-				this.btns.dislike = dislikeElement
-					.closest('yt-icon-button, paper-icon-button');
-				log("got buttons");
-				callback();
-			} else {
-				log("wait 1s for buttons");
-				setTimeout(() => this.waitForButtons(callback), 1000 );
-			}
-		} else {
-			log("wait 1s for svg");
-			setTimeout(() => this.waitForButtons(callback), 1000 );
-		}
 	}
 
 	/**
@@ -224,11 +267,13 @@ class MaterialLiker {
 	 * @return {Boolean} True if the like or dislike button is active
 	 */
 	isVideoRated() {
+		log("checking if video is rated");
 		if (IS_CLASSIC) {
 			return this.btns.like.parentNode.parentNode.classList
-				 .contains("style-default-active") ||
-				 this.btns.dislike.parentNode.parentNode.classList
-				 .contains("style-default-active");
+			    .contains("style-default-active") ||
+				this.btns.dislike.parentNode.parentNode.classList
+				.contains("style-default-active");
+			
 		} else if (IS_GAMING) {
 			return this.btns.like.classList.contains("active") ||
 				 this.btns.dislike.classList.contains("active");
@@ -249,6 +294,7 @@ class MaterialLiker {
 	}	
 
 	shouldLike() {
+		this.updateButtons();
 		let rated = this.isVideoRated();
 		if (rated) {
 			log("Not like: already liked video");
@@ -325,7 +371,7 @@ class MaterialLiker {
 			return;
 		} else {
 			if (this.IS_STARTED) {
-				exit();
+				throw "Multiple run";
 			} else { //could be a new video in playlist
 				this.IS_STARTED = true;
 				return;
