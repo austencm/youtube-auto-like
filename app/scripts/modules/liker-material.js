@@ -277,6 +277,8 @@ class MaterialLiker {
 		} else if (IS_GAMING) {
 			return this.btns.like.classList.contains("active") ||
 				 this.btns.dislike.classList.contains("active");
+		} else {
+			throw "Unknow youtube type";
 		}
 	}
 
@@ -393,6 +395,14 @@ class MaterialLiker {
 	async init() {
 		if (this.options.like_what === "none") {
 			log("yt-autolike disabled")
+			return;
+		}
+
+		function isVideo() {
+			return window.location.href.indexOf("watch") > -1
+		}
+		if (!isVideo()) {
+			log("not a video");
 			return;
 		}
 
