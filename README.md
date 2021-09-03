@@ -29,3 +29,4 @@ The debug mode option can be display in the addon popup by entering the konami c
 - [msmafra](https://github.com/msmafra) ~ PT translation
 - [Plunts](https://github.com/Plunts) ~ DE translation + bug fix
 - [GitMoleo](https://github.com/GitMoleo) ~ DE translation
+- [Babico](https://github.com/babico) ~ TR translation

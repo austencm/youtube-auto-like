@@ -1,0 +1,62 @@
+{
+	"appName": {
+		"message": "YouTube Otomatik Beğenme",
+		"description": "Uygulamanın ismi"
+	},
+	"appDesc": {
+		"message": "Favori içerik oluşturucularınızın YouTube videolarını otomatik olarak beğenin.",
+		"description": "Uygulamanın açıklaması"
+	},
+	"appDescDetail": {
+		"message": "Bu uzantının tek yaptığı, abone olunan bir kanaldan video izlediğinizde beğen düğmesine basmaktır. Hiçbir çaba gerekmez. Kimlik doğrulamaya gerek yok. Alternatif olarak, her videoyu otomatik olarak beğenebilirsiniz. Neden? Bilmiyorum. Yeni özellikler önermekten veya katkıda bulunmaktan çekinmeyin:",
+		"description": "Web mağazası sayfası için ayrıntılı açıklama"
+	},
+	"optLikeSub": {
+		"message": "Yalnızca abone olunan kanalların videolarını beğen"
+	},
+	"optLikeAll": {
+		"message": "Tüm videoları beğen"
+	},
+	"optLikeNone": {
+		"message": "Devre dışı bırak"
+	},
+	"optLikeInstant": {
+		"message": "Anında Beğen"
+	},
+	"optLikeCustom": {
+		"message": "Özel zamanlayıcı"
+	},
+	"optLikePercentage": {
+		"message": "Yüzde"
+	},
+	"optLikeMinutes": {
+		"message": "Dakika"
+	},
+	"optLikeRandom": {
+		"message": "Rastgele zamanlayıcı"
+	},
+	"optUseList": {
+		"message": "Liste kullan"
+	},
+	"optBlackList": {
+		"message": "Bloklu liste modu"
+	},
+	"optWhiteList": {
+		"message": "İzinli liste modu"
+	},
+	"optWhiteListWarning": {
+		"message": "⚠️ liste boş, hiçbir şey beğenilmeyecek"
+	},
+	"linkDonate": {
+		"message": "Bağış"
+	},
+	"linkContribute": {
+		"message": "Katkıda bulun"
+	},
+	"mngName": {
+		"message": "Kanal İsmi"
+	},
+	"mngURL": {
+		"message": "Kanal URL"
+	}
+}
