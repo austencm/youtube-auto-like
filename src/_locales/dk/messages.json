@@ -1,0 +1,41 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Aldrig glem at like en video igen."
+  },
+  "optLikeWhatTitle": {
+    "message": "Hvilke videoer?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Hvor hurtig?"
+  },
+  "optLikeSub": {
+    "message": "Kun videoer fra kanaler jeg abonnere på"
+  },
+  "optLikeAll": {
+    "message": "Alle videoer"
+  },
+  "optDisable": {
+    "message": "Deaktiver"
+  },
+  "optLikeInstant": {
+    "message": "Med det samme"
+  },
+  "optLikeTimed": {
+    "message": "minuter"
+  },
+  "optLikePercent": {
+    "message": "procent"
+  },
+  "linkDonate": {
+    "message": "Giv mine katte mad"
+  },
+  "linkReport": {
+    "message": "Virker ikke?"
+  },
+  "reloadNotice": {
+    "message": "Genindlæs siden for at aktivere ændringer."
+  }
+}
