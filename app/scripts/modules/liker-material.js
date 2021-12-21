@@ -42,7 +42,7 @@ class MaterialLiker {
 			document.querySelector("#actions #top-level-buttons-computed.top-level-buttons.style-scope.ytd-menu-renderer"),
 		]
 		for (var elem of tests) {
-			if (trueIsVisible(elem)) {
+			if (elem && trueIsVisible(elem)) {
 				log("ActionsElements found.")
 				return elem
 			}
