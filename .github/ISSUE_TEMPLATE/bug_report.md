@@ -23,6 +23,10 @@ Steps to reproduce the behavior:
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+**Logs**
+# Here is a video to help you send the logs https://www.youtube.com/watch?v=C4fQXRYwbrs&t=66s
+# Then attach the file to the issue.
+
 **Specification**
  - OS: [e.g. Windows 10]
  - Browser version [e.g. Firefox 75]
