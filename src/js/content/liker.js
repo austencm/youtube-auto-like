@@ -3,9 +3,9 @@
  */
 const selectors = {
   likeButton:
-    '#menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:first-child yt-icon-button',
+    '#menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:first-child yt-icon-button, #menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:first-child tp-yt-paper-button',
   dislikeButton:
-    '#menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
+    '#menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button, #menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) tp-yt-paper-button',
   subscribeButton: '#subscribe-button tp-yt-paper-button',
 };
 
