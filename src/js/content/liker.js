@@ -3,9 +3,9 @@
  */
 const selectors = {
   likeButton:
-    '#menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:first-child yt-icon-button',
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
   dislikeButton:
-    '#menu-container #top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
   subscribeButton: '#subscribe-button tp-yt-paper-button',
 };
 
