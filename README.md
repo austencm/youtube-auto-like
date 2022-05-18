@@ -44,6 +44,7 @@ Feel free to contribute with a [pull request](https://github.com/austencm/youtub
 | [@Borian23](https://github.com/Borian23) | PL translation |
 | [@UtkuGARIP](https://github.com/UtkuGARIP) | TR translation |
 | [@Makishima](https://github.com/Makishima) | RU translation |
+| [@wthueb](https://github.com/wthueb) | Selector fix |
 | [@netravnen](https://github.com/netravnen) | DK translation |
 | [@adamoudad](https://github.com/adamoudad) | FR translation |
 
