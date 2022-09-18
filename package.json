@@ -40,7 +40,7 @@
     "clean-webpack-plugin": "*",
     "copy-webpack-plugin": "^7.0.0",
     "webpack": "^5.37.1",
-    "webpack-run-chrome-extension": "^0.3.0",
+    "webpack-run-chrome-extension": "^0.6.0",
     "zip-webpack-plugin": "^4.0.1"
   },
   "dependencies": {
