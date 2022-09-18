@@ -5,12 +5,6 @@
   "appDesc": {
     "message": "Liked de YouTube videos van je favoriete content makers automagisch."
   },
-  "appStoreDesc": {
-    "message": "Het enige wat deze extensie doet, is het indrukken van de like knop van videos van kanalen waarop je bent geabonneerd. Geen inspanning vereist. Geen authenticatie vereist. Je kunt zelfs ELKE video liken."
-  },
-  "appStoreContribute": {
-    "message": "Schroom niet om suggesties achter te laten"
-  },
   "optLikeWhatTitle": {
     "message": "Welche videos?"
   },
