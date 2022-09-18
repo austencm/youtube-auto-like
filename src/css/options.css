@@ -49,10 +49,10 @@ svg {
   font-size: 14px;
   line-height: 115%;
   margin-bottom: 10px;
+}
 
-  p {
-    margin: 0 0 10px;
-  }
+.update-notice p {
+  margin: 0 0 10px;
 }
 
 .button {
@@ -117,8 +117,8 @@ svg {
   text-align: center;
 }
 
-.option-group input[type=number]::-webkit-outer-spin-button, 
-.option-group input[type=number]::-webkit-inner-spin-button { 
+.option-group input[type='number']::-webkit-outer-spin-button,
+.option-group input[type='number']::-webkit-inner-spin-button {
   display: none;
 }
 
@@ -126,7 +126,6 @@ svg {
   border-bottom-color: var(--color-brand);
   outline: 0;
 }
-
 
 fieldset {
   border: 1px solid rgb(0 0 0 / 25%);
