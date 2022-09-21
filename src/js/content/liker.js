@@ -4,9 +4,11 @@
 const selectors = {
   likeButton: [
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) button',
   ],
   dislikeButton: [
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) button',
   ],
   subscribeButton: ['#subscribe-button tp-yt-paper-button'],
 };
@@ -107,7 +109,9 @@ export default class Liker {
     return (
       (this.cache.likeButton.classList.contains('style-default-active') &&
         !this.cache.likeButton.classList.contains('size-default')) ||
-      this.cache.dislikeButton.classList.contains('style-default-active')
+      this.cache.dislikeButton.classList.contains('style-default-active') ||
+      this.cache.likeButton.getAttribute('aria-pressed') === 'true' ||
+      this.cache.dislikeButton.getAttribute('aria-pressed') === 'true'
     );
   }
 
