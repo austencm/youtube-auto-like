@@ -12,7 +12,7 @@
     "message": "Quão rápido?"
   },
   "optLikeSub": {
-    "message": "Apenas vídeos de canais inscritos"
+    "message": "Vídeos da lista de canais que estou inscrito"
   },
   "optLikeAll": {
     "message": "Todos os vídeos"
@@ -27,13 +27,13 @@
     "message": "minutos"
   },
   "optLikePercent": {
-    "message": "por cento"
+    "message": "porcentagem"
   },
   "linkReport": {
-    "message": "Algum problema?"
+    "message": "Não funciona?"
   },
   "reloadNotice": {
-    "message": "Reload the page to apply changes."
+    "message": "Recarregue a página para aplicar as mudanças."
   },
   "updateNotice": {
     "message": "Hey! There's a newer version available."
