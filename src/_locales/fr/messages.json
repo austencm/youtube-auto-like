@@ -9,7 +9,7 @@
     "message": "Quelles vidéos ?"
   },
   "optLikeWhenTitle": {
-    "message": "À quelle vitesse ?"
+    "message": "A quel moment ?"
   },
   "optLikeSub": {
     "message": "Like les vidéos des chaines abonnées"
@@ -48,7 +48,7 @@
     "message": "Saving..."
   },
   "donateAppeal": {
-    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+    "message": "Des heures de développement et de test sont nécessaires pour maintenir cette extension. Si vous pensez que cela vaut quelques euros, vous pouvez aider à nourrir mes chatons ici."
   },
   "donateLink": {
     "message": "Cat snack store"
