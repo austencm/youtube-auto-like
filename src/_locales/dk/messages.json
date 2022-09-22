@@ -29,13 +29,28 @@
   "optLikePercent": {
     "message": "procent"
   },
-  "linkDonate": {
-    "message": "Giv mine katte mad"
-  },
   "linkReport": {
     "message": "Virker ikke?"
   },
   "reloadNotice": {
     "message": "Genindlæs siden for at aktivere ændringer."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
   }
 }

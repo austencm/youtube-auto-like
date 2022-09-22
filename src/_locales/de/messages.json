@@ -29,13 +29,28 @@
   "optLikePercent": {
     "message": "Prozent"
   },
-  "linkDonate": {
-    "message": "Spenden!"
-  },
   "linkReport": {
     "message": "Bug melden"
   },
   "reloadNotice": {
     "message": "Lade die Seite neu, um Änderungen zu übernehmen."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
   }
 }

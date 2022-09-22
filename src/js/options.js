@@ -40,7 +40,7 @@ const loadOptions = async () => {
     // Add options state to report issue link
     const reportLink = document.querySelector('#report-link');
     const url = `https://github.com/austencm/youtube-auto-like/issues/new?labels=bug&body=${encodeURIComponent(
-      bugReportTemplate + log,
+      bugReportTemplate + log
     )}`;
     reportLink.setAttribute('href', url);
   });
@@ -50,37 +50,36 @@ async function handleOptionsChange(e) {
   const newOptions = {};
   // Extract form data
   Array.from(new FormData(e.currentTarget).entries()).forEach(
-    ([name, val]) => (newOptions[name] = val),
+    ([name, val]) => (newOptions[name] = val)
   );
 
-  setStatus('saving...');
+  setIsSaving(true);
   await optionManager.set(newOptions);
   await loadOptions();
-  setTimeout(() => setStatus('saved'), 300);
+  setTimeout(() => setIsSaving(false), 300);
 }
 
-function setStatus(status = '') {
-  document.querySelector('.status').innerText = status;
+function setIsSaving(isSaving) {
+  document.querySelector('.reload-notice').hidden = isSaving;
+  document.querySelector('.saving-text').hidden = !isSaving;
 }
 
 loadOptions();
 
 // When the user changes an option, save it
-document.querySelector('#options-form').addEventListener('change', handleOptionsChange);
+document
+  .querySelector('#options-form')
+  .addEventListener('change', handleOptionsChange);
 
 // Check for saved update info
 async function checkForSavedRelease() {
   chrome.storage.local.get('latestRelease', ({ latestRelease }) => {
     if (latestRelease) {
       const updateNotice = document.querySelector('.update-notice');
+      const latestReleaseLink = document.querySelector('.latest-link');
 
-      updateNotice.innerHTML = `
-        <p>Hey! There's a newer version of the extension available.</p>
-        <div>
-          <a class="button button--primary" href="${latestRelease.downloadUrl}">Download v${latestRelease.version}</a>
-          <a class="button" href="https://github.com/austencm/youtube-auto-like/releases" target="_blank" rel="noreferrer">See releases</a>
-        </div>
-      `;
+      latestReleaseLink.innerHTML += ` v${latestRelease.version}`;
+      latestReleaseLink.setAttribute('href', latestRelease.downloadUrl);
 
       updateNotice.removeAttribute('hidden');
     }
