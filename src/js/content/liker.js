@@ -1,18 +1,23 @@
-/**
- * Likes YouTube videos
- */
 const selectors = {
   likeButton: [
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) button',
+    '#segmented-like-button button',
   ],
   dislikeButton: [
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) button',
+    '#segmented-dislike-button button',
   ],
-  subscribeButton: ['#subscribe-button tp-yt-paper-button'],
+  subscribeButton: [
+    '#subscribe-button tp-yt-paper-button',
+    '#subscribe-button button',
+  ],
 };
 
+/**
+ * Likes YouTube videos
+ */
 export default class Liker {
   /**
    * @param {Object} options
@@ -125,9 +130,15 @@ export default class Liker {
       this.cache.subscribeButton ||
       document.querySelectorAll(selectors.subscribeButton)[0];
     // Does the button exist?
-    if (!subscribeButton) return false;
+    if (!subscribeButton) {
+      this.log('no subscribe button found');
+      return false;
+    }
     // Is the button active?
-    if (subscribeButton.hasAttribute('subscribed')) {
+    if (
+      subscribeButton.hasAttribute('subscribed') ||
+      subscribeButton.classList.contains('yt-spec-button-shape-next--filled')
+    ) {
       this.cache.subscribeButton = subscribeButton;
       return true;
     }
