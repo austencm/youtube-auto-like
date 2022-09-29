@@ -42,7 +42,7 @@ const debug = new Debug();
     debug.log('...options loaded', `(${JSON.stringify(options, null, 2)})`);
 
     const liker = new Liker({ options, log: debug.log });
-    liker.onStop = debug.save;
+    liker.onPause = debug.save;
   } catch (err) {
     debug.log(err);
   } finally {
