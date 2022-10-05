@@ -3,7 +3,7 @@
     "message": "YouTube Auto Like"
   },
   "appDesc": {
-    "message": "Non dimenticare mai più di un video."
+    "message": "Non dimenticarti mai di mettere mi piace a un video."
   },
   "optLikeWhatTitle": {
     "message": "Quali video?"
@@ -36,21 +36,21 @@
     "message": "Ricarica la pagina per applicare le modifiche."
   },
   "updateNotice": {
-    "message": "Hey! There's a newer version available."
+    "message": "Ehi! È disponibile una versione più recente."
   },
   "download": {
     "message": "Download"
   },
   "seeReleases": {
-    "message": "See releases"
+    "message": "Vedi le versioni"
   },
   "saving": {
-    "message": "Saving..."
+    "message": "Salvataggio..."
   },
   "donateAppeal": {
     "message": "Ore di sviluppo e test servono per mantenere questa estensione. Se pensi che valga un paio di dollari, puoi comprare uno spuntino ai miei gatti."
   },
   "donateLink": {
-    "message": "Cat snack store"
+    "message": "Negozio di snack per gatti"
   }
 }
