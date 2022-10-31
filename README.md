@@ -6,6 +6,8 @@ Never forget to like a video again.
 
 ![](https://img.shields.io/github/downloads/austencm/youtube-auto-like/total?style=flat)
 ![](https://img.shields.io/github/downloads/austencm/youtube-auto-like/latest/total?style=flat)
+![](https://img.shields.io/github/v/release/austencm/youtube-auto-like)
+![](https://img.shields.io/github/release-date/austencm/youtube-auto-like)
 
 This version is tested with Chrome, but it should work with any Chromium-based browser.
 
