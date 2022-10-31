@@ -3,6 +3,7 @@ const RunChromeExtension = require('webpack-run-chrome-extension');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ZipWebpackPlugin = require('zip-webpack-plugin');
+const package = require('./package.json');
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const paths = {
@@ -38,15 +39,17 @@ module.exports = {
         { from: `${paths.src}/images`, to: `${paths.build}/images` },
       ],
     }),
-    IS_PROD && new ZipWebpackPlugin({
-      path: '../',
-      filename: 'release.zip',
-    }),
-    !IS_PROD && new RunChromeExtension({
-      extensionPath: paths.build,
-      startingUrl: 'https://youtube.com',
-      autoReload: true,
-    }),
+    IS_PROD &&
+      new ZipWebpackPlugin({
+        path: '../',
+        filename: `release-v${package.version}.zip`,
+      }),
+    !IS_PROD &&
+      new RunChromeExtension({
+        extensionPath: paths.build,
+        startingUrl: 'https://youtube.com',
+        autoReload: true,
+      }),
   ].filter(Boolean),
 
   // Determine how modules within the project are treated
