@@ -129,15 +129,17 @@ export default class Liker {
     const subscribeButton =
       this.cache.subscribeButton ||
       document.querySelectorAll(selectors.subscribeButton)[0];
+
     // Does the button exist?
     if (!subscribeButton) {
       this.log('no subscribe button found');
       return false;
     }
+
     // Is the button active?
     if (
       subscribeButton.hasAttribute('subscribed') ||
-      subscribeButton.classList.contains('yt-spec-button-shape-next--filled')
+      subscribeButton.classList.contains('yt-spec-button-shape-next--tonal')
     ) {
       this.cache.subscribeButton = subscribeButton;
       return true;
