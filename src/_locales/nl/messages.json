@@ -6,22 +6,22 @@
     "message": "Liked de YouTube videos van je favoriete content makers automagisch."
   },
   "optLikeWhatTitle": {
-    "message": "Welche videos?"
+    "message": "Welke videos?"
   },
   "optLikeWhenTitle": {
-    "message": "Wie schnell?"
+    "message": "Wanneer?" 
   },
   "optLikeSub": {
-    "message": "Vindt videos alleen leuk van geabonneerde kanalen"
+    "message": "Alleen van geabonneerde kanalen."
   },
   "optLikeAll": {
-    "message": "Vindt alle videos leuk"
+    "message": "Alle videos. "
   },
   "optDisable": {
-    "message": "Schakel uit"
+    "message": "Extensie uischakelen"
   },
   "optLikeInstant": {
-    "message": "Sofort"
+    "message": "direct"
   },
   "optLikeTimed": {
     "message": "minuten"
@@ -30,13 +30,13 @@
     "message": "procent"
   },
   "linkReport": {
-    "message": "Niet werken?"
+    "message": "Foutje gevonden?"
   },
   "reloadNotice": {
-    "message": "Reload the page to apply changes."
+    "message": "Herlaad de pagina om de veranderingen door te bevestigen."
   },
   "updateNotice": {
-    "message": "Hey! There's a newer version available."
+    "message": "Hey! Er is een nieuwe versie beschikbaar."
   },
   "download": {
     "message": "Download"
@@ -45,7 +45,7 @@
     "message": "See releases"
   },
   "saving": {
-    "message": "Saving..."
+    "message": "Opslaan..."
   },
   "donateAppeal": {
     "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
