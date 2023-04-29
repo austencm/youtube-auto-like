@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "postinstall": "npm run build",
-    "start": "NODE_ENV=development webpack",
+    "dev": "NODE_ENV=development webpack",
     "build": "NODE_ENV=production webpack"
   },
   "devDependencies": {
