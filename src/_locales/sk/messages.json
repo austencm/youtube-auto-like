@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Už nikdy nezabudnete lajkúť oblúbené video."
+  },
+  "optLikeWhatTitle": {
+    "message": "Ktoré videá?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Ako rýchlo?"
+  },
+  "optLikeSub": {
+    "message": "Iba videá z kanálov, ktoré odoberám"
+  },
+  "optLikeAll": {
+    "message": "Všetky videá"
+  },
+  "optDisable": {
+    "message": "Zakázať toto rozšírenie"
+  },
+  "optLikeInstant": {
+    "message": "Okamžite"
+  },
+  "optLikeTimed": {
+    "message": "minúty"
+  },
+  "optLikePercent": {
+    "message": "percent"
+  },
+  "linkReport": {
+    "message": "Našli ste chybu?"
+  },
+  "reloadNotice": {
+    "message": "Pre použitie zmien aktualizujte stránku."
+  },
+  "updateNotice": {
+    "message": "Je dostupná nová verzia YouTube Auto Like."
+  },
+  "download": {
+    "message": "Stiahnuť"
+  },
+  "seeReleases": {
+    "message": "Zobraziť históriu verzí"
+  },
+  "saving": {
+    "message": "Ukladám..."
+  },
+  "donateAppeal": {
+    "message": "Vývoj tohto rozlíšenia zaberá veľa hodín vývoja a testovania. Ak máte pocit, že to za to stojí, môžete prispieť na pamlsky pre moje mačky."
+  },
+  "donateLink": {
+    "message": "Prejsť na donate"
+  }
+}
