@@ -43,8 +43,5 @@
     "webpack": "^5.76.0",
     "webpack-run-chrome-extension": "^0.6.0",
     "zip-webpack-plugin": "^4.0.1"
-  },
-  "dependencies": {
-    "bowser": "^2.11.0"
   }
 }
