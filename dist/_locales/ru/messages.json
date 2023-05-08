@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Автоматически лайкает видео от ваших любимых авторов"
+  },
+  "optLikeWhatTitle": {
+    "message": "Какие видео?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Как быстро?"
+  },
+  "optLikeSub": {
+    "message": "Лайкать видео только от подписанных каналов"
+  },
+  "optLikeAll": {
+    "message": "Лайкать все видео"
+  },
+  "optDisable": {
+    "message": "Отключить авто-лайки"
+  },
+  "optLikeInstant": {
+    "message": "Многовенный лайк"
+  },
+  "optLikeTimed": {
+    "message": "минуты"
+  },
+  "optLikePercent": {
+    "message": "проценты"
+  },
+  "linkReport": {
+    "message": "Не работает?"
+  },
+  "reloadNotice": {
+    "message": "Перезагрузить страницу, чтобы применить изменения"
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
+  }
+}

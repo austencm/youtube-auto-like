@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Non dimenticarti mai di mettere mi piace a un video."
+  },
+  "optLikeWhatTitle": {
+    "message": "Quali video?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Quanto velocemente?"
+  },
+  "optLikeSub": {
+    "message": "Solo video dai canali con l'iscrizione"
+  },
+  "optLikeAll": {
+    "message": "Tutti i video."
+  },
+  "optDisable": {
+    "message": "Disattiva"
+  },
+  "optLikeInstant": {
+    "message": "Immediatamente"
+  },
+  "optLikeTimed": {
+    "message": "minuti"
+  },
+  "optLikePercent": {
+    "message": "per cento"
+  },
+  "linkReport": {
+    "message": "Non funziona?"
+  },
+  "reloadNotice": {
+    "message": "Ricarica la pagina per applicare le modifiche."
+  },
+  "updateNotice": {
+    "message": "Ehi! È disponibile una versione più recente."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "Vedi le versioni"
+  },
+  "saving": {
+    "message": "Salvataggio..."
+  },
+  "donateAppeal": {
+    "message": "Ore di sviluppo e test servono per mantenere questa estensione. Se pensi che valga un paio di dollari, puoi comprare uno spuntino ai miei gatti."
+  },
+  "donateLink": {
+    "message": "Negozio di snack per gatti"
+  }
+}

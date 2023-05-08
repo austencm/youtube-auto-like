@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>YouTube Auto Like</title>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="css/options.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <svg>
+      <use href="#logo" />
+    </svg>
+    <h1 class="title">__MSG_appName__</h1>
+    <div id="links">
+      <a id="github-link" href="https://github.com/austencm/youtube-auto-like" title="GitHub" target="_blank">
+        <svg>
+          <use href="#icon-git" />
+        </svg>
+      </a>
+      <a id="report-link" href="https://github.com/austencm/youtube-auto-like/issues/new?labels=bug" target="_blank"
+        title="__MSG_linkReport__" data-i18n>
+        <svg>
+          <use href="#icon-bug" />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="update-notice" hidden>
+    <p>__MSG_updateNotice__</p>
+    <div class="update-links">
+      <a class="latest-link button button--primary">__MSG_download__</a>
+      <a class="button" href="https://github.com/austencm/youtube-auto-like/releases" target="_blank" rel="noreferrer">
+        __MSG_seeReleases__
+        <svg>
+          <use href="#icon-open-in-new" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="info">
+    <span class="reload-notice">__MSG_reloadNotice__</span>
+    <span class="saving-text" hidden>__MSG_saving__</span>
+  </div>
+
+  <div id="options-wrap">
+    <form id="options-form" enctype="multipart/form-data">
+      <fieldset class="form-group">
+        <legend class="form-group-title">__MSG_optLikeWhatTitle__</legend>
+
+        <label class="option-group">
+          <input type="radio" name="like_what" value="all" /> __MSG_optLikeAll__
+        </label>
+
+        <label class="option-group">
+          <input type="radio" name="like_what" value="subscribed" /> __MSG_optLikeSub__
+        </label>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <legend class="form-group-title">__MSG_optLikeWhenTitle__</legend>
+
+        <label class="option-group">
+          <input type="radio" name="like_when" value="instantly" /> __MSG_optLikeInstant__
+        </label>
+
+        <div class="option-group">
+          <input id="when-timing" type="radio" name="like_when" value="timed" />
+          <label for="when-timing" title="Or at the end of the video, if shorter.">
+            <input type="number" name="like_when_minutes" value="2" placeholder="2" min="0" max="100" step="0.5" />
+            __MSG_optLikeTimed__
+          </label>
+        </div>
+
+        <div class="option-group">
+          <input id="when-percent" type="radio" name="like_when" value="percent" />
+          <label for="when-percent">
+            <input type="number" name="like_when_percent" value="50" placeholder="50" min="0" max="100" step="5" />
+            __MSG_optLikePercent__
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label>
+          <input type="checkbox" name="disabled" value="yes" /> __MSG_optDisable__
+        </label>
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="donate">
+    <p>__MSG_donateAppeal__ ❤️</p>
+    <a class="button button--primary" href="https://www.buymeacoffee.com/austen" target="_blank">
+      __MSG_donateLink__
+      <svg>
+        <use href="#icon-open-in-new" />
+      </svg>
+    </a>
+  </div>
+
+  <div hidden>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <symbol id="logo" viewBox="0 0 128 128">
+        <g clip-path="url(#a)">
+          <path fill="#fff" d="M0 0h128v128H0z" />
+          <circle cx="63.976" cy="64.041" r="64" fill="#E62117" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M68.543 36.43c2.966-1.746 5.761-3.39 7.973-6.309l6.068-6.487s7.214-4.067 6.354 8.708c-.372 5.474-3.864 8.188-6.767 10.444-1.495 1.16-2.833 2.2-3.51 3.433-.13.236-.265.472-.4.706-1.323 2.296-2.55 4.424 3.276 4.616l11.53.876c5.763-.01 5.59 4.288 5.6 4.289l.007-.072c.034 3.25-.797 9.873-3.134 19.112-3.93 9.439-4.646 11.065-5.221 12.739-.165.477-.317.958-.53 1.625-3.604 11.186-13.467 8.729-13.424 8.729l-20.866-2.526c-6.798-.917-7.75-.913-7.75-.913V53.271c1.733-1.96 1.872-2.121 2.02-2.272.147-.148.303-.287 1.996-2.121 2.552-2.435 7.225-6.1 11.646-9.135 1.716-1.304 3.452-2.325 5.132-3.314ZM27.602 94.954l14.795.274.156-41.842-14.951.078v41.49Z"
+            fill="#fff" />
+        </g>
+      </symbol>
+      <defs>
+        <clipPath id="a">
+          <path fill="#fff" d="M0 0h128v128H0z" />
+        </clipPath>
+      </defs>
+
+      <symbol id="icon-git" viewBox="0 0 24 24">
+        <path
+          d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+      </symbol>
+
+      <symbol id="icon-bug" viewBox="0 0 24 24">
+        <path
+          d="M20,8H17.19C16.74,7.2 16.12,6.5 15.37,6L17,4.41L15.59,3L13.42,5.17C12.96,5.06 12.5,5 12,5C11.5,5 11.05,5.06 10.59,5.17L8.41,3L7,4.41L8.62,6C7.87,6.5 7.26,7.21 6.81,8H4V10H6.09C6.03,10.33 6,10.66 6,11V12H4V14H6V15C6,15.34 6.03,15.67 6.09,16H4V18H6.81C8.47,20.87 12.14,21.84 15,20.18C15.91,19.66 16.67,18.9 17.19,18H20V16H17.91C17.97,15.67 18,15.34 18,15V14H20V12H18V11C18,10.66 17.97,10.33 17.91,10H20V8M16,15A4,4 0 0,1 12,19A4,4 0 0,1 8,15V11A4,4 0 0,1 12,7A4,4 0 0,1 16,11V15M14,10V12H10V10H14M10,14H14V16H10V14Z" />
+      </symbol>
+
+      <symbol id="icon-open-in-new" viewBox="0 0 24 24">
+        <path
+          d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+      </symbol>
+    </svg>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+
+</html>

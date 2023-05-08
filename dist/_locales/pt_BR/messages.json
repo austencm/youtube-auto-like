@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Curta automaticamente vídeos do YouTube dos seus criadores de conteúdo favoritos."
+  },
+  "optLikeWhatTitle": {
+    "message": "Quais vídeos?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Quão rápido?"
+  },
+  "optLikeSub": {
+    "message": "Vídeos da lista de canais que estou inscrito"
+  },
+  "optLikeAll": {
+    "message": "Todos os vídeos"
+  },
+  "optDisable": {
+    "message": "Desativar"
+  },
+  "optLikeInstant": {
+    "message": "Instantaneamente"
+  },
+  "optLikeTimed": {
+    "message": "minutos"
+  },
+  "optLikePercent": {
+    "message": "porcentagem"
+  },
+  "linkReport": {
+    "message": "Não funciona?"
+  },
+  "reloadNotice": {
+    "message": "Recarregue a página para aplicar as mudanças."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
+  }
+}

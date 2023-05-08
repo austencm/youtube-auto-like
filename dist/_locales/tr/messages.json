@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Favori içerik oluşturucularınızın YouTube videolarını otomatik olarak beğenin."
+  },
+  "optLikeWhatTitle": {
+    "message": "Hangi videolar?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Ne kadar hızlı?"
+  },
+  "optLikeSub": {
+    "message": "Yalnızca abone olunan kanalın videoları"
+  },
+  "optLikeAll": {
+    "message": "Tüm videolar"
+  },
+  "optDisable": {
+    "message": "Devre dışı"
+  },
+  "optLikeInstant": {
+    "message": "Anında"
+  },
+  "optLikeTimed": {
+    "message": "dakika"
+  },
+  "optLikePercent": {
+    "message": "yüzde"
+  },
+  "linkReport": {
+    "message": "Hata bildir"
+  },
+  "reloadNotice": {
+    "message": "Değişiklikleri uygulamak için sayfayı yeniden yükleyin."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
+  }
+}

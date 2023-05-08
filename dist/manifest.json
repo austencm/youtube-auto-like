@@ -1,0 +1,36 @@
+{
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "homepage_url": "https://github.com/austencm/youtube-auto-like",
+  "version": "2.8.0",
+  "manifest_version": 3,
+  "default_locale": "en",
+  "minimum_chrome_version": "88",
+  "incognito": "split",
+  "permissions": ["storage", "notifications"],
+  "icons": {
+    "128": "images/128x128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/16x16.png",
+      "32": "images/32x32.png",
+      "48": "images/48x48.png"
+    },
+    "default_title": "__MSG_appName__",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://youtube.com/*", "*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html"
+  }
+}

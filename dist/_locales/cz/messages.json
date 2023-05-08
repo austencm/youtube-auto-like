@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "Už nikdy nezapomenete lajknout oblíbené video."
+  },
+  "optLikeWhatTitle": {
+    "message": "Které videa?"
+  },
+  "optLikeWhenTitle": {
+    "message": "Jak rychle?"
+  },
+  "optLikeSub": {
+    "message": "Jen videa z kanálů, které odebírám"
+  },
+  "optLikeAll": {
+    "message": "Všechny videa"
+  },
+  "optDisable": {
+    "message": "Zakázat toto rozšíření"
+  },
+  "optLikeInstant": {
+    "message": "Ihned"
+  },
+  "optLikeTimed": {
+    "message": "minuty"
+  },
+  "optLikePercent": {
+    "message": "procent"
+  },
+  "linkReport": {
+    "message": "Našli jste chybu?"
+  },
+  "reloadNotice": {
+    "message": "Pro použití změn aktualizujte stránku."
+  },
+  "updateNotice": {
+    "message": "Je dostupná nová verze YouTube Auto Like."
+  },
+  "download": {
+    "message": "Stáhnout"
+  },
+  "seeReleases": {
+    "message": "Zobrazit historii verzí"
+  },
+  "saving": {
+    "message": "Ukládám..."
+  },
+  "donateAppeal": {
+    "message": "Vývoj tohoto rozšíření zabírá mnoho hodin vývoje a testování. Pokud máte pocit, že to stojí za to, můžete koupit něco dobrého pro mé kočky."
+  },
+  "donateLink": {
+    "message": "Přejít na donate"
+  }
+}
