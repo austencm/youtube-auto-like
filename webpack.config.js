@@ -3,7 +3,6 @@ const RunChromeExtension = require('webpack-run-chrome-extension');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ZipWebpackPlugin = require('zip-webpack-plugin');
-const package = require('./package.json');
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const paths = {
@@ -42,7 +41,7 @@ module.exports = {
     IS_PROD &&
       new ZipWebpackPlugin({
         path: '../',
-        filename: `release-v${package.version}.zip`,
+        filename: 'release.zip',
       }),
     !IS_PROD &&
       new RunChromeExtension({
