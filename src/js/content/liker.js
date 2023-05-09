@@ -24,6 +24,7 @@ export default class Liker {
    */
   constructor({ options, log }) {
     this.options = options;
+    this.status = 'idle';
     this.log = log ? log : () => {};
     this.cache = {};
     this.start = this.start.bind(this);
@@ -49,7 +50,9 @@ export default class Liker {
    * Just helpful for debugging at the moment
    */
   pause() {
-    this.log('paused');
+    this.log('status: idle');
+    this.status = 'idle';
+
     if (typeof this.onPause === 'function') {
       this.onPause();
     }
@@ -136,21 +139,30 @@ export default class Liker {
       return false;
     }
 
+    this.cache.subscribeButton = subscribeButton;
+
     // Is the button active?
     if (
       subscribeButton.hasAttribute('subscribed') ||
       subscribeButton.classList.contains('yt-spec-button-shape-next--tonal')
     ) {
-      this.cache.subscribeButton = subscribeButton;
       return true;
     }
-    // TODO: If not, let's reinitialize the Liker if the user subscribes
-    // else if (this.options.like_what === 'subscribed') {
-    //   subButton.addEventListener('click', e => {
-    //     e.target.removeEventListener(e.type, arguments.callee);
-    //     this.init();
-    //   });
-    // }
+    // If not, let's restart the Liker when the user subscribes
+    else if (this.options.like_what === 'subscribed') {
+      const onSubscribe = (event) => {
+        this.log('user subscribed');
+        // Only fire once
+        event.target.removeEventListener(event.type, onSubscribe);
+
+        if (this.status === 'idle') {
+          this.start();
+        }
+      };
+
+      subscribeButton.addEventListener('click', onSubscribe);
+    }
+
     return false;
   }
 
@@ -195,7 +207,8 @@ export default class Liker {
    * The liker won't do anything unless this method is called.
    */
   async start() {
-    this.log('liker started');
+    this.log('status: running');
+    this.status = 'running';
     this.cache = {};
 
     switch (this.options.like_when) {
