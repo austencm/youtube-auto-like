@@ -1,7 +1,7 @@
 {
   "name": "youtube-auto-like",
   "description": "Never forget to like a video again.",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "homepage": "https://github.com/austencm/youtube-auto-like",
   "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
   "license": "MIT",
