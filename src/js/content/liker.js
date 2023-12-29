@@ -3,11 +3,13 @@ const selectors = {
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) button',
     '#segmented-like-button button',
+    'like-button-view-model button',
   ],
   dislikeButton: [
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) button',
     '#segmented-dislike-button button',
+    'dislike-button-view-model button',
   ],
   subscribeButton: [
     '#subscribe-button tp-yt-paper-button',
