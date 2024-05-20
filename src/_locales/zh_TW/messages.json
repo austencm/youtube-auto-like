@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "YouTube Auto Like"
+  },
+  "appDesc": {
+    "message": "再也不會忘記對影片按喜歡了。"
+  },
+  "optLikeWhatTitle": {
+    "message": "哪些影片？"
+  },
+  "optLikeWhenTitle": {
+    "message": "多快？"
+  },
+  "optLikeSub": {
+    "message": "已訂閱的頻道內的影片"
+  },
+  "optLikeAll": {
+    "message": "所有影片"
+  },
+  "optDisable": {
+    "message": "停用擴充功能"
+  },
+  "optLikeInstant": {
+    "message": "馬上"
+  },
+  "optLikeTimed": {
+    "message": "分鐘"
+  },
+  "optLikePercent": {
+    "message": "百分比"
+  },
+  "linkReport": {
+    "message": "不能用嗎？"
+  },
+  "reloadNotice": {
+    "message": "重理整理頁面以套用變更。"
+  },
+  "updateNotice": {
+    "message": "嘿！有新版本囉。"
+  },
+  "download": {
+    "message": "下載"
+  },
+  "seeReleases": {
+    "message": "觀看版本記錄"
+  },
+  "saving": {
+    "message": "儲存中..."
+  },
+  "donateAppeal": {
+    "message": "維護這個擴充功能需要花費大量的開發和測試時間。如果你覺得它值得，可以幫我的貓咪們買點零食。"
+  },
+  "donateLink": {
+    "message": "貓咪零食商店"
+  }
+}
