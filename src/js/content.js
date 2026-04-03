@@ -1,4 +1,5 @@
 import Liker from './content/liker';
+import { defaultOptions } from './config/defaults';
 import OptionManager from './utils/option-manager';
 import Debug from './content/debug';
 
@@ -24,15 +25,7 @@ const debug = new Debug();
       });
     }
 
-    // Create an OptionManager
-    const defaults = {
-      like_what: 'subscribed',
-      like_when: 'instantly',
-      like_when_minutes: '2',
-      like_when_percent: '50',
-      disabled: false,
-    };
-    const optionManager = new OptionManager(defaults);
+    const optionManager = new OptionManager(defaultOptions);
 
     // Fetch our options then fire things up
     debug.log('loading options...');

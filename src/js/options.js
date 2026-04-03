@@ -1,15 +1,15 @@
+import { defaultOptions } from './config/defaults';
+import { LOG_STORAGE_KEY } from './content/debug';
 import I18n from './utils/i18n';
+import {
+  normalizeNumericOption,
+  normalizeOptionsFormValues,
+} from './options-form';
 import OptionManager from './utils/option-manager';
 
-const defaults = {
-  like_what: 'subscribed',
-  like_when: 'instantly',
-  like_when_minutes: '2',
-  like_when_percent: '50',
-  disabled: false,
-};
-const optionManager = new OptionManager(defaults);
+const optionManager = new OptionManager(defaultOptions);
 const i18n = new I18n();
+const form = document.querySelector('#options-form');
 const bugReportTemplate = `
 <!-- Thanks for reporting! A debug log is already attached. If you have any other info that might be helpful, please write above the line. -->
 
@@ -21,6 +21,40 @@ __________________________
 
 i18n.populateText();
 
+function serializeOptionsForm(form) {
+  const formData = new FormData(form);
+
+  return normalizeOptionsFormValues({
+    like_what: formData.get('like_what') || defaultOptions.like_what,
+    like_when: formData.get('like_when') || defaultOptions.like_when,
+    like_when_minutes:
+      formData.get('like_when_minutes') || defaultOptions.like_when_minutes,
+    like_when_percent:
+      formData.get('like_when_percent') || defaultOptions.like_when_percent,
+    disabled: form.elements.disabled.checked,
+  });
+}
+
+function syncTimingFieldState(selectedTiming) {
+  document
+    .querySelectorAll('[data-timing-option]')
+    .forEach((optionGroup) => {
+      const isActive = optionGroup.dataset.timingOption === selectedTiming;
+      optionGroup.classList.toggle('option-group--active', isActive);
+      optionGroup
+        .querySelector('input[type="number"]')
+        ?.toggleAttribute('aria-invalid', false);
+    });
+}
+
+function updateNumericField(field, nextValue) {
+  const normalizedValue = normalizeNumericOption(field.name, nextValue);
+
+  if (field.value !== normalizedValue) {
+    field.value = normalizedValue;
+  }
+}
+
 const loadOptions = async () => {
   const options = await optionManager.get();
 
@@ -29,14 +63,19 @@ const loadOptions = async () => {
 
     const val = options[field.name];
 
-    if (field.type === 'radio' || field.type === 'checkbox') {
+    if (field.type === 'checkbox') {
+      field.checked = Boolean(val);
+    } else if (field.type === 'radio') {
       field.checked = field.value === val;
     } else {
       field.value = val;
     }
   });
 
-  chrome.storage.sync.get({ log: '[no log found]' }, ({ log }) => {
+  syncTimingFieldState(options.like_when);
+
+  chrome.storage.local.get({ [LOG_STORAGE_KEY]: '[no log found]' }, (items) => {
+    const log = items[LOG_STORAGE_KEY];
     // Add options state to report issue link
     const reportLink = document.querySelector('#report-link');
     const url = `https://github.com/austencm/youtube-auto-like/issues/new?labels=bug&body=${encodeURIComponent(
@@ -47,11 +86,7 @@ const loadOptions = async () => {
 };
 
 async function handleOptionsChange(e) {
-  const newOptions = {};
-  // Extract form data
-  Array.from(new FormData(e.currentTarget).entries()).forEach(
-    ([name, val]) => (newOptions[name] = val)
-  );
+  const newOptions = serializeOptionsForm(e.currentTarget);
 
   setIsSaving(true);
   await optionManager.set(newOptions);
@@ -66,10 +101,43 @@ function setIsSaving(isSaving) {
 
 loadOptions();
 
-// When the user changes an option, save it
-document
-  .querySelector('#options-form')
-  .addEventListener('change', handleOptionsChange);
+form.addEventListener('change', handleOptionsChange);
+
+form.addEventListener('input', (event) => {
+  const field = event.target;
+
+  if (!(field instanceof HTMLInputElement) || field.type !== 'number') {
+    return;
+  }
+
+  field
+    .closest('[data-timing-option]')
+    ?.querySelector('input[type="radio"]')
+    ?.click();
+});
+
+form.addEventListener('focusin', (event) => {
+  const field = event.target;
+
+  if (!(field instanceof HTMLInputElement) || field.type !== 'number') {
+    return;
+  }
+
+  field
+    .closest('[data-timing-option]')
+    ?.querySelector('input[type="radio"]')
+    ?.click();
+});
+
+form.addEventListener('blur', (event) => {
+  const field = event.target;
+
+  if (!(field instanceof HTMLInputElement) || field.type !== 'number') {
+    return;
+  }
+
+  updateNumericField(field, field.value);
+}, true);
 
 // Check for saved update info
 async function checkForSavedRelease() {

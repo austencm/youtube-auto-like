@@ -1,3 +1,11 @@
+import {
+  isSubscribed,
+  isVideoRated,
+  shouldLikeByMinutes,
+  shouldLikeByPercent,
+} from './rules';
+
+const WAIT_TIMEOUT_MS = 15000;
 const selectors = {
   likeButton: [
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
@@ -29,7 +37,11 @@ export default class Liker {
     this.status = 'idle';
     this.log = log ? log : () => {};
     this.cache = {};
+    this.runToken = 0;
+    this.cleanups = [];
+
     this.start = this.start.bind(this);
+    this.handlePageUpdate = this.handlePageUpdate.bind(this);
 
     // Bail if we don't need to do anything
     // DEPRECATION: options.like_what = 'none' removed in 2.0.2. Replaced with options.disabled
@@ -38,20 +50,41 @@ export default class Liker {
       return this.pause();
     }
 
-    /*
-    We're hooking into YouTube's custom events to determine when the page changes.
-     */
-    document
-      .querySelector('ytd-app')
-      .addEventListener('yt-page-data-updated', this.start);
+    const appRoot = document.querySelector('ytd-app');
+
+    if (appRoot) {
+      appRoot.addEventListener('yt-page-data-updated', this.handlePageUpdate);
+    } else {
+      this.log('no ytd-app root found');
+    }
 
     this.start();
+  }
+
+  handlePageUpdate() {
+    this.start();
+  }
+
+  registerCleanup(callback) {
+    this.cleanups.push(callback);
+
+    return () => {
+      this.cleanups = this.cleanups.filter((cleanup) => cleanup !== callback);
+    };
+  }
+
+  cleanupRun() {
+    this.cleanups.forEach((cleanup) => cleanup());
+    this.cleanups = [];
+    this.cache = {};
   }
 
   /**
    * Just helpful for debugging at the moment
    */
   pause() {
+    this.runToken += 1;
+    this.cleanupRun();
     this.log('status: idle');
     this.status = 'idle';
 
@@ -60,82 +93,147 @@ export default class Liker {
     }
   }
 
-  /**
-   * Clears data for another round of slick liking action
-   */
-  reset() {
-    this.cache = {};
+  getActiveRunToken() {
+    this.runToken += 1;
+    this.cleanupRun();
+
+    return this.runToken;
+  }
+
+  isActiveRun(runToken) {
+    return this.status === 'running' && this.runToken === runToken;
+  }
+
+  isWatchPage() {
+    return window.location.pathname === '/watch';
+  }
+
+  queryFirst(selectorList) {
+    return selectorList
+      .map((selector) => document.querySelector(selector))
+      .find(Boolean);
+  }
+
+  async waitForValue(getValue, { label, runToken, timeoutMs = WAIT_TIMEOUT_MS }) {
+    this.log(`waiting for ${label}...`);
+
+    return new Promise((resolve) => {
+      const targetNode = document.body || document.documentElement;
+      let timeoutId = null;
+      let observer = null;
+      let unregisterCleanup = null;
+
+      const finish = (value, message) => {
+        if (observer) {
+          observer.disconnect();
+        }
+
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+
+        if (unregisterCleanup) {
+          unregisterCleanup();
+        }
+
+        if (message) {
+          this.log(message);
+        }
+
+        resolve(value);
+      };
+
+      const check = () => {
+        if (!this.isActiveRun(runToken)) {
+          finish(null);
+          return true;
+        }
+
+        const value = getValue();
+
+        if (value) {
+          finish(value, `...${label} ready`);
+          return true;
+        }
+
+        return false;
+      };
+
+      if (check()) {
+        return;
+      }
+
+      observer = new MutationObserver(check);
+      observer.observe(targetNode, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+      });
+
+      timeoutId = setTimeout(() => {
+        finish(null, `${label} not found before timeout`);
+      }, timeoutMs);
+
+      unregisterCleanup = this.registerCleanup(() => finish(null));
+    });
   }
 
   /**
    * Detects when like/dislike buttons have loaded (so we can press them)
    */
-  waitForButtons() {
-    this.log('waiting for buttons...');
+  async waitForButtons(runToken) {
+    const buttons = await this.waitForValue(
+      () => {
+        const likeButton = this.queryFirst(selectors.likeButton);
+        const dislikeButton = this.queryFirst(selectors.dislikeButton);
 
-    return new Promise((resolve) => {
-      const interval = setInterval(() => {
-        const likeButton = document.querySelectorAll(selectors.likeButton)[0];
-        const dislikeButton = document.querySelectorAll(
-          selectors.dislikeButton
-        )[0];
-        // Make sure both buttons exist
-        if (likeButton && dislikeButton) {
-          // Store buttons
-          this.cache.likeButton = likeButton;
-          this.cache.dislikeButton = dislikeButton;
-
-          this.log('...buttons ready');
-          clearInterval(interval);
-          resolve();
+        if (!likeButton || !dislikeButton) {
+          return null;
         }
-      }, 1000);
-    });
+
+        return { likeButton, dislikeButton };
+      },
+      { label: 'buttons', runToken }
+    );
+
+    if (buttons) {
+      Object.assign(this.cache, buttons);
+    }
+
+    return buttons;
   }
 
   /**
    * Detects when the video player has loaded
    */
-  waitForVideo() {
-    this.log('waiting for video...');
+  async waitForVideo(runToken) {
+    const video = await this.waitForValue(
+      () => document.querySelector('.video-stream'),
+      { label: 'video', runToken }
+    );
 
-    return new Promise((resolve) => {
-      const interval = setInterval(() => {
-        this.cache.video = document.querySelector('.video-stream');
-        // Does the video exist?
-        if (this.cache.video) {
-          this.log('...video ready');
-          clearInterval(interval);
-          resolve();
-        }
-      }, 1000);
-    });
+    if (video) {
+      this.cache.video = video;
+    }
+
+    return video;
   }
 
   /**
    * @return {Boolean} True if the like or dislike button is active
    */
   isVideoRated() {
-    return (
-      (this.cache.likeButton.classList.contains('style-default-active') &&
-        !this.cache.likeButton.classList.contains('size-default')) ||
-      this.cache.dislikeButton.classList.contains('style-default-active') ||
-      this.cache.likeButton.getAttribute('aria-pressed') === 'true' ||
-      this.cache.dislikeButton.getAttribute('aria-pressed') === 'true'
-    );
+    return isVideoRated(this.cache);
   }
 
   /**
    * @return {Boolean} True if the user is subscribed to
    *                   the current video's channel
    */
-  isUserSubscribed() {
-    // Select the sub button
+  isUserSubscribed(runToken) {
     const subscribeButton =
-      this.cache.subscribeButton ||
-      document.querySelectorAll(selectors.subscribeButton)[0];
+      this.cache.subscribeButton || this.queryFirst(selectors.subscribeButton);
 
-    // Does the button exist?
     if (!subscribeButton) {
       this.log('no subscribe button found');
       return false;
@@ -143,48 +241,68 @@ export default class Liker {
 
     this.cache.subscribeButton = subscribeButton;
 
-    // Is the button active?
-    if (
-      subscribeButton.hasAttribute('subscribed') ||
-      subscribeButton.classList.contains('yt-spec-button-shape-next--tonal')
-    ) {
+    if (isSubscribed(subscribeButton)) {
       return true;
     }
-    // If not, let's restart the Liker when the user subscribes
-    else if (this.options.like_what === 'subscribed') {
-      const onSubscribe = (event) => {
+
+    if (this.options.like_what === 'subscribed') {
+      const onSubscribe = () => {
         this.log('user subscribed');
-        // Only fire once
-        event.target.removeEventListener(event.type, onSubscribe);
 
         if (this.status === 'idle') {
           this.start();
         }
       };
 
-      subscribeButton.addEventListener('click', onSubscribe);
+      subscribeButton.addEventListener('click', onSubscribe, { once: true });
+      this.registerCleanup(() => {
+        subscribeButton.removeEventListener('click', onSubscribe);
+      });
     }
 
     return false;
   }
 
   isAdPlaying() {
-    return (
-      this.cache.video &&
-      ['ad-showing', 'ad-interrupting'].every((c) => {
-        return this.cache.video
-          .closest('.html5-video-player')
-          .classList.contains(c);
-      })
-    );
+    if (!this.cache.video) {
+      return false;
+    }
+
+    const videoPlayer = this.cache.video.closest('.html5-video-player');
+
+    if (!videoPlayer) {
+      return false;
+    }
+
+    return ['ad-showing', 'ad-interrupting'].every((className) => {
+      return videoPlayer.classList.contains(className);
+    });
+  }
+
+  attachTimeUpdateListener(runToken, onVideoTimeUpdate) {
+    const { video } = this.cache;
+
+    video.addEventListener('timeupdate', onVideoTimeUpdate);
+    this.registerCleanup(() => {
+      video.removeEventListener('timeupdate', onVideoTimeUpdate);
+    });
+
+    onVideoTimeUpdate();
+
+    return this.isActiveRun(runToken);
   }
 
   /**
    * Make sure we can & should like the video,
    * then clickity click the button
    */
-  async clickLike() {
-    await this.waitForButtons();
+  async clickLike(runToken) {
+    const buttons = await this.waitForButtons(runToken);
+
+    if (!buttons || !this.isActiveRun(runToken)) {
+      return;
+    }
+
     /*
     If the video is already liked/disliked
     or the user isn't subscribed to this channel,
@@ -194,7 +312,8 @@ export default class Liker {
       this.log('video already rated');
       return this.pause();
     }
-    if (this.options.like_what === 'subscribed' && !this.isUserSubscribed()) {
+
+    if (this.options.like_what === 'subscribed' && !this.isUserSubscribed(runToken)) {
       this.log('user not subscribed');
       return this.pause();
     }
@@ -209,48 +328,59 @@ export default class Liker {
    * The liker won't do anything unless this method is called.
    */
   async start() {
+    const runToken = this.getActiveRunToken();
+
+    if (!this.isWatchPage()) {
+      this.log('not on a watch page');
+      return this.pause();
+    }
+
     this.log('status: running');
     this.status = 'running';
-    this.cache = {};
 
     switch (this.options.like_when) {
       case 'timed': {
         const minutes = parseFloat(this.options.like_when_minutes);
-        await this.waitForVideo();
-        const { video } = this.cache;
-        const onVideoTimeUpdate = (e) => {
-          if (this.isAdPlaying()) return;
-          // Are we more than the chosen mins in or at the end of the video?
-          if (
-            video.currentTime >= minutes * 60 ||
-            video.currentTime >= video.duration
-          ) {
-            this.clickLike();
-            video.removeEventListener('timeupdate', onVideoTimeUpdate);
+        const video = await this.waitForVideo(runToken);
+
+        if (!video || !this.isActiveRun(runToken)) {
+          return this.pause();
+        }
+
+        this.attachTimeUpdateListener(runToken, () => {
+          if (this.isAdPlaying()) {
+            return;
           }
-        };
-        video.addEventListener('timeupdate', onVideoTimeUpdate);
+
+          if (shouldLikeByMinutes(video, minutes)) {
+            this.clickLike(runToken);
+          }
+        });
         break;
       }
 
       case 'percent': {
         const percent = parseFloat(this.options.like_when_percent) / 100;
-        await this.waitForVideo();
-        const { video } = this.cache;
-        const onVideoTimeUpdate = (e) => {
-          if (this.isAdPlaying()) return;
-          // Are we more than the chosen percent through the video?
-          if (video.currentTime / video.duration >= percent) {
-            this.clickLike();
-            video.removeEventListener('timeupdate', onVideoTimeUpdate);
+        const video = await this.waitForVideo(runToken);
+
+        if (!video || !this.isActiveRun(runToken)) {
+          return this.pause();
+        }
+
+        this.attachTimeUpdateListener(runToken, () => {
+          if (this.isAdPlaying()) {
+            return;
           }
-        };
-        video.addEventListener('timeupdate', onVideoTimeUpdate);
+
+          if (shouldLikeByPercent(video, percent)) {
+            this.clickLike(runToken);
+          }
+        });
         break;
       }
 
       default:
-        this.clickLike();
+        this.clickLike(runToken);
     }
   }
 }

@@ -70,7 +70,7 @@
           <input type="radio" name="like_when" value="instantly" /> __MSG_optLikeInstant__
         </label>
 
-        <div class="option-group">
+        <div class="option-group option-group--timing" data-timing-option="timed">
           <input id="when-timing" type="radio" name="like_when" value="timed" />
           <label for="when-timing" title="Or at the end of the video, if shorter.">
             <input type="number" name="like_when_minutes" value="2" placeholder="2" min="0" max="100" step="0.5" />
@@ -78,7 +78,7 @@
           </label>
         </div>
 
-        <div class="option-group">
+        <div class="option-group option-group--timing" data-timing-option="percent">
           <input id="when-percent" type="radio" name="like_when" value="percent" />
           <label for="when-percent">
             <input type="number" name="like_when_percent" value="50" placeholder="50" min="0" max="100" step="5" />
